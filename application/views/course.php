@@ -67,7 +67,7 @@
                         <a class="nav-link" href="<?= site_url('Contact'); ?>">Contact</a>
                     </li>
                 </ul>
-                <a href="login.html" class="nav-link"><i class="fas fa-sign-in-alt"></i> Log In</a>
+                <a href="<?php echo site_url('Auth/logout') ?>" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
     </nav>
