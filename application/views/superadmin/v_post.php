@@ -3,7 +3,7 @@
 
 <head>
     <!-- Title -->
-    <title>Post List</title>
+    <title>Course List</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
@@ -145,20 +145,14 @@
                                     <li role="presentation"><a href="<?php echo site_url('logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="<?php echo site_url('logout'); ?>" class="log-out waves-effect waves-button waves-classic">
-                                    <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
-                                </a>
-                            </li>
                         </ul><!-- Nav -->
                     </div><!-- Top Menu -->
                 </div>
             </div>
-        </div><!-- Navbar -->
-
-        <!-- SIDE BAR -->
-        <div class="page-sidebar sidebar">
-            <div class="page-sidebar-inner slimscroll">
+            </div>
+        <!-- Navbar -->
+        <div class="page-sidebar sidebar" style="background: linear-gradient(to right,#e8b38c, #697194);">
+            <div class="page-sidebar-inner slimscroll" style="background: linear-gradient(to right,#e8b38c, #697194);">
                 <div class="sidebar-header" style="background: linear-gradient(to right,#e8b38c, #697194)">
                     <div class="sidebar-profile">
                         <?php
@@ -200,55 +194,75 @@
                     </div>
                 </div>
                 <ul class="menu accordion-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <li><a href="<?php echo site_url('backend/dashboard'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-home"></span>
+                    <li class="active"><a href="<?php echo site_url('backend/dashboard'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194)"  class="waves-effect waves-button"  class="waves-effect waves-button"><span style="color: white;" class="menu-icon icon-home"></span>
                             <p>Dashboard</p>
                         </a></li>
-                    <li class="droplink active open"><a href="#" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-pin"></span>
-                            <p>Post</p><span class="arrow"></span>
+                    <li class="droplink" ><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Course</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/post/add_new'); ?>" style="color: white;">Add New</a></li>
-                            <li class="active"><a href="<?php echo site_url('backend/post'); ?>" style="color: white;">Post List</a></li>
-                            <li><a href="<?php echo site_url('backend/category'); ?>" style="color: white;">Category</a></li>
-                            <li><a href="<?php echo site_url('backend/tag'); ?>" style="color: white;">Tag</a></li>
+                            <li><a href="<?php echo site_url('backend/post/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('backend/post'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Course List</a></li>
+                            <li><a href="<?php echo site_url('backend/category'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Category</a></li>
+                            <li><a href="<?php echo site_url('backend/tag'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tag</a></li>
                         </ul>
                     </li>
-                    <li><a href="<?php echo site_url('backend/inbox'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Tamyiz</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('backend/tamyiz/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('backend/tamyiz'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tamyiz List</a></li>
+                        </ul>
+                    </li>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Research</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('backend/research/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('backend/research'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="<?php echo site_url('backend/inbox'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
                             <p>Inbox</p>
                         </a></li>
-                    <li><a href="<?php echo site_url('backend/comment'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
+                    <li><a href="<?php echo site_url('backend/comment'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
                             <p>Comments</p>
                         </a></li>
+                    
                         </a></li>
                     <?php if ($this->session->userdata('access') == '1') : ?>
-                        <li><a href="<?php echo site_url('backend/users'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
+                        <li><a href="<?php echo site_url('backend/users'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
                                 <p>Users</p>
                             </a></li>
-                        <li class="droplink"><a href="<?php echo site_url('backend/settings'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
+                        <li class="droplink"><a href="<?php echo site_url('backend/settings'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
                                 <p>Settings</p><span class="arrow"></span>
                             </a>
                             <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                                <li><a href="<?php echo site_url('backend/settings'); ?>" style="color: white;">Basic</a></li>
-                                <li><a href="<?php echo site_url('backend/home_setting'); ?>" style="color: white;">Home</a></li>
-                                <li><a href="<?php echo site_url('backend/about_setting'); ?>" style="color: white;">About</a></li>
+                                <li><a href="<?php echo site_url('backend/settings'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Basic</a></li>
+                                <li><a href="<?php echo site_url('backend/home_setting'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Home</a></li>
+                                <li><a href="<?php echo site_url('backend/about_setting'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">About</a></li>
+                                <li><a href="<?php echo site_url('backend/experience/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add Experience</a></li>
+                                <li><a href="<?php echo site_url('backend/experience'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Experience List</a></li>
                             </ul>
                         </li>
                     <?php else : ?>
                     <?php endif; ?>
-                    <li><a href="<?php echo site_url('logout'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
+                    <li><a href="<?php echo site_url('logout'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
                             <p>Log Out</p>
-                        </a></li>
-
+                        </a>
+                    </li>
+                    
                 </ul>
             </div><!-- Page Sidebar Inner -->
         </div><!-- Page Sidebar -->
         <div class="page-inner">
             <div class="page-title">
-                <h3>Post List</h3>
+                <h3>Course List</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo site_url('backend/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="#">Post</a></li>
+                        <li><a href="#">Course</a></li>
                         <li class="active">List</li>
                     </ol>
                 </div>
@@ -259,7 +273,7 @@
 
                         <div class="panel panel-white">
                             <div class="panel-body">
-                                <a href="<?php echo site_url('backend/post/add_new'); ?>" style="background-color: #697194" class="btn btn-success m-b-sm">Add New Post</a>
+                                <a href="<?php echo site_url('backend/post/add_new'); ?>" style="background-color: #697194" class="btn btn-success m-b-sm">Add New Course</a>
                                 <div class="table-responsive">
                                     <table id="data-table" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>

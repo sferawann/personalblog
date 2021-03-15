@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
 
     <!-- Custom styles for this template -->
-    <link href="<?= base_url(); ?>assets/css/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/css/carousel.css">
 
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/vendor/animate/animate.css">
@@ -47,13 +47,18 @@
                     </li>
                     <?php foreach ($Course as $c) : ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link active dropdown-toggle" href="<?= site_url('Course'); ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Course</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#"><?php echo $c->tittle_course ?></a>
+                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $c->tittle_course ?></a>
                             </div>
                         </li>
                     <?php endforeach; ?>
+                    <!-- BELUM ADA PHPNYA SAMAIN KAYAK COURSE -->
+                    <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
+                    </li>
+                    <!-- END TAMIEZ -->
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
@@ -83,7 +88,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+                    <img class="first-slide" src="/assets/img/homepage/header-bg.jpg" alt="First slide">
                     <div class="container">
                         <div class="carousel-caption text-left">
                             <h1>Heading Website</h1>
@@ -93,7 +98,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+                    <img class="second-slide" src="/assets/img/homepage/header-bg.jpg" alt="Second slide">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>Recent Post</h1>
@@ -103,7 +108,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+                    <img class="second-slide" src="/assets/img/homepage/header-bg.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>Recent Post</h1>
@@ -140,15 +145,15 @@
                     <p class="text-muted text-small">Jl. PH.H. Mustofa No.23, Neglasari, Kec. Cibeunying Kaler, Kota Bandung, Jawa Barat 40124</p>
                 </div>
                 <div class="col-6 col-md">
-                    <h5>Resources</h5>
+                    <h5>Find Me</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Resource</a></li>
-                        <li><a class="text-muted" href="#">Resource name</a></li>
-                        <li><a class="text-muted" href="#">Another resource</a></li>
-                        <li><a class="text-muted" href="#">Final resource</a></li>
+                        <li><a class="text-muted" href="https://scholar.google.com/citations?user=zJuf-CAAAAAJ&hl=en&oi=sra">Google Scholar</a></li>
+                        <li><a class="text-muted" href="#">LinkedIn</a></li>
+                        <li><a class="text-muted" href="#">YouTube</a></li>
+                        <li><a class="text-muted" href="#">SINTA</a></li>
                     </ul>
                 </div>
-                <div class="col-6 col-md">
+                <!-- <div class="col-6 col-md">
                     <h5>About</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="text-muted" href="#">Team</a></li>
@@ -156,7 +161,7 @@
                         <li><a class="text-muted" href="#">Privacy</a></li>
                         <li><a class="text-muted" href="#">Terms</a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
     </footer>
     <!-- Akhir Footer -->
@@ -174,6 +179,10 @@
     </script>
     <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/holder.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 </body>
 
 </html>

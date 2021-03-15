@@ -2,9 +2,8 @@
 <html>
 
 <head>
-
     <!-- Title -->
-    <title>Users</title>
+    <title>Add New Experience</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
@@ -12,6 +11,7 @@
     <meta name="keywords" content="" />
     <meta name="author" content="ITENAS" />
     <link rel="shortcut icon" href="<?php echo base_url() . 'assets/images/favicon.png' ?>">
+
     <!-- Styles -->
     <link href="<?php echo base_url() . 'assets/plugins/pace-master/themes/blue/pace-theme-flash.css' ?>" rel="stylesheet" />
     <link href="<?php echo base_url() . 'assets/plugins/uniform/css/uniform.default.min.css' ?>" rel="stylesheet" />
@@ -25,24 +25,21 @@
     <link href="<?php echo base_url() . 'assets/plugins/slidepushmenus/css/component.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables_themeroller.css' ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url() . 'assets/plugins/bootstrap-datepicker/css/datepicker3.css' ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url() . 'assets/plugins/select2/css/select2.min.css' ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.css' ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.css' ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url() . 'assets/css/dropify.min.css' ?>" rel="stylesheet" type="text/css">
+
     <!-- Theme Styles -->
     <link href="<?php echo base_url() . 'assets/css/modern.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/css/themes/green.css' ?>" class="theme-color" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/css/custom.css' ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url() . 'assets/css/dropify.min.css' ?>" rel="stylesheet" type="text/css">
 
     <script src="<?php echo base_url() . 'assets/plugins/3d-bold-navigation/js/modernizr.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/offcanvasmenueffects/js/snap.svg-min.js' ?>"></script>
-
 
 </head>
 
 <body class="page-header-fixed  compact-menu  pace-done page-sidebar-fixed">
     <div class="overlay"></div>
-
     <main class="page-content content-wrap">
         <div class="navbar">
             <div class="navbar-inner">
@@ -156,9 +153,9 @@
                     </div><!-- Top Menu -->
                 </div>
             </div>
-            </div>
-         <!-- Navbar -->
-         <div class="page-sidebar sidebar" style="background: linear-gradient(to right,#e8b38c, #697194);">
+        </div>
+        <!-- Navbar -->
+        <div class="page-sidebar sidebar" style="background: linear-gradient(to right,#e8b38c, #697194);">
             <div class="page-sidebar-inner slimscroll" style="background: linear-gradient(to right,#e8b38c, #697194);">
                 <div class="sidebar-header" style="background: linear-gradient(to right,#e8b38c, #697194)">
                     <div class="sidebar-profile">
@@ -201,10 +198,10 @@
                     </div>
                 </div>
                 <ul class="menu accordion-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <li class="active"><a href="<?php echo site_url('backend/dashboard'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194)"  class="waves-effect waves-button"  class="waves-effect waves-button"><span style="color: white;" class="menu-icon icon-home"></span>
+                    <li class="active"><a href="<?php echo site_url('backend/dashboard'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194)" class="waves-effect waves-button" class="waves-effect waves-button"><span style="color: white;" class="menu-icon icon-home"></span>
                             <p>Dashboard</p>
                         </a></li>
-                    <li class="droplink" ><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>Course</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
@@ -236,8 +233,8 @@
                     <li><a href="<?php echo site_url('backend/comment'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
                             <p>Comments</p>
                         </a></li>
-                    
-                        </a></li>
+
+                    </a></li>
                     <?php if ($this->session->userdata('access') == '1') : ?>
                         <li><a href="<?php echo site_url('backend/users'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
                                 <p>Users</p>
@@ -259,233 +256,71 @@
                             <p>Log Out</p>
                         </a>
                     </li>
-                    
+
                 </ul>
             </div><!-- Page Sidebar Inner -->
         </div><!-- Page Sidebar -->
         <div class="page-inner">
-
+            <div class="page-title">
+                <h3>Add New Experience</h3>
+                <div class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo site_url('backend/dashboard'); ?>">Dashboard</a></li>
+                        <li><a href="#">Experience</a></li>
+                        <li class="active">Add New</li>
+                    </ol>
+                </div>
+            </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel panel-white">
-
-                            <div class="panel-body">
-                                <button type="button" style="background-color: #697194" class="btn btn-success m-b-sm" data-toggle="modal" data-target="#myModal">Add New User</button>
-
-                                <table id="mytable" class="display table" style="width: 100%; cellspacing: 0;">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Photo</th>
-                                            <th>Name</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
-                                            <th>Level</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $no = 0;
-                                        foreach ($data->result() as $row) :
-                                            $no++;
-                                        ?>
-                                            <tr>
-                                                <td style="vertical-align: middle;"><?php echo $no; ?></td>
-                                                <td style="vertical-align: middle;">
-                                                    <?php if (empty($row->user_photo)) : ?>
-                                                        <img class="img-circle" width="50" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>">
-                                                    <?php else : ?>
-                                                        <img class="img-circle" width="50" src="<?php echo base_url() . 'assets/images/' . $row->user_photo; ?>">
-                                                    <?php endif; ?>
-                                                </td>
-                                                <td style="vertical-align: middle;"><?php echo $row->user_name; ?></td>
-                                                <td style="vertical-align: middle;"><?php echo $row->user_email; ?></td>
-                                                <td style="vertical-align: middle;"><?php echo $row->user_password; ?></td>
-                                                <td style="vertical-align: middle;">
-                                                    <?php
-                                                    if ($row->user_level == '1') {
-                                                        echo "Administrator";
-                                                    } else {
-                                                        echo "Author";
-                                                    }
-                                                    ?>
-                                                </td>
-                                                <?php if ($row->user_status == '1') : ?>
-                                                    <td style="vertical-align: middle;"><a href="<?php echo base_url() . 'backend/users/lock/' . $row->user_id; ?>" class="btn"><span class="icon-lock-open" title="Unlock"></span></a></td>
-                                                <?php else : ?>
-                                                    <td style="vertical-align: middle;"><a href="<?php echo base_url() . 'backend/users/unlock/' . $row->user_id; ?>" class="btn"><span class="icon-lock" title="Locked"></span></a></td>
-                                                <?php endif; ?>
-                                                <td style="vertical-align: middle;">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                            Action <span class="caret"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#ModalEdit<?php echo $row->user_id; ?>"><span class="icon-pencil"></span> Edit</a></li>
-                                                            <li><a href="javascript:void(0);" class="delete" data-userid="<?php echo $row->user_id; ?>"><span class="icon-trash"></span> Delete</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                    <form action="<?php echo base_url() . 'backend/post/publish' ?>" method="post" enctype="multipart/form-data">
+                        <div class="col-md-8">
+                            <div class="panel panel-white">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label>Title</label>
+                                        <input type="text" name="title" class="form-control title" placeholder="Title" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Date Periode</label>
+                                        <div class="form-group">
+                                            <label>Date Start</label>
+                                            <input type="date" class="form-control" name="tgl_perawatan" id="tgl_perawatan" placeholder="">
+                                            <div class="form-group">
+                                                <label>Date End</label>
+                                                <input type="date" class="form-control" name="tgl_perawatan" id="tgl_perawatan" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Location</label>
+                                            <input type="text" name="title" class="form-control title" placeholder="Location" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea name="description" class="form-control" id="summernote" placeholder="Description"></textarea>
+                                        </div>
+                                        <div class="btn-group btn-group-justified" role="group" style="background-color: #697194">
+                                            <button type="submit" class="btn btn-primary btn-lg" style="width:100%"><span class="icon-cursor"></span> PUBLISH</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
+                </div>
 
-                    </div>
-                </div><!-- Row -->
-            </div><!-- Main Wrapper -->
-            <div class="page-footer">
-                <p class="no-s"><?php echo date('Y'); ?> &copy; IF ITENAS</p>
-            </div>
+                </form>
+            </div><!-- Row -->
+        </div><!-- Main Wrapper -->
+        <div class="page-footer">
+            <p class="no-s"><?php echo date('Y'); ?> &copy; IF ITENAS</p>
+        </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
-
-    <div class="cd-overlay"></div>
-
-    <!-- Modal -->
-    <form id="add-row-form" action="<?php echo base_url() . 'backend/users/insert' ?>" method="post" enctype="multipart/form-data">
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Add New User</h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="file" name="filefoto" class="dropify" data-height="220">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    <input type="text" name="nama" class="form-control" placeholder="Name" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" name="level" required>
-                                        <option value="">No Selected</option>
-                                        <option value="1">Administrator</option>
-                                        <option value="2">Author</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <?php
-    foreach ($data->result() as $row) :
-    ?>
-        <!-- Modal -->
-        <form id="add-row-form" action="<?php echo base_url() . 'backend/users/update' ?>" method="post" enctype="multipart/form-data">
-            <div class="modal fade" id="ModalEdit<?php echo $row->user_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Edit User</h4>
-                        </div>
-                        <div class="modal-body">
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <input type="file" name="filefoto" class="dropify" data-height="220" data-default-file="<?php echo base_url() . 'assets/images/' . $row->user_photo; ?>">
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <input type="text" name="nama" value="<?php echo $row->user_name; ?>" class="form-control" placeholder="Name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" name="email" value="<?php echo $row->user_email; ?>" class="form-control" placeholder="Email" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" class="form-control" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password2" class="form-control" placeholder="Confirm Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="form-control" name="level" required>
-                                            <?php if ($row->user_level == '1') : ?>
-                                                <option value="1" selected>Administrator</option>
-                                                <option value="2">Author</option>
-                                            <?php else : ?>
-                                                <option value="1">Administrator</option>
-                                                <option value="2" selected>Author</option>
-                                            <?php endif; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" name="user_id" value="<?php echo $row->user_id; ?>" required>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button type="submit" style="background-color: #697194" class="btn btn-success">Update</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    <?php endforeach; ?>
-
-    <!-- Modal hapus-->
-    <form id="add-row-form" action="<?php echo base_url() . 'backend/users/delete' ?>" method="post" enctype="multipart/form-data">
-        <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Delete User</h4>
-                    </div>
-                    <div class="modal-body">
-                        <strong>Anda yakin mau menghapus user ini?</strong>
-                        <div class="form-group">
-                            <input type="hidden" id="txt_kode" name="kode" class="form-control" placeholder="Name" required>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" id="add-row" class="btn btn-danger">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
 
     <!-- Javascripts -->
     <script src="<?php echo base_url() . 'assets/plugins/jquery/jquery-2.1.4.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/jquery-ui/jquery-ui.min.js' ?>"></script>
-    <script src="<?php echo base_url() . 'assets/plugins/select2/js/select2.min.js' ?>" type="text/javascript"></script>
     <script src="<?php echo base_url() . 'assets/plugins/pace-master/pace.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/jquery-blockui/jquery.blockui.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/bootstrap/js/bootstrap.min.js' ?>"></script>
@@ -499,109 +334,70 @@
     <script src="<?php echo base_url() . 'assets/plugins/jquery-mockjax-master/jquery.mockjax.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/moment/moment.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/datatables/js/jquery.datatables.min.js' ?>"></script>
-    <script src="<?php echo base_url() . 'assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/js/modern.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/js/dropify.min.js' ?>"></script>
-    <script src="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.min.js' ?>"></script>
 
-    <script type="text/javascript">
+    <script src="jquery/jquery-2.2.1.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+    <script>
         $(document).ready(function() {
-            $('#mytable').DataTable();
+
+            $('#summernote').summernote({
+                height: 590,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'hr']],
+                    ['view', ["fullscreen", "codeview", "help"]],
+                ],
+
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
+
+            });
+
+            function sendFile(file, editor, welEditable) {
+                data = new FormData();
+                data.append("file", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "<?php echo site_url() ?>backend/post/upload_image",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(url) {
+                        editor.insertImage(welEditable, url);
+                    }
+                });
+            }
+
+
+
             $('.dropify').dropify({
-                defaultFile: '',
                 messages: {
-                    default: 'Drag atau drop untuk memilih Photo',
+                    default: 'Drag atau drop untuk memilih gambar',
                     replace: 'Ganti',
                     remove: 'Hapus',
                     error: 'error'
                 }
             });
 
-            $('.delete').on('click', function() {
-                var userid = $(this).data('userid');
-                $('#ModalDelete').modal('show');
-                $('[name="kode"]').val(userid);
+            $('.title').keyup(function() {
+                var title = $(this).val().toLowerCase().replace(/[&\/\\#^, +()$~%.'":*?<>{}]/g, '-');
+                $('.slug').val(title);
             });
+
+
         });
     </script>
-
-
-    <!--Toast Message-->
-    <?php if ($this->session->flashdata('msg') == 'error') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Error',
-                text: "Password and Confirm Password doesn't match.",
-                showHideTransition: 'slide',
-                icon: 'error',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#FF4859'
-            });
-        </script>
-    <?php elseif ($this->session->flashdata('msg') == 'error-email') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Error',
-                text: "Email already taken.",
-                showHideTransition: 'slide',
-                icon: 'error',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#FF4859'
-            });
-        </script>
-    <?php elseif ($this->session->flashdata('msg') == 'error-img') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Error',
-                text: "Image Upload Error.",
-                showHideTransition: 'slide',
-                icon: 'error',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#FF4859'
-            });
-        </script>
-    <?php elseif ($this->session->flashdata('msg') == 'success') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Success',
-                text: "New User Saved!",
-                showHideTransition: 'slide',
-                icon: 'success',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#7EC857'
-            });
-        </script>
-    <?php elseif ($this->session->flashdata('msg') == 'info') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Info',
-                text: "User updated!",
-                showHideTransition: 'slide',
-                icon: 'info',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#00C9E6'
-            });
-        </script>
-    <?php elseif ($this->session->flashdata('msg') == 'success-hapus') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Success',
-                text: "User Deleted!.",
-                showHideTransition: 'slide',
-                icon: 'success',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#7EC857'
-            });
-        </script>
-    <?php else : ?>
-
-    <?php endif; ?>
 
 </body>
 

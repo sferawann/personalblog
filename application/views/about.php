@@ -47,13 +47,18 @@
                     </li>
                     <?php foreach ($Course as $c) : ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link active dropdown-toggle" href="<?= site_url('Course'); ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Course</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#"><?php echo $c->tittle_course ?></a>
+                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $c->tittle_course ?></a>
                             </div>
                         </li>
                     <?php endforeach; ?>
+                    <!-- BELUM ADA PHPNYA SAMAIN KAYAK COURSE -->
+                    <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
+                    </li>
+                    <!-- END TAMIEZ -->
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
@@ -115,58 +120,6 @@
                             </li>
                         </ul>
                     </div> <!-- end card-box -->
-
-                    <div class="card-box">
-                        <h4 class="header-title">Skills</h4>
-                        <!-- <p class="mb-3">Everyone realizes why a new common language would be desirable</p> -->
-
-                        <div class="pt-1">
-                            <h6 class="text-uppercase mt-0">HTML5 <span class="float-right">90%</span></h6>
-                            <div class="progress progress-sm m-0">
-                                <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                                    <span class="sr-only">90% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-2 pt-1">
-                            <h6 class="text-uppercase">PHP <span class="float-right">67%</span></h6>
-                            <div class="progress progress-sm m-0">
-                                <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="width: 67%">
-                                    <span class="sr-only">67% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-2 pt-1">
-                            <h6 class="text-uppercase">WordPress <span class="float-right">48%</span></h6>
-                            <div class="progress progress-sm m-0">
-                                <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100" style="width: 48%">
-                                    <span class="sr-only">48% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-2 pt-1">
-                            <h6 class="text-uppercase">Laravel <span class="float-right">95%</span></h6>
-                            <div class="progress progress-sm m-0">
-                                <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
-                                    <span class="sr-only">95% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-2 pt-1">
-                            <h6 class="text-uppercase">ReactJs <span class="float-right">72%</span></h6>
-                            <div class="progress progress-sm m-0">
-                                <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%">
-                                    <span class="sr-only">72% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div> <!-- end card-box-->
-
                 </div> <!-- end col-->
 
                 <div class="col-lg-8 col-xl-8">
@@ -181,17 +134,16 @@
 
                                 <ul class="list-unstyled timeline-sm">
                                     <li class="timeline-sm-item">
-                                        <span class="timeline-sm-date">2015 - 19</span>
+                                        <span class="mt-0 mb-1">2015 - 19</span>
                                         <h5 class="mt-0 mb-1">Lead designer / Developer</h5>
                                         <p>websitename.com</p>
                                         <p class="text-muted mt-2">Everyone realizes why a new common language
                                             would be desirable: one could refuse to pay expensive translators.
                                             To achieve this, it would be necessary to have uniform grammar,
                                             pronunciation and more common words.</p>
-
                                     </li>
                                     <li class="timeline-sm-item">
-                                        <span class="timeline-sm-date">2012 - 15</span>
+                                        <span class="mt-0 mb-1">2012 - 15</span>
                                         <h5 class="mt-0 mb-1">Senior Graphic Designer</h5>
                                         <p>Software Inc.</p>
                                         <p class="text-muted mt-2">If several languages coalesce, the grammar
@@ -200,7 +152,7 @@
                                             simple and regular than the existing European languages.</p>
                                     </li>
                                     <li class="timeline-sm-item">
-                                        <span class="timeline-sm-date">2010 - 12</span>
+                                        <span class="mt-0 mb-1">2010 - 12</span>
                                         <h5 class="mt-0 mb-1">Graphic Designer</h5>
                                         <p>Coderthemes LLP</p>
                                         <p class="text-muted mt-2 mb-0">The European languages are members of
@@ -238,15 +190,15 @@
                     <p class="text-muted text-small">Jl. PH.H. Mustofa No.23, Neglasari, Kec. Cibeunying Kaler, Kota Bandung, Jawa Barat 40124</p>
                 </div>
                 <div class="col-6 col-md">
-                    <h5>Resources</h5>
+                    <h5>Find Me</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Resource</a></li>
-                        <li><a class="text-muted" href="#">Resource name</a></li>
-                        <li><a class="text-muted" href="#">Another resource</a></li>
-                        <li><a class="text-muted" href="#">Final resource</a></li>
+                        <li><a class="text-muted" href="https://scholar.google.com/citations?user=zJuf-CAAAAAJ&hl=en&oi=sra">Google Scholar</a></li>
+                        <li><a class="text-muted" href="#">LinkedIn</a></li>
+                        <li><a class="text-muted" href="#">YouTube</a></li>
+                        <li><a class="text-muted" href="#">SINTA</a></li>
                     </ul>
                 </div>
-                <div class="col-6 col-md">
+                <!-- <div class="col-6 col-md">
                     <h5>About</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="text-muted" href="#">Team</a></li>
@@ -254,7 +206,7 @@
                         <li><a class="text-muted" href="#">Privacy</a></li>
                         <li><a class="text-muted" href="#">Terms</a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
     </footer>
     <!-- Akhir Footer -->
@@ -266,6 +218,10 @@
     <script src="<?= base_url(); ?>assets/js/popper.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/bootstrap.js"></script>
     <script src="<?= base_url(); ?>assets/js/all.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 </body>
 
 </html>

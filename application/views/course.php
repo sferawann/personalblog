@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
 
+
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/vendor/animate/animate.css">
     <!--===============================================================================================-->
@@ -32,8 +33,6 @@
     <!--===============================================================================================-->
 
     <!-- Navbar -->
-    <div class="flash-data-username" data-flashdata="<?= $this->session->flashdata('error_username_user') ?>"></div>
-    <div class="flash-data-password" data-flashdata="<?= $this->session->flashdata('error_password_user') ?>"></div>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-lg fa-laptop-code bg-custom"></i></a>
@@ -54,12 +53,11 @@
                             </div>
                         </li>
                     <?php endforeach; ?>
-                    <!-- BELUM ADA PHPNYA SAMAIN KAYAK COURSE -->
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
                     </li>
                     <!-- END TAMIEZ -->
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
                     <li class="nav-item ">
@@ -69,46 +67,152 @@
                         <a class="nav-link" href="<?= site_url('Contact'); ?>">Contact</a>
                     </li>
                 </ul>
-                <a href="<?php echo site_url('Auth/logout') ?>" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a href="login.html" class="nav-link"><i class="fas fa-sign-in-alt"></i> Log In</a>
             </div>
         </div>
     </nav>
     <!-- Akhir Navbar -->
+
 </head>
 
 <body>
+
+
+
     <!-- Awal Form -->
 
     <div class="container-about100 mt-3">
         <div class="wrap-about1000 mt-5">
             <div class="row">
-                <span class="contact100-form-title">
-                    Research
-                </span>
-                <div class="accordion" id="accordionExample">
-                    <?php foreach ($Research as $r) : ?>
-                        <div class="card">
-                            <div class="card-header" id="headingOne" style="background:transparent;">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <?= $r->tittle_research; ?>
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <!-- Page Content -->
+                <div class="container">
+                    <h1 class="my-3">Belajar Python</h1>
+                    <div class="row">
+
+                        <!-- Blog Entries Column -->
+                        <div class="col-md-8">
+
+
+
+                            <!-- Blog Post -->
+                            <div class="card mb-4">
+                                <!-- image dari course -->
+                                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                                 <div class="card-body">
-                                    <h6>Abstract</h6>
-                                    <p><?= $r->abstract_research; ?></p>
-                                    <a class="btn" target="_blank" href="<?= $r->link_research; ?>" style="background: #697194; border: none; color:white;">View Journal</a>
+                                    <!-- judul course -->
+                                    <h2 class="card-title" style="color: #697194;">Post Title</h2>
+                                    <!-- paragraf pertama isi preview course -->
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                                    <a href="course-post.html" type="button" class="btn btn-custom mt-2">Read More<i class="fas fa-long-arrow-alt-right m-l-7" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <!-- ini tanggal course di post -->
+                                    Posted on January 1, 2020 by
+                                    <!-- ini yg bawah di ganti nama bu dewi nya, nama dari username -->
+                                    <a href="about.html">Start Bootstrap</a>
                                 </div>
                             </div>
+
+                            <!-- Blog Post -->
+                            <div class="card mb-4">
+                                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                                <div class="card-body">
+                                    <h2 class="card-title">Post Title</h2>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                                    <a href="course-post.html" type="button" class="btn btn-custom mt-2">Read More<i class="fas fa-long-arrow-alt-right m-l-7" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    Posted on January 1, 2020 by
+                                    <a href="about.html">Start Bootstrap</a>
+                                </div>
+                            </div>
+
+                            <!-- Blog Post -->
+                            <div class="card mb-4">
+                                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                                <div class="card-body">
+                                    <h2 class="card-title">Post Title</h2>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                                    <a href="course-post.html" type="button" class="btn btn-custom mt-2">Read More<i class="fas fa-long-arrow-alt-right m-l-7" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    Posted on January 1, 2020 by
+                                    <a href="about.html">Start Bootstrap</a>
+                                </div>
+                            </div>
+
+                            <!-- Pagination -->
+                            <ul class="pagination justify-content-center mb-4">
+                                <li class="page-item">
+                                    <a class="page-link btn-custom" href="#">&larr; Older</a>
+                                </li>
+                                <li class="page-item disabled">
+                                    <a class="page-link btn-custom" href="#">Newer &rarr;</a>
+                                </li>
+                            </ul>
+
                         </div>
-                    <?php endforeach; ?>
+
+                        <!-- Sidebar Widgets Column -->
+                        <div class="col">
+
+                            <!-- Search Widget -->
+                            <!-- <div class="card my-4">
+                        <h5 class="card-header">Search</h5>
+                        <div class="card-body">
+                            <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-append">
+                                <button class="btn btn-secondary" type="button">Go!</button>
+                            </span>
+                            </div>
+                        </div>
+                        </div> -->
+
+                            <!-- Categories Widget -->
+                            <div class="card">
+                                <h5 class="card-header">Categories</h5>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <ul class="list-unstyled mb-0">
+                                                <li>
+                                                    <a href="#">Web Design</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">HTML</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Freebies</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <ul class="list-unstyled mb-0">
+                                                <li>
+                                                    <a href="#">JavaScript</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">CSS</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Tutorials</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.row -->
+
                 </div>
             </div>
         </div>
     </div>
-
 
     <div id="dropDownSelect1"></div>
 
