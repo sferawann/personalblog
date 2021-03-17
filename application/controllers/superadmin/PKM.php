@@ -8,9 +8,9 @@ class PKM extends CI_Controller
             $url = base_url('administrator');
             redirect($url);
         };
-        $this->load->model('backend/Tag_model', 'tag_model');
-        $this->load->model('backend/Category_model', 'category_model');
-        $this->load->model('backend/Post_model', 'post_model');
+        $this->load->model('superadmin/Tag_model', 'tag_model');
+        $this->load->model('superadmin/Category_model', 'category_model');
+        $this->load->model('superadmin/Post_model', 'post_model');
         $this->load->library('upload');
         $this->load->helper('text');
     }

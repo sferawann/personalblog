@@ -9,14 +9,14 @@
     <meta charset="UTF-8">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta name="author" content="ITENAS" />
+    <meta name="author" content="MANAJEMEN PROYEK 2021" />
     <meta name="robots" content="noindex, nofollow">
     <link rel="shortcut icon" href="<?php echo base_url() . 'assets/images/favicon.png' ?>">
     <!-- Styles -->
     <link href="<?php echo base_url() . 'assets/plugins/pace-master/themes/blue/pace-theme-flash.css' ?>" rel="stylesheet" />
     <link href="<?php echo base_url() . 'assets/plugins/uniform/css/uniform.default.min.css' ?>" rel="stylesheet" />
-    
-    
+
+
     <link href="<?php echo base_url() . 'assets/plugins/line-icons/simple-line-icons.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/waves/waves.min.css' ?>" rel="stylesheet" type="text/css" />
@@ -60,58 +60,58 @@
 
 <body class="page-login">
     <div class="container-contact100">
-		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" action="<?php echo site_url('backend/login/auth'); ?>" method="post">
-				<span class="contact100-form-title">
-					Log In
-				</span>
-                <div class="form-group wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+        <div class="wrap-contact100">
+            <form class="contact100-form validate-form" action="<?php echo site_url('superadmin/login/auth'); ?>" method="post">
+                <span class="contact100-form-title">
+                    Log In
+                </span>
+                <div class="form-group wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                     <span class="label-input100"><i class="far fa-user"></i> Email</span>
                     <input class="form-control input100" type="email" name="username" placeholder="Type your email">
                     <span class="focus-input100" data-symbol="&#xf206;"></span>
                 </div>
-				<div class="form-group wrap-input100 validate-input" data-validate="Password is required">
+                <div class="form-group wrap-input100 validate-input" data-validate="Password is required">
                     <span class="label-input100"><i class="fas fa-lock"></i> Password</span>
                     <input class="form-control input100" type="password" name="password" placeholder="Type your password">
                     <span class="focus-input100" data-symbol="&#xf190;"></span>
                 </div>
 
-				<div class="container-contact100-form-btn">
-					<div class="wrap-contact100-form-btn">
-						<div class="contact100-form-bgbtn"></div>
-						<button class="contact100-form-btn">
-							<span>
-								Log In
+                <div class="container-contact100-form-btn">
+                    <div class="wrap-contact100-form-btn">
+                        <div class="contact100-form-bgbtn"></div>
+                        <button class="contact100-form-btn">
+                            <span>
+                                Log In
                                 <i class="fas fa-long-arrow-alt-right m-l-7" aria-hidden="true"></i>
-							</span>
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
 
-	<div id="dropDownSelect1"></div>
+    <div id="dropDownSelect1"></div>
 
-   
-        <!-- Javascripts -->
-        <script src="<?php echo base_url() . 'assets/plugins/jquery/jquery-2.1.4.min.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/plugins/jquery-ui/jquery-ui.min.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/plugins/pace-master/pace.min.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/plugins/jquery-blockui/jquery.blockui.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/plugins/bootstrap/js/bootstrap.min.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/plugins/switchery/switchery.min.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/plugins/uniform/jquery.uniform.min.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/plugins/offcanvasmenueffects/js/classie.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/plugins/waves/waves.min.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/js/modern.min.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/js/jquery-3.5.1.min.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/js/popper.min.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/js/bootstrap.js' ?>"></script>
-        <script src="<?php echo base_url() . 'assets/js/all.js' ?>"></script>
+
+    <!-- Javascripts -->
+    <script src="<?php echo base_url() . 'assets/plugins/jquery/jquery-2.1.4.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/jquery-ui/jquery-ui.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/pace-master/pace.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/jquery-blockui/jquery.blockui.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/bootstrap/js/bootstrap.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/switchery/switchery.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/uniform/jquery.uniform.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/offcanvasmenueffects/js/classie.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/waves/waves.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/js/modern.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/js/jquery-3.5.1.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/js/popper.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/js/bootstrap.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/js/all.js' ?>"></script>
 
 </body>
 
