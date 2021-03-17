@@ -112,3 +112,9 @@ fieldset[disabled] .btn-custom.active {
 }
 
 /* ABOUT PAGE */
+
+.table-borderless td,
+.table-borderless tr,
+.table-borderless th {
+    border: 0;
+}

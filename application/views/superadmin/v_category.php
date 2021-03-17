@@ -149,9 +149,9 @@
                     </div><!-- Top Menu -->
                 </div>
             </div>
-            </div>
-         <!-- Navbar -->
-         <div class="page-sidebar sidebar" style="background: linear-gradient(to right,#e8b38c, #697194);">
+        </div>
+        <!-- Navbar -->
+        <div class="page-sidebar sidebar" style="background: linear-gradient(to right,#e8b38c, #697194);">
             <div class="page-sidebar-inner slimscroll" style="background: linear-gradient(to right,#e8b38c, #697194);">
                 <div class="sidebar-header" style="background: linear-gradient(to right,#e8b38c, #697194)">
                     <div class="sidebar-profile">
@@ -194,10 +194,10 @@
                     </div>
                 </div>
                 <ul class="menu accordion-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <li class="active"><a href="<?php echo site_url('backend/dashboard'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194)"  class="waves-effect waves-button"  class="waves-effect waves-button"><span style="color: white;" class="menu-icon icon-home"></span>
+                    <li class="active"><a href="<?php echo site_url('backend/dashboard'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194)" class="waves-effect waves-button" class="waves-effect waves-button"><span style="color: white;" class="menu-icon icon-home"></span>
                             <p>Dashboard</p>
                         </a></li>
-                    <li class="droplink" ><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>Course</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
@@ -223,14 +223,22 @@
                             <li><a href="<?php echo site_url('backend/research'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
                         </ul>
                     </li>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>PKM</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('backend/PKM/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('backend/PKM'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">PKM List</a></li>
+                        </ul>
+                    </li>
                     <li><a href="<?php echo site_url('backend/inbox'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
                             <p>Inbox</p>
                         </a></li>
                     <li><a href="<?php echo site_url('backend/comment'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
                             <p>Comments</p>
                         </a></li>
-                    
-                        </a></li>
+
+                    </a></li>
                     <?php if ($this->session->userdata('access') == '1') : ?>
                         <li><a href="<?php echo site_url('backend/users'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
                                 <p>Users</p>
@@ -252,7 +260,7 @@
                             <p>Log Out</p>
                         </a>
                     </li>
-                    
+
                 </ul>
             </div><!-- Page Sidebar Inner -->
         </div><!-- Page Sidebar -->

@@ -41,32 +41,26 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav text-uppercase mx-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="<?= site_url('Home'); ?>">Home</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
-                    <?php foreach ($Course as $c) : ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" href="<?= site_url('Course'); ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Course</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $c->tittle_course ?></a>
-                            </div>
-                        </li>
-                    <?php endforeach; ?>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Course</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="course.html">Category 1</a>
+                            <a class="dropdown-item" href="#">Category 2</a>
+                            <a class="dropdown-item" href="#">Category 3</a>
+                        </div>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
+                        <a class="nav-link" href="research.html">Research</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="<?= site_url('PKM'); ?>">PKM</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="<?= site_url('About'); ?>">About</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="<?= site_url('Contact'); ?>">Contact</a>
+                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
                 <a href="login.html" class="nav-link"><i class="fas fa-sign-in-alt"></i> Log In</a>
@@ -88,45 +82,33 @@
             <div class="row">
                 <!-- Page Content -->
                 <div class="container">
-                    <center>
-                        <h1 class="my-3">Tamyiz</h1>
-                    </center>
-                    <div class="row mt-3">
+                    <h1 class="my-1">Judul Post Tamyiz</h1>
+                    <div class="row">
+                        <!-- Post Content Column -->
+                        <div class="col-lg-12">
+                            <!-- Author -->
+                            <p class="lead">
+                                by
+                                <!-- ganti jd nama bu dewi dari user -->
+                                <a href="#" class="mt-0">Start Bootstrap</a>
+                            </p>
 
-                        <!-- Blog Entries Column -->
-                        <div class="col">
-                            <!-- Blog Post -->
-                            <?php foreach ($Tamyiz as $t) : ?>
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <!-- judul course -->
-                                        <h2 class="card-title" style="color: #697194;"><?= $t->tittle_tamyiz ?></h2>
-                                        <!-- paragraf pertama isi preview course -->
-                                        <p class="card-text"><?= $t->contents_tamyiz ?></p>
-                                        <a href="<?php echo site_url('Tamyiz-post'); ?>" type="button" class="btn btn-custom mt-2">Read More<i class="fas fa-long-arrow-alt-right m-l-7" aria-hidden="true"></i></a>
-                                    </div>
-                                    <div class="card-footer text-muted">
-                                        <!-- ini tanggal course di post -->
-                                        <?php echo date('d F Y', strtotime(str_replace('/', '-', $t->postdate_tamyiz))) ?>
-                                        <!-- ini yg bawah di ganti nama bu dewi nya, nama dari username -->
-                                        <!-- <a href="about.html">Start Bootstrap</a> -->
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
+                            <hr>
 
-                            <!-- Pagination -->
-                            <ul class="pagination justify-content-center mb-4">
-                                <li class="page-item">
-                                    <a class="page-link btn-custom" href="#">&larr; Older</a>
-                                </li>
-                                <li class="page-item disabled">
-                                    <a class="page-link btn-custom" href="#">Newer &rarr;</a>
-                                </li>
-                            </ul>
+                            <!-- Date/Time -->
+                            <p>Posted on January 1, 2019 at 12:00 PM</p>
+                            <hr>
+
+                            <!-- Post Content -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
 
                         </div>
-
-
                     </div>
                     <!-- /.row -->
 

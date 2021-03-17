@@ -62,6 +62,9 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('PKM'); ?>">PKM</a>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="<?= site_url('About'); ?>">About</a>
                     </li>
@@ -198,15 +201,6 @@
                         <li><a class="text-muted" href="#">SINTA</a></li>
                     </ul>
                 </div>
-                <!-- <div class="col-6 col-md">
-                    <h5>About</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Team</a></li>
-                        <li><a class="text-muted" href="#">Locations</a></li>
-                        <li><a class="text-muted" href="#">Privacy</a></li>
-                        <li><a class="text-muted" href="#">Terms</a></li>
-                    </ul>
-                </div> -->
             </div>
     </footer>
     <!-- Akhir Footer -->

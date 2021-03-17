@@ -16,7 +16,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
 
-
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/vendor/animate/animate.css">
     <!--===============================================================================================-->
@@ -33,6 +32,8 @@
     <!--===============================================================================================-->
 
     <!-- Navbar -->
+    <div class="flash-data-username" data-flashdata="<?= $this->session->flashdata('error_username_user') ?>"></div>
+    <div class="flash-data-password" data-flashdata="<?= $this->session->flashdata('error_password_user') ?>"></div>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-lg fa-laptop-code bg-custom"></i></a>
@@ -53,13 +54,15 @@
                             </div>
                         </li>
                     <?php endforeach; ?>
-                    <li class="nav-item active">
+                    <!-- BELUM ADA PHPNYA SAMAIN KAYAK COURSE -->
+                    <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
                     </li>
-                    <li class="nav-item ">
+                    <!-- END TAMIEZ -->
+                    <li class="nav-item">
                         <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item active">
                         <a class="nav-link" href="<?= site_url('PKM'); ?>">PKM</a>
                     </li>
                     <li class="nav-item ">
@@ -69,71 +72,74 @@
                         <a class="nav-link" href="<?= site_url('Contact'); ?>">Contact</a>
                     </li>
                 </ul>
-                <a href="login.html" class="nav-link"><i class="fas fa-sign-in-alt"></i> Log In</a>
+                <a href="<?php echo site_url('Auth/logout') ?>" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
     </nav>
     <!-- Akhir Navbar -->
-
 </head>
 
 <body>
-
-
-
     <!-- Awal Form -->
 
     <div class="container-about100 mt-3">
         <div class="wrap-about1000 mt-5">
             <div class="row">
-                <!-- Page Content -->
-                <div class="container">
-                    <center>
-                        <h1 class="my-3">Tamyiz</h1>
-                    </center>
-                    <div class="row mt-3">
-
-                        <!-- Blog Entries Column -->
-                        <div class="col">
-                            <!-- Blog Post -->
-                            <?php foreach ($Tamyiz as $t) : ?>
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <!-- judul course -->
-                                        <h2 class="card-title" style="color: #697194;"><?= $t->tittle_tamyiz ?></h2>
-                                        <!-- paragraf pertama isi preview course -->
-                                        <p class="card-text"><?= $t->contents_tamyiz ?></p>
-                                        <a href="<?php echo site_url('Tamyiz-post'); ?>" type="button" class="btn btn-custom mt-2">Read More<i class="fas fa-long-arrow-alt-right m-l-7" aria-hidden="true"></i></a>
-                                    </div>
-                                    <div class="card-footer text-muted">
-                                        <!-- ini tanggal course di post -->
-                                        <?php echo date('d F Y', strtotime(str_replace('/', '-', $t->postdate_tamyiz))) ?>
-                                        <!-- ini yg bawah di ganti nama bu dewi nya, nama dari username -->
-                                        <!-- <a href="about.html">Start Bootstrap</a> -->
-                                    </div>
+                <span class="contact100-form-title">
+                    PKM
+                </span>
+                <div class="accordion" id="accordionExample">
+                    <?php foreach ($Research as $r) : ?>
+                        <div class="card">
+                            <div class="card-header" id="headingOne" style="background:transparent;">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <?= $r->tittle_research; ?>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <table class="table table-sm table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <th>Publisher</th>
+                                                <td>Elshevier</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Journal Name</th>
+                                                <td>Procedia - Social and Behavioral Sciences</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Author</th>
+                                                <td>Falahah and Dewi Rosmala</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Volume</th>
+                                                <td>67</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Date</th>
+                                                <td>10 December 2012</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Pages</th>
+                                                <td>156-166</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h6>Abstract</h6>
+                                    <p class="text-justify"><?= $r->abstract_research; ?></p>
+                                    <a class="btn" target="_blank" href="<?= $r->link_research; ?>" style="background: #697194; border: none; color:white;">View Journal</a>
                                 </div>
-                            <?php endforeach; ?>
-
-                            <!-- Pagination -->
-                            <ul class="pagination justify-content-center mb-4">
-                                <li class="page-item">
-                                    <a class="page-link btn-custom" href="#">&larr; Older</a>
-                                </li>
-                                <li class="page-item disabled">
-                                    <a class="page-link btn-custom" href="#">Newer &rarr;</a>
-                                </li>
-                            </ul>
-
+                            </div>
                         </div>
-
-
-                    </div>
-                    <!-- /.row -->
-
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div id="dropDownSelect1"></div>
 
@@ -155,7 +161,7 @@
                 <div class="col-6 col-md">
                     <h5>Find Me</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Google Scholar</a></li>
+                        <li><a class="text-muted" href="https://scholar.google.com/citations?user=zJuf-CAAAAAJ&hl=en&oi=sra">Google Scholar</a></li>
                         <li><a class="text-muted" href="#">LinkedIn</a></li>
                         <li><a class="text-muted" href="#">YouTube</a></li>
                         <li><a class="text-muted" href="#">SINTA</a></li>

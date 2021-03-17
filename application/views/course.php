@@ -61,6 +61,9 @@
                         <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
                     <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('PKM'); ?>">PKM</a>
+                    </li>
+                    <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('About'); ?>">About</a>
                     </li>
                     <li class="nav-item ">

@@ -228,6 +228,14 @@
                             <li><a href="<?php echo site_url('backend/research'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
                         </ul>
                     </li>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>PKM</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('backend/PKM/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('backend/PKM'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">PKM List</a></li>
+                        </ul>
+                    </li>
                     <li><a href="<?php echo site_url('backend/inbox'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
                             <p>Inbox</p>
                         </a></li>
@@ -281,8 +289,32 @@
                                 <div class="panel-body">
 
                                     <div class="form-group">
+                                        <label>Author</label>
+                                        <input type="text" name="author" class="form-control title" placeholder="Author" required>
+                                    </div>
+                                    <div class="form-group">
                                         <label>Title</label>
                                         <input type="text" name="title" class="form-control title" placeholder="Title" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Jurnal Name</label>
+                                        <input type="text" name="jurnalname" class="form-control title" placeholder="Jurnal Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Publisher</label>
+                                        <input type="text" name="publisher" class="form-control title" placeholder="Publisher" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Volume</label>
+                                        <input type="text" name="volume" class="form-control title" placeholder="Volume" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tanggal</label>
+                                        <input type="date" name="volume" class="form-control title" placeholder="Volume" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Page</label>
+                                        <input type="text" name="page" class="form-control title" placeholder="Page" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" name="slug" class="form-control slug" placeholder="Permalink" style="background-color: #F8F8F8;outline-color: none;border:0;color:blue;" required>

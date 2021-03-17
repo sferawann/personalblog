@@ -3,7 +3,7 @@
 
 <head>
     <!-- Title -->
-    <title>About Settings</title>
+    <title>PKM List</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
@@ -26,7 +26,6 @@
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables_themeroller.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.css' ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.css' ?>" rel="stylesheet" type="text/css" />
     <!-- Theme Styles -->
     <link href="<?php echo base_url() . 'assets/css/modern.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/css/themes/green.css' ?>" class="theme-color" rel="stylesheet" type="text/css" />
@@ -38,7 +37,7 @@
 
 </head>
 
-<body class="page-header-fixed  compact-menu  pace-done page-sidebar-fixed">
+<body class="page-header-fixed compact-menu pace-done page-sidebar-fixed">
     <div class="overlay"></div>
     <main class="page-content content-wrap">
         <div class="navbar">
@@ -49,11 +48,8 @@
                     </a>
                 </div>
                 <div class="logo-box" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <a href="<?php echo site_url('backend/dashboard'); ?>" class="logo-text" style="color: white;"><span>Blog</span></a>
+                    <a href="<?php echo site_url('backend/dashboard'); ?>" style="color: white;" class="logo-text"><span>Blog</span></a>
                 </div><!-- Logo Box -->
-                <div class="search-button">
-                    <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
-                </div>
                 <div class="topmenu-outer">
                     <div class="top-menu">
                         <ul class="nav navbar-nav navbar-left">
@@ -149,6 +145,7 @@
                                     <li role="presentation"><a href="<?php echo site_url('logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                                 </ul>
                             </li>
+
                         </ul><!-- Nav -->
                     </div><!-- Top Menu -->
                 </div>
@@ -215,16 +212,16 @@
                             <p>Tamyiz</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/post/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/post'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tamyiz List</a></li>
+                            <li><a href="<?php echo site_url('backend/tamyiz/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('backend/tamyiz'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tamyiz List</a></li>
                         </ul>
                     </li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>Research</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/post/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/post'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
+                            <li><a href="<?php echo site_url('backend/research/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('backend/research'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
                         </ul>
                     </li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
@@ -262,150 +259,65 @@
                     <?php endif; ?>
                     <li><a href="<?php echo site_url('logout'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
                             <p>Log Out</p>
-                        </a></li>
+                        </a>
+                    </li>
+
                 </ul>
             </div><!-- Page Sidebar Inner -->
         </div><!-- Page Sidebar -->
         <div class="page-inner">
             <div class="page-title">
-                <h3>About Information</h3>
+                <h3>PKM List</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo site_url('backend/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="#">Site</a></li>
-                        <li class="active">Settings</li>
+                        <li><a href="#">PKM</a></li>
+                        <li class="active">List</li>
                     </ol>
                 </div>
             </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <form class="form-horizontal" action="<?php echo base_url() . 'backend/about_setting/update' ?>" method="post" enctype="multipart/form-data">
-                        <div class="col-md-12">
-                            <div class="panel panel-white">
+                    <div class="col-md-12">
 
-                                <div class="panel-body">
+                        <div class="panel panel-white">
+                            <div class="panel-body">
+                                <a href="<?php echo site_url('backend/PKM/add_new'); ?>" style="background-color: #697194" class="btn btn-success m-b-sm">Add New PKM</a>
+                                <div class="table-responsive">
+                                    <table id="data-table" class="display table" style="width: 100%; cellspacing: 0;">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 100px;">No</th>
+                                                <th>Title</th>
+                                                <th>Publish Date</th>
+                                                <th>Views</th>
+                                                <th style="text-align: center;width: 120px;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 0;
+                                            foreach ($data->result() as $row) :
+                                                $no++;
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $no; ?></td>
+                                                    <td><?php echo $row->post_title; ?></td>
+                                                    <td><?php echo $row->post_date; ?></td>
+                                                    <td><?php echo $row->post_views; ?></td>
+                                                    <td style="text-align: center;">
+                                                        <a href="<?php echo site_url('backend/post/get_edit/' . $row->post_id); ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
+                                                        <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?php echo $row->post_id; ?>"><span class="fa fa-trash"></span></a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
 
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Image</label>
-                                        <div class="col-sm-10">
-                                            <input type="file" name="img_about" class="form-control" id="input1">
-                                            <!-- <p class="help-block">Image Heading harus beresolusi 456 x 470 Pixels.</p> -->
-                                            <img src="<?php echo base_url() . 'theme/images/' . $about_img; ?>" width="300" class="thumbnail">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="name" class="form-control" value="" id="input1" placeholder="Name">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Profesi</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="profesi" class="form-control" value="" id="input1" placeholder="Profesi">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">About Me</label>
-                                        <div class="col-sm-10">
-                                            <textarea name="description" class="form-control" id="summernote" placeholder="Description"><?php echo $about_desc; ?></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Full Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="fullname" class="form-control" value="" id="input1" placeholder="Full Name">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Email</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="email" class="form-control" value="" id="input1" placeholder="Email">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Location</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="location" class="form-control" value="" id="input1" placeholder="Location">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Facebook URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="facebook" class="form-control" value="" id="input1" placeholder="Facebook URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Twitter URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="twitter" class="form-control" value="" id="input1" placeholder="Twitter URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Linkedin URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="linkedin" class="form-control" value="" id="input1" placeholder="Linkedin URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Instagram URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="instagram" class="form-control" value="" id="input1" placeholder="Instagran URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Google Scholar URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="googlescholar" class="form-control" value="" id="input1" placeholder="Google Scholar URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Sinta URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="sinta" class="form-control" value="" id="input1" placeholder="Sinta URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Youtube URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="youtube" class="form-control" value="" id="input1" placeholder="Youtube URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Github URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="github" class="form-control" value="" id="input1" placeholder="Github URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="hidden" name="about_id" value="<?php echo $about_id ?>" required>
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" style="background-color: #697194" class="btn btn-success btn-lg">UPDATE</button>
-                                        </div>
-                                    </div>
-
-
+                                    </table>
                                 </div>
                             </div>
                         </div>
-
-
-                    </form>
+                    </div>
                 </div><!-- Row -->
             </div><!-- Main Wrapper -->
             <div class="page-footer">
@@ -413,6 +325,30 @@
             </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
+
+    <!--DELETE RECORD MODAL-->
+    <form action="<?php echo site_url('backend/post/delete'); ?>" method="post">
+        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Delete Post</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info">
+                            Anda yakin mau menghapus post ini?
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" required>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
     <!-- Javascripts -->
     <script src="<?php echo base_url() . 'assets/plugins/jquery/jquery-2.1.4.min.js' ?>"></script>
@@ -432,30 +368,50 @@
     <script src="<?php echo base_url() . 'assets/plugins/datatables/js/jquery.datatables.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/js/modern.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.js' ?>"></script>
-    <script src="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.min.js' ?>"></script>
-
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
-            $('#summernote').summernote({
-                height: 300,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'italic', 'underline', 'clear']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['view', ["fullscreen", "codeview", "help"]],
-                ]
+            $('#data-table').dataTable();
 
+            //Delete Record
+            $('.btn-delete').on('click', function() {
+                var id = $(this).data('id');
+                $('[name="id"]').val(id);
+                $('#DeleteModal').modal('show');
             });
+
         });
     </script>
+
     <!--Toast Message-->
     <?php if ($this->session->flashdata('msg') == 'success') : ?>
         <script type="text/javascript">
             $.toast({
                 heading: 'Success',
-                text: "About Information Saved!",
+                text: "Post Saved!",
+                showHideTransition: 'slide',
+                icon: 'success',
+                hideAfter: false,
+                position: 'bottom-right',
+                bgColor: '#7EC857'
+            });
+        </script>
+    <?php elseif ($this->session->flashdata('msg') == 'info') : ?>
+        <script type="text/javascript">
+            $.toast({
+                heading: 'Info',
+                text: "Post Updated!",
+                showHideTransition: 'slide',
+                icon: 'info',
+                hideAfter: false,
+                position: 'bottom-right',
+                bgColor: '#00C9E6'
+            });
+        </script>
+    <?php elseif ($this->session->flashdata('msg') == 'success-delete') : ?>
+        <script type="text/javascript">
+            $.toast({
+                heading: 'Success',
+                text: "Post Deleted!.",
                 showHideTransition: 'slide',
                 icon: 'success',
                 hideAfter: false,

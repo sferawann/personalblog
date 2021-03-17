@@ -63,6 +63,9 @@
                         <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
                     <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('PKM'); ?>">PKM</a>
+                    </li>
+                    <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('About'); ?>">About</a>
                     </li>
                     <li class="nav-item ">
@@ -95,10 +98,42 @@
                                     </button>
                                 </h2>
                             </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
+                                    <table class="table table-sm table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <th>Publisher</th>
+                                                <td><?= $r->publisher_research; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Journal Name</th>
+                                                <td><?= $r->jurnalname_research; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Author</th>
+                                                <td><?= $r->author_research; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Volume</th>
+                                                <td><?= $r->volume_research; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Date</th>
+                                                <td><?php echo date('d F Y', strtotime(str_replace('/', '-', $r->date_research))) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Pages</th>
+                                                <td><?= $r->pages_research; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th></th>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                     <h6>Abstract</h6>
-                                    <p><?= $r->abstract_research; ?></p>
+                                    <p class="text-justify"><?= $r->abstract_research; ?></p>
                                     <a class="btn" target="_blank" href="<?= $r->link_research; ?>" style="background: #697194; border: none; color:white;">View Journal</a>
                                 </div>
                             </div>
@@ -110,7 +145,7 @@
     </div>
 
 
-    <div id="dropDownSelect1"></div>
+    <!-- <div id="dropDownSelect1"></div> -->
 
     <!-- Akhir Form -->
 

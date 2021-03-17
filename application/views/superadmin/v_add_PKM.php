@@ -3,7 +3,7 @@
 
 <head>
     <!-- Title -->
-    <title>About Settings</title>
+    <title>Add New PKM</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
@@ -25,8 +25,9 @@
     <link href="<?php echo base_url() . 'assets/plugins/slidepushmenus/css/component.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables_themeroller.css' ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.css' ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url() . 'assets/css/dropify.min.css' ?>" rel="stylesheet" type="text/css">
+
     <!-- Theme Styles -->
     <link href="<?php echo base_url() . 'assets/css/modern.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/css/themes/green.css' ?>" class="theme-color" rel="stylesheet" type="text/css" />
@@ -49,7 +50,7 @@
                     </a>
                 </div>
                 <div class="logo-box" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <a href="<?php echo site_url('backend/dashboard'); ?>" class="logo-text" style="color: white;"><span>Blog</span></a>
+                    <a href="<?php echo site_url('backend/dashboard'); ?>" style="color: white;" class="logo-text"><span>Blog</span></a>
                 </div><!-- Logo Box -->
                 <div class="search-button">
                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
@@ -215,16 +216,16 @@
                             <p>Tamyiz</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/post/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/post'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tamyiz List</a></li>
+                            <li><a href="<?php echo site_url('backend/tamyiz/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('backend/tamyiz'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tamyiz List</a></li>
                         </ul>
                     </li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>Research</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/post/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/post'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
+                            <li><a href="<?php echo site_url('backend/research/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('backend/research'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
                         </ul>
                     </li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
@@ -262,155 +263,87 @@
                     <?php endif; ?>
                     <li><a href="<?php echo site_url('logout'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
                             <p>Log Out</p>
-                        </a></li>
+                        </a>
+                    </li>
+
                 </ul>
             </div><!-- Page Sidebar Inner -->
         </div><!-- Page Sidebar -->
         <div class="page-inner">
             <div class="page-title">
-                <h3>About Information</h3>
+                <h3>Add New PKM</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo site_url('backend/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="#">Site</a></li>
-                        <li class="active">Settings</li>
+                        <li><a href="#">PKM</a></li>
+                        <li class="active">Add New</li>
                     </ol>
                 </div>
             </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <form class="form-horizontal" action="<?php echo base_url() . 'backend/about_setting/update' ?>" method="post" enctype="multipart/form-data">
-                        <div class="col-md-12">
+                    <form action="<?php echo base_url() . 'backend/post/publish' ?>" method="post" enctype="multipart/form-data">
+                        <div class="col-md-8">
                             <div class="panel panel-white">
 
                                 <div class="panel-body">
 
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Image</label>
-                                        <div class="col-sm-10">
-                                            <input type="file" name="img_about" class="form-control" id="input1">
-                                            <!-- <p class="help-block">Image Heading harus beresolusi 456 x 470 Pixels.</p> -->
-                                            <img src="<?php echo base_url() . 'theme/images/' . $about_img; ?>" width="300" class="thumbnail">
-                                        </div>
-                                    </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="name" class="form-control" value="" id="input1" placeholder="Name">
-                                        </div>
+                                        <label>Author</label>
+                                        <input type="text" name="author" class="form-control title" placeholder="Author" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Profesi</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="profesi" class="form-control" value="" id="input1" placeholder="Profesi">
-                                        </div>
+                                        <label>Title</label>
+                                        <input type="text" name="title" class="form-control title" placeholder="Title" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">About Me</label>
-                                        <div class="col-sm-10">
-                                            <textarea name="description" class="form-control" id="summernote" placeholder="Description"><?php echo $about_desc; ?></textarea>
-                                        </div>
+                                        <label>Jurnal Name</label>
+                                        <input type="text" name="jurnalname" class="form-control title" placeholder="Jurnal Name" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Full Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="fullname" class="form-control" value="" id="input1" placeholder="Full Name">
-                                        </div>
+                                        <label>Publisher</label>
+                                        <input type="text" name="publisher" class="form-control title" placeholder="Publisher" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Email</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="email" class="form-control" value="" id="input1" placeholder="Email">
-                                        </div>
+                                        <label>Volume</label>
+                                        <input type="text" name="volume" class="form-control title" placeholder="Volume" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Location</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="location" class="form-control" value="" id="input1" placeholder="Location">
-                                        </div>
+                                        <label>Tanggal</label>
+                                        <input type="date" name="volume" class="form-control title" placeholder="Volume" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Facebook URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="facebook" class="form-control" value="" id="input1" placeholder="Facebook URL">
-                                        </div>
+                                        <label>Page</label>
+                                        <input type="text" name="page" class="form-control title" placeholder="Page" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Twitter URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="twitter" class="form-control" value="" id="input1" placeholder="Twitter URL">
-                                        </div>
+                                        <input type="text" name="slug" class="form-control slug" placeholder="Permalink" style="background-color: #F8F8F8;outline-color: none;border:0;color:blue;" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Linkedin URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="linkedin" class="form-control" value="" id="input1" placeholder="Linkedin URL">
-                                        </div>
+                                        <label class="control-label">Contents</label>
+                                        <textarea name="contents" id="summernote"></textarea>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Instagram URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="instagram" class="form-control" value="" id="input1" placeholder="Instagran URL">
-                                        </div>
+                                        <label>Meta Description</label>
+                                        <textarea name="description" cols="6" rows="6" class="form-control" placeholder="Meta Description"></textarea>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Google Scholar URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="googlescholar" class="form-control" value="" id="input1" placeholder="Google Scholar URL">
-                                        </div>
+                                    <div class="btn-group btn-group-justified" role="group" style="background-color: #697194">
+                                        <button type="submit" class="btn btn-primary btn-lg" style="width:100%"><span class="icon-cursor"></span> PUBLISH</button>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Sinta URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="sinta" class="form-control" value="" id="input1" placeholder="Sinta URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Youtube URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="youtube" class="form-control" value="" id="input1" placeholder="Youtube URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Github URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="github" class="form-control" value="" id="input1" placeholder="Github URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="hidden" name="about_id" value="<?php echo $about_id ?>" required>
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" style="background-color: #697194" class="btn btn-success btn-lg">UPDATE</button>
-                                        </div>
-                                    </div>
-
-
                                 </div>
                             </div>
                         </div>
+                </div>
 
-
-                    </form>
-                </div><!-- Row -->
-            </div><!-- Main Wrapper -->
-            <div class="page-footer">
-                <p class="no-s"><?php echo date('Y'); ?> &copy; IF ITENAS</p>
             </div>
+
+            </form>
+        </div><!-- Row -->
+        </div><!-- Main Wrapper -->
+        <div class="page-footer">
+            <p class="no-s"><?php echo date('Y'); ?> &copy; IF ITENAS</p>
+        </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
 
@@ -431,41 +364,64 @@
     <script src="<?php echo base_url() . 'assets/plugins/moment/moment.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/datatables/js/jquery.datatables.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/js/modern.min.js' ?>"></script>
-    <script src="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/js/dropify.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.min.js' ?>"></script>
-
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
+
             $('#summernote').summernote({
-                height: 300,
+                height: 590,
                 toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'italic', 'underline', 'clear']],
                     ['fontsize', ['fontsize']],
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'hr']],
                     ['view', ["fullscreen", "codeview", "help"]],
-                ]
+                ],
+
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
 
             });
+
+            function sendFile(file, editor, welEditable) {
+                data = new FormData();
+                data.append("file", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "<?php echo site_url() ?>backend/post/upload_image",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(url) {
+                        editor.insertImage(welEditable, url);
+                    }
+                });
+            }
+
+
+
+            $('.dropify').dropify({
+                messages: {
+                    default: 'Drag atau drop untuk memilih gambar',
+                    replace: 'Ganti',
+                    remove: 'Hapus',
+                    error: 'error'
+                }
+            });
+
+            $('.title').keyup(function() {
+                var title = $(this).val().toLowerCase().replace(/[&\/\\#^, +()$~%.'":*?<>{}]/g, '-');
+                $('.slug').val(title);
+            });
+
+
         });
     </script>
-    <!--Toast Message-->
-    <?php if ($this->session->flashdata('msg') == 'success') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Success',
-                text: "About Information Saved!",
-                showHideTransition: 'slide',
-                icon: 'success',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#7EC857'
-            });
-        </script>
-    <?php else : ?>
-
-    <?php endif; ?>
 
 </body>
 

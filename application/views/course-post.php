@@ -61,6 +61,9 @@
                         <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
                     <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('PKM'); ?>">PKM</a>
+                    </li>
+                    <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('About'); ?>">About</a>
                     </li>
                     <li class="nav-item ">
@@ -143,10 +146,10 @@
                                 </div>
                             </div>
                             <!-- Single Comment -->
-                            <div class="col col-lg-8 justify-content-center align-items-center container" style="border:1px solid ;">
+                            <div class="col col-lg-8 justify-content-center align-items-center container">
                                 <ul class="list-unstyled border p-3">
                                     <li class="media mb-3 ">
-                                        <img class="d-flex mr-3 rounded-circle" src="img/homepage/pp-mini.png" alt="">
+                                        <img class="d-flex mr-3 rounded-circle" src="<?= base_url(); ?>assets/img/homepage/pp-mini.png" alt="">
                                         <div class="media-body">
                                             <!-- nama komentar -->
                                             <h5 class="mt-0">Commenter Name</h5>
@@ -156,7 +159,7 @@
                                     </li>
                                     <hr>
                                     <li class="media mb-3">
-                                        <img class="d-flex mr-3 rounded-circle" src="img/homepage/pp-mini.png" alt="">
+                                        <img class="d-flex mr-3 rounded-circle" src="<?= base_url(); ?>assets/img/homepage/pp-mini.png" alt="">
                                         <div class="media-body">
                                             <!-- nama komentar -->
                                             <h5 class="mt-0">Commenter Name</h5>

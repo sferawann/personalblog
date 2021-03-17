@@ -62,6 +62,9 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('PKM'); ?>">PKM</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= site_url('About'); ?>">About</a>
                     </li>
@@ -87,28 +90,17 @@
                 <span class="contact100-form-title">
                     Contact Us
                 </span>
-                <div class="col">
+                <div class="col-md-5">
                     <form class="contact100-form validate-form">
-                        <div class="wrap-description100 validate-input" data-validate="Name is required">
-                            <span class="label-input100"><i class="fas fa-map-marker-alt"></i> Address</span>
-                            <ul class="description100" type="text" name="contact_address">Jl. PH.H. Mustofa No.23, Neglasari, Kec. Cibeunying Kaler, Kota Bandung, Jawa Barat 40124</ul>
-                            <span class="focus-input100"></span>
-                        </div>
-
-                        <div class="wrap-description100 validate-input" data-validate="Name is required">
-                            <span class="label-input100"><i class="fas fa-phone-alt"></i> Phone</span>
-                            <ul class="description100" type="text" name="contact_phone">+62-888-8888-8888</ul>
-                            <span class="focus-input100"></span>
-                        </div>
-
-                        <div class="wrap-description100 validate-input" data-validate="Name is required">
-                            <span class="label-input100"><i class="fas fa-envelope"></i> Email</span>
-                            <ul class="description100" type="text" name="contact_email">email@gmail.com</ul>
-                            <span class="focus-input100"></span>
-                        </div>
+                        <img class="img-fluid" src="<?= base_url(); ?>assets/img/homepage/contact.png">
                     </form>
                 </div>
-                <div class="col">
+                <div class="col-md-1">
+                    <form class="contact100-form validate-form">
+
+                    </form>
+                </div>
+                <div class="col-md-6">
                     <form class="contact100-form validate-form">
                         <div class="wrap-input100 validate-input" data-validate="Name is required">
                             <span class="label-input100">Your Name</span>

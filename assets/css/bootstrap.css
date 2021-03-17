@@ -10721,4 +10721,7 @@ textarea.form-control-lg {
   }
 }
 
+.text-justify {
+  text-align: justify;
+}
 /*# sourceMappingURL=bootstrap.css.map */
