@@ -41,13 +41,13 @@ class Visitor_model extends CI_Model
 
     function top_five_articles()
     {
-        $query = $this->db->query("SELECT * FROM post ORDER BY views DESC LIMIT 5");
+        $query = $this->db->query("SELECT * FROM post ORDER BY views_post DESC LIMIT 5");
         return $query;
     }
 
     function count_visitor_this_month()
     {
-        $query = $this->db->query("SELECT COUNT(*) tot_visitor FROM visitors WHERE MONTH(visit_date)=MONTH(CURDATE())");
+        $query = $this->db->query("SELECT COUNT(*) tot_visitor FROM visitors WHERE MONTH(date_visitors)=MONTH(CURDATE())");
         return $query;
     }
 
@@ -61,7 +61,7 @@ class Visitor_model extends CI_Model
     function count_firefox_visitors()
     {
         $query = $this->db->query("SELECT COUNT(*) firefox_visitor FROM visitors WHERE platform_visitors='Firefox' OR 
-        platform_visitors='Mozilla') AND MONTH(date_visitors)=MONTH(CURDATE())");
+        platform_visitors='Mozilla' AND MONTH(date_visitors)=MONTH(CURDATE())");
         return $query;
     }
 
@@ -95,7 +95,7 @@ class Visitor_model extends CI_Model
 
     function count_other_visitors()
     {
-        $query = $this->db->query("SELECT COUNT(*) other_visitor FROM tbl_visitors WHERE 
+        $query = $this->db->query("SELECT COUNT(*) other_visitor FROM visitors WHERE 
 			(NOT platform_visitors='YandexBot' AND NOT platform_visitors='Googlebot' AND NOT platform_visitors='Yahoo' 
 			AND NOT platform_visitors='Chrome' AND NOT platform_visitors='Firefox' AND NOT platform_visitors='Mozilla'
 			AND NOT platform_visitors='Internet Explorer' AND NOT platform_visitors='Safari' AND NOT platform_visitors='Opera') 
