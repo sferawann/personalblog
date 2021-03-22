@@ -41,8 +41,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav text-uppercase mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('Home'); ?>">Home</a>
                     </li>
                     <li class="nav-item active dropdown">
                         <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,16 +54,22 @@
                         </div>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="research.html">Research</a>
+                        <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
                     </li>
+                    <!-- END TAMIEZ -->
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="<?= site_url('PKM'); ?>">PKM</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('About'); ?>">About</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('Contact'); ?>">Contact</a>
                     </li>
                 </ul>
-                <a href="login.html" class="nav-link"><i class="fas fa-sign-in-alt"></i> Log In</a>
             </div>
         </div>
     </nav>
@@ -80,41 +86,89 @@
     <div class="container-about100 mt-3">
         <div class="wrap-about1000 mt-5">
             <div class="row">
-                <!-- Page Content -->
-                <div class="container">
-                    <h1 class="my-1">Judul Post Tamyiz</h1>
-                    <div class="row">
-                        <!-- Post Content Column -->
-                        <div class="col-lg-12">
-                            <!-- Author -->
-                            <p class="lead">
-                                by
-                                <!-- ganti jd nama bu dewi dari user -->
-                                <a href="#" class="mt-0">Start Bootstrap</a>
-                            </p>
+                <?php foreach ($Post as $p) : ?>
+                    <!-- Page Content -->
+                    <div class="container">
+                        <h1 class="my-1"><?= $p->tittle_post ?></h1>
+                        <div class="row">
+                            <!-- Post Content Column -->
+                            <div class="col-lg-12">
+                                <!-- Author -->
+                                <hr>
+                                <!-- Date/Time -->
+                                <p><?php echo date('d F Y', strtotime(str_replace('/', '-', $p->date_post))) ?></p>
+                                <hr>
+                                <!-- Preview Image -->
+                                <img class="img-fluid rounded" src="<?= $p->image_post; ?>" alt="">
 
-                            <hr>
+                                <hr>
 
-                            <!-- Date/Time -->
-                            <p>Posted on January 1, 2019 at 12:00 PM</p>
-                            <hr>
+                                <!-- Post Content -->
+                                <!-- di tampilin pas buka course.html, dari preview course -->
+                                <p class="lead"><?= $p->description_post ?></p>
+                                <!-- isi course biasa -->
+                                <hr>
+                                <div class="col col-lg-8 justify-content-center align-items-center container">
+                                    <!-- Comments Form -->
+                                    <div class="card my-4">
+                                        <h5 class="card-header">Leave a Comment:</h5>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+                                                        <span class="label-input100">Your Name</span>
+                                                        <input class="input100" type="text" name="name" placeholder="Enter your name">
+                                                        <span class="focus-input100"></span>
+                                                    </div>
+                                                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                                                        <span class="label-input100">Email</span>
+                                                        <input class="input100" type="text" name="email" placeholder="Enter your email addess">
+                                                        <span class="focus-input100"></span>
+                                                    </div>
+                                                    <div class="wrap-input100 validate-input" data-validate="Comment is required">
+                                                        <span class="label-input100">Comment</span>
+                                                        <textarea class="input100" name=comment" placeholder="Your comment here..."></textarea>
+                                                        <span class="focus-input100"></span>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-custom">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Comment -->
+                                <div class="col col-lg-8 justify-content-center align-items-center container">
+                                    <ul class="list-unstyled border p-3">
+                                        <li class="media mb-3 ">
+                                            <img class="d-flex mr-3 rounded-circle" src="<?= base_url(); ?>assets/img/homepage/pp-mini.png" alt="">
+                                            <div class="media-body">
+                                                <!-- nama komentar -->
+                                                <h5 class="mt-0">Commenter Name</h5>
+                                                <!-- isi komentar -->
+                                                la. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            </div>
+                                        </li>
+                                        <hr>
+                                        <li class="media mb-3">
+                                            <img class="d-flex mr-3 rounded-circle" src="<?= base_url(); ?>assets/img/homepage/pp-mini.png" alt="">
+                                            <div class="media-body">
+                                                <!-- nama komentar -->
+                                                <h5 class="mt-0">Commenter Name</h5>
+                                                <!-- isi komentar -->
+                                                la. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                            <!-- Post Content -->
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+                            </div>
 
                         </div>
                     </div>
-                    <!-- /.row -->
-
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
+    </div>
     </div>
 
     <div id="dropDownSelect1"></div>

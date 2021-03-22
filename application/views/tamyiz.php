@@ -44,15 +44,15 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Home'); ?>">Home</a>
                     </li>
-                    <?php foreach ($Course as $c) : ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" href="<?= site_url('Course'); ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Course</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $c->tittle_course ?></a>
-                            </div>
-                        </li>
-                    <?php endforeach; ?>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Course</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <?php foreach ($Post as $p) : ?>
+                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $p->tittle_post; ?></a>
+                            <?php endforeach; ?>
+                        </div>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
                     </li>
@@ -155,10 +155,9 @@
                 <div class="col-6 col-md">
                     <h5>Find Me</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Google Scholar</a></li>
-                        <li><a class="text-muted" href="#">LinkedIn</a></li>
-                        <li><a class="text-muted" href="#">YouTube</a></li>
-                        <li><a class="text-muted" href="#">SINTA</a></li>
+                        <li><a class="text-muted" href="https://scholar.google.com/citations?user=zJuf-CAAAAAJ&hl=en&oi=sra">Google Scholar</a></li>
+                        <li><a class="text-muted" href="https://id.linkedin.com/in/dewi-rosmala-43171528">LinkedIn</a></li>
+                        <li><a class="text-muted" href="https://sinta.ristekbrin.go.id/authors/detail?id=6650264&view=overview">Sinta</a></li>
                     </ul>
                 </div>
                 <!-- <div class="col-6 col-md">

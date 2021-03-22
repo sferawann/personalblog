@@ -45,24 +45,24 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Home'); ?>">Home</a>
                     </li>
-                    <?php foreach ($Course as $c) : ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" href="<?= site_url('Course'); ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Course</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $c->tittle_course ?></a>
-                            </div>
-                        </li>
-                    <?php endforeach; ?>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Course</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <?php foreach ($Post as $p) : ?>
+                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $p->tittle_post; ?></a>
+                            <?php endforeach; ?>
+                        </div>
+                    </li>
                     <!-- BELUM ADA PHPNYA SAMAIN KAYAK COURSE -->
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
                     </li>
                     <!-- END TAMIEZ -->
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('PKM'); ?>">PKM</a>
                     </li>
                     <li class="nav-item ">
@@ -72,7 +72,6 @@
                         <a class="nav-link" href="<?= site_url('Contact'); ?>">Contact</a>
                     </li>
                 </ul>
-                <a href="<?php echo site_url('Auth/logout') ?>" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
     </nav>
@@ -93,38 +92,42 @@
                         <div class="card">
                             <div class="card-header" id="headingOne" style="background:transparent;">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne<?= $r->id_research ?>" aria-expanded="true" aria-controls="collapseOne">
                                         <?= $r->tittle_research; ?>
                                     </button>
                                 </h2>
                             </div>
-                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div id="collapseOne<?= $r->id_research ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
                                     <table class="table table-sm table-borderless">
                                         <tbody>
                                             <tr>
                                                 <th>Publisher</th>
-                                                <td>Elshevier</td>
+                                                <td><?= $r->publisher_research; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Journal Name</th>
-                                                <td>Procedia - Social and Behavioral Sciences</td>
+                                                <td><?= $r->jurnalname_research; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Author</th>
-                                                <td>Falahah and Dewi Rosmala</td>
+                                                <td><?= $r->author_research; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Volume</th>
-                                                <td>67</td>
+                                                <td><?= $r->volume_research; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Date</th>
-                                                <td>10 December 2012</td>
+                                                <td><?php echo date('d F Y', strtotime(str_replace('/', '-', $r->date_research))) ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Pages</th>
-                                                <td>156-166</td>
+                                                <td><?= $r->pages_research; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th></th>
+                                                <td></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -141,7 +144,7 @@
     </div>
 
 
-    <div id="dropDownSelect1"></div>
+    <!-- <div id="dropDownSelect1"></div> -->
 
     <!-- Akhir Form -->
 
@@ -162,9 +165,8 @@
                     <h5>Find Me</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="text-muted" href="https://scholar.google.com/citations?user=zJuf-CAAAAAJ&hl=en&oi=sra">Google Scholar</a></li>
-                        <li><a class="text-muted" href="#">LinkedIn</a></li>
-                        <li><a class="text-muted" href="#">YouTube</a></li>
-                        <li><a class="text-muted" href="#">SINTA</a></li>
+                        <li><a class="text-muted" href="https://id.linkedin.com/in/dewi-rosmala-43171528">LinkedIn</a></li>
+                        <li><a class="text-muted" href="https://sinta.ristekbrin.go.id/authors/detail?id=6650264&view=overview">Sinta</a></li>
                     </ul>
                 </div>
                 <!-- <div class="col-6 col-md">

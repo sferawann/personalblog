@@ -29,7 +29,7 @@ class About_setting extends CI_Controller
 		$id_about = htmlspecialchars($this->input->post('id_about', TRUE), ENT_QUOTES);
 		$description = $this->input->post('description', TRUE);
 
-		$config['upload_path'] = './theme/images/';
+		$config['upload_path'] = './assets/img/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
 		$config['encrypt_name'] = FALSE;
 

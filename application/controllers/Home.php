@@ -11,7 +11,7 @@ class Home extends CI_Controller
     public function index()
     {
         $data['Home'] = $this->Home_model->tampil_data()->result();
-        $data['Course'] = $this->Home_model->ambildata_course()->result();
+        $data['Post'] = $this->Home_model->ambildata_course()->result();
         $this->load->view('home', $data);
     }
 }

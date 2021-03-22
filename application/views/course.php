@@ -44,15 +44,15 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Home'); ?>">Home</a>
                     </li>
-                    <?php foreach ($Course as $c) : ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" href="<?= site_url('Course'); ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Course</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $c->tittle_course ?></a>
-                            </div>
-                        </li>
-                    <?php endforeach; ?>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Course</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <?php foreach ($Post as $p) : ?>
+                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $p->tittle_post; ?></a>
+                            <?php endforeach; ?>
+                        </div>
+                    </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
                     </li>
@@ -70,7 +70,6 @@
                         <a class="nav-link" href="<?= site_url('Contact'); ?>">Contact</a>
                     </li>
                 </ul>
-                <a href="<?php echo site_url('Auth/logout') ?>" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
     </nav>
@@ -79,11 +78,7 @@
 </head>
 
 <body>
-
-
-
     <!-- Awal Form -->
-
     <div class="container-about100 mt-3">
         <div class="wrap-about1000 mt-5">
             <div class="row">
@@ -94,9 +89,6 @@
 
                         <!-- Blog Entries Column -->
                         <div class="col-md-8">
-
-
-
                             <!-- Blog Post -->
                             <div class="card mb-4">
                                 <!-- image dari course -->
@@ -158,21 +150,6 @@
 
                         <!-- Sidebar Widgets Column -->
                         <div class="col">
-
-                            <!-- Search Widget -->
-                            <!-- <div class="card my-4">
-                        <h5 class="card-header">Search</h5>
-                        <div class="card-body">
-                            <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-append">
-                                <button class="btn btn-secondary" type="button">Go!</button>
-                            </span>
-                            </div>
-                        </div>
-                        </div> -->
-
-                            <!-- Categories Widget -->
                             <div class="card">
                                 <h5 class="card-header">Categories</h5>
                                 <div class="card-body">
@@ -236,12 +213,9 @@
                 </div>
                 <div class="col-6 col-md">
                     <h5>Find Me</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="https://scholar.google.com/citations?user=zJuf-CAAAAAJ&hl=en&oi=sra">Google Scholar</a></li>
-                        <li><a class="text-muted" href="#">LinkedIn</a></li>
-                        <li><a class="text-muted" href="#">YouTube</a></li>
-                        <li><a class="text-muted" href="#">SINTA</a></li>
-                    </ul>
+                    <li><a class="text-muted" href="https://scholar.google.com/citations?user=zJuf-CAAAAAJ&hl=en&oi=sra">Google Scholar</a></li>
+                    <li><a class="text-muted" href="https://id.linkedin.com/in/dewi-rosmala-43171528">LinkedIn</a></li>
+                    <li><a class="text-muted" href="https://sinta.ristekbrin.go.id/authors/detail?id=6650264&view=overview">Sinta</a></li>
                 </div>
                 <!-- <div class="col-6 col-md">
                     <h5>About</h5>

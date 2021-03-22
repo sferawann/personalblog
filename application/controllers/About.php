@@ -12,7 +12,7 @@ class About extends CI_Controller
     function index()
     {
         $data['About'] = $this->About_model->tampil_data()->result();
-        $data['Course'] = $this->About_model->ambildata_course()->result();
+        $data['Post'] = $this->About_model->ambildata_course()->result();
         $this->load->view('about', $data);
     }
 }

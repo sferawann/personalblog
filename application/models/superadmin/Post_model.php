@@ -6,7 +6,7 @@ class Post_model extends CI_Model
 	function get_all_post()
 	{
 		$result = $this->db->query("SELECT id_post,tittle_post,image_post,DATE_FORMAT(date_post,'%d %M %Y') AS 
-		date_post,name_category,tags_post,status_post,views_post FROM post JOIN category ON postid_category=id_category");
+		date_post,name_category,tags_post,status_post,views_post FROM post JOIN category ON categoryid_post=id_category");
 		return $result;
 	}
 
@@ -19,7 +19,7 @@ class Post_model extends CI_Model
 	function save_post($title, $contents, $category, $slug, $image, $tags, $description)
 	{
 		$data = array(
-			'title_post' 	   => $title,
+			'tittle_post' 	   => $title,
 			'description_post' => $description,
 			'contents_post'    => $contents,
 			'image_post' 	   => $image,
@@ -42,7 +42,7 @@ class Post_model extends CI_Model
 
 	function edit_post_no_img($id, $title, $contents, $category, $slug, $tags, $description)
 	{
-		$result = $this->db->query("UPDATE post SET post_title_post='$title',description_post='$description',contents_post='$contents',
+		$result = $this->db->query("UPDATE post SET tittle_post='$title',description_post='$description',contents_post='$contents',
 		lastupdate_post=NOW(),categoryid_post='$category',tags_post='$tags',slug_post='$slug' WHERE id_post='$id'");
 		return $result;
 	}

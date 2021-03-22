@@ -13,7 +13,7 @@ class Research_model extends CI_Model
     }
     function ambildata_course()
     {
-        $course = $this->db->get('course');
+        $course = $this->db->get('post');
         return $course;
     }
 }

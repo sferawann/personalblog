@@ -45,15 +45,15 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Home'); ?>">Home</a>
                     </li>
-                    <?php foreach ($Course as $c) : ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" href="<?= site_url('Course'); ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Course</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $c->tittle_course ?></a>
-                            </div>
-                        </li>
-                    <?php endforeach; ?>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Course</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <?php foreach ($Post as $p) : ?>
+                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $p->tittle_post; ?></a>
+                            <?php endforeach; ?>
+                        </div>
+                    </li>
                     <!-- BELUM ADA PHPNYA SAMAIN KAYAK COURSE -->
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
@@ -72,7 +72,6 @@
                         <a class="nav-link" href="<?= site_url('Contact'); ?>">Contact</a>
                     </li>
                 </ul>
-                <a href="<?php echo site_url('Auth/logout') ?>" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
     </nav>
@@ -89,21 +88,14 @@
                 </span>
                 <div class="col-lg-4 col-xl-4">
                     <div class="card-box text-center">
-                        <img src="<?= base_url(); ?>assets/img/homepage/pp.png" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
-
-                        <h4 class="mb-0">Dewi Rosmala</h4>
-                        <p class="text-muted">Dosen</p>
-
+                        <img src="<?= base_url(); ?>assets/img/dewi.jpg" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
                         <div class="text-left mt-3">
                             <h6 class="font-13 text-uppercase">About Me :</h6>
-                            <p class="text-muted font-13 mb-3">
-                                Lorem ipsum lorem ipsum lorem ipsum
-                            </p>
                             <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">Dewi Rosmala</span></p>
 
                             <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ml-2">+62-888-8888-8888</span></p>
 
-                            <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">email@email.com</span></p>
+                            <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">rosmalanoy@gmail.com</span></p>
 
                             <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2">Bandung, Indonesia</span></p>
                         </div>
@@ -123,47 +115,70 @@
                             </li>
                         </ul>
                     </div> <!-- end card-box -->
+                    <div class="card-box text-center">
+                        <div class="pt-1">
+                            <h4 class="header-title">Summary</h4>
+                            <p class="mb-3">An independent, well-rounded
+                                professional with 20+ years of
+                                experience in the educational, research
+                                & consulting industry, with strong
+                                analytical skills and a broad range of
+                                industry sector expertise.</p>
+                        </div>
+                    </div>
+                    <div class="card-box text-center">
+                        <div class="pt-1">
+                            <h4 class="header-title">Skills</h4>
+                            <p class="mb-3">Analytics,
+                                BI & Data Visualization,
+                                System Information,
+                                Development,
+                                Deep Learning,
+                                Data Scientist.</p>
+                            <!-- <p class="mb-3">Analytics</p>
+                            <p class="mb-3">BI & Data Visualization</p>
+                            <p class="mb-3"></p>
+                            <p class="mb-3"></p>
+                            <p class="mb-3"></p> -->
+                        </div>
+                    </div>
+                    <div class="card-box text-center">
+                        <div class="pt-1">
+                            <h4 class="header-title">Education</h4>
+                            <p class="mb-3">University Of Newcastle
+                                Australia, Degree in
+                                Information Technology,
+                                2004</p>
+                            <p class="mb-3">
+                                Universitas Padjadjaran,
+                                Bandung, Indonesia
+                                Degree in Statistics, 1992</p>
+                        </div>
+                    </div>
+                    <div class="card-box text-center">
+                        <div class="pt-1">
+                            <h4 class="header-title">Place & date of birth</h4>
+                            <p class="mb-3">Bandung, October 22, 1968</p>
+                        </div>
+                    </div>
                 </div> <!-- end col-->
+
 
                 <div class="col-lg-8 col-xl-8">
                     <div class="card-box">
-
                         <div class="tab-content">
-
                             <div class="tab-pane show active" id="about-me">
-
                                 <h5 class="mb-4 text-uppercase"><i class="mdi mdi-briefcase mr-1"></i>
                                     Experience</h5>
-
-                                <ul class="list-unstyled timeline-sm">
-                                    <li class="timeline-sm-item">
-                                        <span class="mt-0 mb-1">2015 - 19</span>
-                                        <h5 class="mt-0 mb-1">Lead designer / Developer</h5>
-                                        <p>websitename.com</p>
-                                        <p class="text-muted mt-2">Everyone realizes why a new common language
-                                            would be desirable: one could refuse to pay expensive translators.
-                                            To achieve this, it would be necessary to have uniform grammar,
-                                            pronunciation and more common words.</p>
-                                    </li>
-                                    <li class="timeline-sm-item">
-                                        <span class="mt-0 mb-1">2012 - 15</span>
-                                        <h5 class="mt-0 mb-1">Senior Graphic Designer</h5>
-                                        <p>Software Inc.</p>
-                                        <p class="text-muted mt-2">If several languages coalesce, the grammar
-                                            of the resulting language is more simple and regular than that of
-                                            the individual languages. The new common language will be more
-                                            simple and regular than the existing European languages.</p>
-                                    </li>
-                                    <li class="timeline-sm-item">
-                                        <span class="mt-0 mb-1">2010 - 12</span>
-                                        <h5 class="mt-0 mb-1">Graphic Designer</h5>
-                                        <p>Coderthemes LLP</p>
-                                        <p class="text-muted mt-2 mb-0">The European languages are members of
-                                            the same family. Their separate existence is a myth. For science
-                                            music sport etc, Europe uses the same vocabulary. The languages
-                                            only differ in their grammar their pronunciation.</p>
-                                    </li>
-                                </ul>
+                                <?php foreach ($About as $a) : ?>
+                                    <ul class="list-unstyled timeline-sm">
+                                        <li class="timeline-sm-item">
+                                            <span class="mt-0 mb-1"><?= $a->tahun_about; ?></span>
+                                            <h5 class="mt-0 mb-1"><?= $a->name_about; ?></h5>
+                                            <p class="text-muted mt-2"><?= $a->description_about; ?></p>
+                                        </li>
+                                    </ul>
+                                <?php endforeach; ?>
                             </div>
                             <!-- end timeline content-->
                         </div> <!-- end tab-content -->
@@ -196,9 +211,8 @@
                     <h5>Find Me</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="text-muted" href="https://scholar.google.com/citations?user=zJuf-CAAAAAJ&hl=en&oi=sra">Google Scholar</a></li>
-                        <li><a class="text-muted" href="#">LinkedIn</a></li>
-                        <li><a class="text-muted" href="#">YouTube</a></li>
-                        <li><a class="text-muted" href="#">SINTA</a></li>
+                        <li><a class="text-muted" href="https://id.linkedin.com/in/dewi-rosmala-43171528">LinkedIn</a></li>
+                        <li><a class="text-muted" href="https://sinta.ristekbrin.go.id/authors/detail?id=6650264&view=overview">Sinta</a></li>
                     </ul>
                 </div>
             </div>

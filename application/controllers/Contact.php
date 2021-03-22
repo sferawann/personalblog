@@ -11,7 +11,7 @@ class Contact extends CI_Controller
 
     function index()
     {
-        $data['Course'] = $this->Contact_model->ambildata_course()->result();
+        $data['Post'] = $this->Contact_model->ambildata_course()->result();
         $this->load->view('contact', $data);
     }
 }
