@@ -46,7 +46,7 @@
                         <a class="nav-link" href="<?= site_url('Home'); ?>">Home</a>
                     </li>
 
-                    <li class="nav-item active dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Course</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">

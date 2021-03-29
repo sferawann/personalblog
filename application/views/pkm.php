@@ -45,7 +45,7 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Home'); ?>">Home</a>
                     </li>
-                    <li class="nav-item active dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Course</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -59,10 +59,10 @@
                         <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
                     </li>
                     <!-- END TAMIEZ -->
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item active">
                         <a class="nav-link" href="<?= site_url('PKM'); ?>">PKM</a>
                     </li>
                     <li class="nav-item ">
@@ -88,42 +88,50 @@
                     PKM
                 </span>
                 <div class="accordion" id="accordionExample">
-                    <?php foreach ($Research as $r) : ?>
+                    <?php foreach ($Pkm as $p) : ?>
                         <div class="card">
                             <div class="card-header" id="headingOne" style="background:transparent;">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne<?= $r->id_research ?>" aria-expanded="true" aria-controls="collapseOne">
-                                        <?= $r->tittle_research; ?>
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne<?= $p->id_pkm; ?>" aria-expanded="true" aria-controls="collapseOne">
+                                        <?= $p->namakegiatan_pkm; ?>
                                     </button>
                                 </h2>
                             </div>
-                            <div id="collapseOne<?= $r->id_research ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div id="collapseOne<?= $p->id_pkm; ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
                                     <table class="table table-sm table-borderless">
                                         <tbody>
                                             <tr>
-                                                <th>Publisher</th>
-                                                <td><?= $r->publisher_research; ?></td>
+                                                <th>Ketua/Jurusan</th>
+                                                <td><?= $p->ketuanjurusan_pkm; ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Journal Name</th>
-                                                <td><?= $r->jurnalname_research; ?></td>
+                                                <th>Anggota/Jurusan</th>
+                                                <td><?= $p->anggotajurusan_pkm; ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Author</th>
-                                                <td><?= $r->author_research; ?></td>
+                                                <th>Mitra</th>
+                                                <td><?= $p->mitra_pkm; ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Volume</th>
-                                                <td><?= $r->volume_research; ?></td>
+                                                <th>Lingkup</th>
+                                                <td><?= $p->lingkup_pkm; ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Date</th>
-                                                <td><?php echo date('d F Y', strtotime(str_replace('/', '-', $r->date_research))) ?></td>
+                                                <th>Mulai</th>
+                                                <td><?= $p->mulai_pkm; ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Pages</th>
-                                                <td><?= $r->pages_research; ?></td>
+                                                <th>Selesai</th>
+                                                <td><?= $p->selesai_pkm; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Sumber Dana</th>
+                                                <td><?= $p->sumberdana_pkm; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Jumlah Dana</th>
+                                                <td><?= $p->jumlahdana_pkm; ?></td>
                                             </tr>
                                             <tr>
                                                 <th></th>
@@ -131,9 +139,6 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <h6>Abstract</h6>
-                                    <p class="text-justify"><?= $r->abstract_research; ?></p>
-                                    <a class="btn" target="_blank" href="<?= $r->link_research; ?>" style="background: #697194; border: none; color:white;">View Journal</a>
                                 </div>
                             </div>
                         </div>

@@ -42,12 +42,12 @@ class Login extends CI_Controller
 					redirect('superadmin/dashboard');
 				}
 			} else {
-				$url = base_url('administrator');
+				$url = base_url('superadmin/login');
 				echo $this->session->set_flashdata('msg', '<div class="alert alert-warning" role="alert"><button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button> Password Salah</div>');
 				redirect($url);
 			}
 		} else {
-			$url = base_url('administrator');
+			$url = base_url('superadmin/login');
 			echo $this->session->set_flashdata('msg', '<div class="alert alert-warning" role="alert"><button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button> Username Salah</div>');
 			redirect($url);
 		}

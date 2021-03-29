@@ -44,7 +44,7 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Home'); ?>">Home</a>
                     </li>
-                    <li class="nav-item active dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Course</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -99,7 +99,7 @@
                                 <p><?php echo date('d F Y', strtotime(str_replace('/', '-', $p->date_post))) ?></p>
                                 <hr>
                                 <!-- Preview Image -->
-                                <img class="img-fluid rounded" src="<?= $p->image_post; ?>" alt="">
+                                <img class="img-fluid rounded" src="<?php echo base_url(); ?>/assets/img/1f6f3495d86810faf238be13a99d9482.png" alt="">
 
                                 <hr>
 

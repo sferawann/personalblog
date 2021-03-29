@@ -44,7 +44,7 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="<?= site_url('Home'); ?>">Home</a>
                     </li>
-                    <li class="nav-item active dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Course</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -69,7 +69,6 @@
                         <a class="nav-link" href="<?= site_url('Contact'); ?>">Contact</a>
                     </li>
                 </ul>
-                <a href="login.html" class="nav-link"><i class="fas fa-sign-in-alt"></i> Log In</a>
             </div>
         </div>
     </nav>
@@ -103,7 +102,7 @@
                                         <h2 class="card-title" style="color: #697194;"><?= $t->tittle_tamyiz ?></h2>
                                         <!-- paragraf pertama isi preview course -->
                                         <p class="card-text"><?= $t->contents_tamyiz ?></p>
-                                        <a href="<?php echo site_url('Tamyiz-post'); ?>" type="button" class="btn btn-custom mt-2">Read More<i class="fas fa-long-arrow-alt-right m-l-7" aria-hidden="true"></i></a>
+                                        <a href="<?php echo site_url('Tamyiz_post'); ?>" type="button" class="btn btn-custom mt-2">Read More<i class="fas fa-long-arrow-alt-right m-l-7" aria-hidden="true"></i></a>
                                     </div>
                                     <div class="card-footer text-muted">
                                         <!-- ini tanggal course di post -->

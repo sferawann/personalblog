@@ -41,10 +41,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav text-uppercase mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('Home'); ?>">Home</a>
                     </li>
-                    <li class="nav-item active dropdown">
+
+                    <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Course</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -53,17 +54,25 @@
                             <?php endforeach; ?>
                         </div>
                     </li>
+
+                    <!-- BELUM ADA PHPNYA SAMAIN KAYAK COURSE -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="<?= site_url('Tamyiz'); ?>">Tamyiz</a>
+                    </li>
+                    <!-- END TAMIEZ -->
                     <li class="nav-item ">
-                        <a class="nav-link" href="research.html">Research</a>
+                        <a class="nav-link" href="<?= site_url('Research'); ?>">Research</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="<?= site_url('PKM'); ?>">PKM</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="<?= site_url('About'); ?>">About</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('Contact'); ?>">Contact</a>
                     </li>
                 </ul>
-                <a href="login.html" class="nav-link"><i class="fas fa-sign-in-alt"></i> Log In</a>
             </div>
         </div>
     </nav>
