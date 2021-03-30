@@ -51,13 +51,13 @@ class Users_model extends CI_Model
 
 	function lock_user($id_user)
 	{
-		$hsl = $this->db->query("UPDATE user SET user_status='0' WHERE id_user='$id_user'");
+		$hsl = $this->db->query("UPDATE user SET status_user='0' WHERE id_user='$id_user'");
 		return $hsl;
 	}
 
 	function unlock_user($id_user)
 	{
-		$hsl = $this->db->query("UPDATE user SET user_status='1' WHERE id_user='$id_user'");
+		$hsl = $this->db->query("UPDATE user SET status_user='1' WHERE id_user='$id_user'");
 		return $hsl;
 	}
 
@@ -69,7 +69,7 @@ class Users_model extends CI_Model
 
 	function validasi_email($email)
 	{
-		$hsl = $this->db->query("SELECT * FROM user WHERE user_email='$email'");
+		$hsl = $this->db->query("SELECT * FROM user WHERE email_user='$email'");
 		return $hsl;
 	}
 }

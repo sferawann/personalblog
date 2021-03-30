@@ -230,22 +230,21 @@
                     <li class="active"><a href="<?php echo site_url('backend/testimonial'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-like"></span>
                             <p>Testimonials</p>
                         </a></li>
-                    <?php if ($this->session->userdata('access') == '1') : ?>
-                        <li><a href="<?php echo site_url('backend/users'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
-                                <p>Users</p>
-                            </a></li>
-                        <li class="droplink"><a href="<?php echo site_url('backend/settings'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
-                                <p>Settings</p><span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                                <li><a href="<?php echo site_url('backend/settings'); ?>" style="color: white;">Basic</a></li>
-                                <li><a href="<?php echo site_url('backend/home_setting'); ?>" style="color: white;">Home</a></li>
-                                <li><a href="<?php echo site_url('backend/about_setting'); ?>" style="color: white;">About</a></li>
-                                <li><a href="<?php echo site_url('backend/navbar'); ?>" style="color: white;">Navbar</a></li>
-                            </ul>
-                        </li>
-                    <?php else : ?>
-                    <?php endif; ?>
+
+                    <li><a href="<?php echo site_url('backend/users'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
+                            <p>Users</p>
+                        </a></li>
+                    <li class="droplink"><a href="<?php echo site_url('backend/settings'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
+                            <p>Settings</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('backend/settings'); ?>" style="color: white;">Basic</a></li>
+                            <li><a href="<?php echo site_url('backend/home_setting'); ?>" style="color: white;">Home</a></li>
+                            <li><a href="<?php echo site_url('backend/about_setting'); ?>" style="color: white;">About</a></li>
+                            <li><a href="<?php echo site_url('backend/navbar'); ?>" style="color: white;">Navbar</a></li>
+                        </ul>
+                    </li>
+
                     <li><a href="<?php echo site_url('logout'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
                             <p>Log Out</p>
                         </a></li>

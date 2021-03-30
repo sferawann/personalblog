@@ -244,7 +244,7 @@
                         </a></li>
 
                     </a></li>
-                    <?php if ($this->session->userdata('access') == '1') : ?>
+                    
                         <li><a href="<?php echo site_url('superadmin/users'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
                                 <p>Users</p>
                             </a></li>
@@ -259,8 +259,7 @@
                                 <li><a href="<?php echo site_url('superadmin/experience'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Experience List</a></li>
                             </ul>
                         </li>
-                    <?php else : ?>
-                    <?php endif; ?>
+                    
                     <li><a href="<?php echo site_url('superadmin/login/logout'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
                             <p>Log Out</p>
                         </a>

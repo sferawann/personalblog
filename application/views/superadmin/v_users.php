@@ -10,8 +10,8 @@
     <meta charset="UTF-8">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta name="author" content="ITENAS" />
-    <link rel="shortcut icon" href="<?php echo base_url() . 'assets/images/favicon.png' ?>">
+    <meta name="author" content="MANAJEMEN PROYEK" />
+
     <!-- Styles -->
     <link href="<?php echo base_url() . 'assets/plugins/pace-master/themes/blue/pace-theme-flash.css' ?>" rel="stylesheet" />
     <link href="<?php echo base_url() . 'assets/plugins/uniform/css/uniform.default.min.css' ?>" rel="stylesheet" />
@@ -52,7 +52,7 @@
                     </a>
                 </div>
                 <div class="logo-box" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <a href="<?php echo site_url('backend/dashboard'); ?>" style="color: white;" class="logo-text"><span>Blog</span></a>
+                    <a href="<?php echo site_url('superadmin/dashboard'); ?>" style="color: white;" class="logo-text"><span>Blog</span></a>
                 </div><!-- Logo Box -->
                 <div class="search-button">
                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
@@ -66,7 +66,7 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <?php
-                            $count_inbox = $this->db->get_where('tbl_inbox', array('inbox_status' => '0'));
+                            $count_inbox = $this->db->get_where('inbox', array('status_inbox' => '0'));
                             ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a>
@@ -78,28 +78,28 @@
                                     <li class="dropdown-menu-list slimscroll messages">
                                         <ul class="list-unstyled">
                                             <?php
-                                            $query_msg = $this->db->get_where('tbl_inbox', array('inbox_status' => '0'), 6);
+                                            $query_msg = $this->db->get_where('inbox', array('status_inbox' => '0'), 6);
                                             foreach ($query_msg->result() as $row) :
                                             ?>
                                                 <li>
-                                                    <a href="<?php echo site_url('backend/inbox'); ?>">
+                                                    <a href="<?php echo site_url('superadmin/inbox'); ?>">
                                                         <div class="msg-img">
-                                                            <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" alt="">
+                                                            <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" alt="">
                                                         </div>
-                                                        <p class="msg-name"><?php echo $row->inbox_name; ?></p>
-                                                        <p class="msg-text"><?php echo word_limiter($row->inbox_message, 5); ?></p>
-                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->inbox_created_at)); ?></p>
+                                                        <p class="msg-name"><?php echo $row->name_inbox; ?></p>
+                                                        <p class="msg-text"><?php echo word_limiter($row->message_inbox, 5); ?></p>
+                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->createdat_inbox)); ?></p>
                                                     </a>
                                                 </li>
                                             <?php endforeach; ?>
 
                                         </ul>
                                     </li>
-                                    <li class="drop-all"><a href="<?php echo site_url('backend/inbox'); ?>" class="text-center">All Messages</a></li>
+                                    <li class="drop-all"><a href="<?php echo site_url('superadmin/inbox'); ?>" class="text-center">All Messages</a></li>
                                 </ul>
                             </li>
                             <?php
-                            $count_comment = $this->db->get_where('tbl_comment', array('comment_status' => '0'));
+                            $count_comment = $this->db->get_where('comment', array('status_comment' => '0'));
                             ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-comment"></i><span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a>
@@ -110,46 +110,46 @@
                                     <li class="dropdown-menu-list slimscroll messages">
                                         <ul class="list-unstyled">
                                             <?php
-                                            $query_cmt = $this->db->get_where('tbl_comment', array('comment_status' => '0'), 6);
+                                            $query_cmt = $this->db->get_where('comment', array('status_comment' => '0'), 6);
                                             foreach ($query_cmt->result() as $row) :
                                             ?>
                                                 <li>
-                                                    <a href="<?php echo site_url('backend/comment/unpublish'); ?>">
+                                                    <a href="<?php echo site_url('superadmin/comment/unpublish'); ?>">
                                                         <div class="msg-img">
-                                                            <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" alt="">
+                                                            <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" alt="">
                                                         </div>
-                                                        <p class="msg-name"><?php echo $row->comment_name; ?></p>
-                                                        <p class="msg-text"><?php echo word_limiter($row->comment_message, 5); ?></p>
-                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->comment_date)); ?></p>
+                                                        <p class="msg-name"><?php echo $row->name_comment; ?></p>
+                                                        <p class="msg-text"><?php echo word_limiter($row->message_comment, 5); ?></p>
+                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->date_comment)); ?></p>
                                                     </a>
                                                 </li>
                                             <?php endforeach; ?>
 
                                         </ul>
                                     </li>
-                                    <li class="drop-all"><a href="<?php echo site_url('backend/comment/unpublish'); ?>" class="text-center">All Comments</a></li>
+                                    <li class="drop-all"><a href="<?php echo site_url('superadmin/comment/unpublish'); ?>" class="text-center">All Comments</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
                                     <span class="user-name"><?php echo $this->session->userdata('name'); ?><i class="fa fa-angle-down"></i></span>
                                     <?php
-                                    $user_id = $this->session->userdata('id');
-                                    $query = $this->db->get_where('tbl_user', array('user_id' => $user_id));
+                                    $id_user = $this->session->userdata('id');
+                                    $query = $this->db->get_where('user', array('id_user' => $id_user));
                                     if ($query->num_rows() > 0) :
                                         $row = $query->row_array();
                                     ?>
-                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/images/' . $row['user_photo']; ?>" width="40" height="40" alt="">
+                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/img/' . $row['photo_user']; ?>" width="40" height="40" alt="">
                                     <?php else : ?>
-                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" width="40" height="40" alt="">
+                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" width="40" height="40" alt="">
                                     <?php endif; ?>
                                 </a>
                                 <ul class="dropdown-menu dropdown-list" role="menu">
-                                    <li role="presentation"><a href="<?php echo site_url('backend/change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
-                                    <li role="presentation"><a href="<?php echo site_url('backend/comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a></li>
-                                    <li role="presentation"><a href="<?php echo site_url('backend/inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a></li>
                                     <li role="presentation" class="divider"></li>
-                                    <li role="presentation"><a href="<?php echo site_url('logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/login/logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                                 </ul>
                             </li>
                         </ul><!-- Nav -->
@@ -163,18 +163,18 @@
                 <div class="sidebar-header" style="background: linear-gradient(to right,#e8b38c, #697194)">
                     <div class="sidebar-profile">
                         <?php
-                        $user_id = $this->session->userdata('id');
-                        $query = $this->db->get_where('tbl_user', array('user_id' => $user_id));
+                        $id_user = $this->session->userdata('id');
+                        $query = $this->db->get_where('user', array('id_user' => $id_user));
                         if ($query->num_rows() > 0) :
                             $row = $query->row_array();
                         ?>
                             <a href="javascript:void(0);">
                                 <div class="sidebar-profile-image">
-                                    <img src="<?php echo base_url() . 'assets/images/' . $row['user_photo']; ?>" class="img-circle img-responsive" alt="">
+                                    <img src="<?php echo base_url() . 'assets/img/' . $row['photo_user']; ?>" class="img-circle img-responsive" alt="">
                                 </div>
                                 <div class="sidebar-profile-details">
                                     <span><?php echo $this->session->userdata('name'); ?><br>
-                                        <?php if ($row['user_level'] == '1') : ?>
+                                        <?php if ($row['level_user'] == '1') : ?>
                                             <small style="color: white;">Administrator</small>
                                         <?php else : ?>
                                             <small>Author</small>
@@ -185,11 +185,11 @@
                         <?php else : ?>
                             <a href="javascript:void(0);">
                                 <div class="sidebar-profile-image">
-                                    <img src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" class="img-circle img-responsive" alt="">
+                                    <img src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" class="img-circle img-responsive" alt="">
                                 </div>
                                 <div class="sidebar-profile-details">
                                     <span><?php echo $this->session->userdata('name'); ?><br>
-                                        <?php if ($row['user_level'] == '1') : ?>
+                                        <?php if ($row['level_user'] == '1') : ?>
                                             <small>Administrator</small>
                                         <?php else : ?>
                                             <small>Author</small>
@@ -201,69 +201,68 @@
                     </div>
                 </div>
                 <ul class="menu accordion-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <li class="active"><a href="<?php echo site_url('backend/dashboard'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194)" class="waves-effect waves-button" class="waves-effect waves-button"><span style="color: white;" class="menu-icon icon-home"></span>
+                    <li class="active"><a href="<?php echo site_url('superadmin/dashboard'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194)" class="waves-effect waves-button" class="waves-effect waves-button"><span style="color: white;" class="menu-icon icon-home"></span>
                             <p>Dashboard</p>
                         </a></li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>Course</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/post/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/post'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Course List</a></li>
-                            <li><a href="<?php echo site_url('backend/category'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Category</a></li>
-                            <li><a href="<?php echo site_url('backend/tag'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tag</a></li>
+                            <li><a href="<?php echo site_url('superadmin/post/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/post'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Course List</a></li>
+                            <li><a href="<?php echo site_url('superadmin/category'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Category</a></li>
+                            <li><a href="<?php echo site_url('superadmin/tag'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tag</a></li>
                         </ul>
                     </li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>Tamyiz</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/tamyiz/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/tamyiz'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tamyiz List</a></li>
+                            <li><a href="<?php echo site_url('superadmin/tamyiz/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/tamyiz'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tamyiz List</a></li>
                         </ul>
                     </li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>Research</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/research/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/research'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
+                            <li><a href="<?php echo site_url('superadmin/research/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/research'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
                         </ul>
                     </li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>PKM</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/PKM/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/PKM'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">PKM List</a></li>
+                            <li><a href="<?php echo site_url('superadmin/PKM/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/PKM'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">PKM List</a></li>
                         </ul>
                     </li>
-                    <li><a href="<?php echo site_url('backend/inbox'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
+                    <li><a href="<?php echo site_url('superadmin/inbox'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
                             <p>Inbox</p>
                         </a></li>
-                    <li><a href="<?php echo site_url('backend/comment'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
+                    <li><a href="<?php echo site_url('superadmin/comment'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
                             <p>Comments</p>
                         </a></li>
 
                     </a></li>
-                    <?php if ($this->session->userdata('access') == '1') : ?>
-                        <li><a href="<?php echo site_url('backend/users'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
-                                <p>Users</p>
-                            </a></li>
-                        <li class="droplink"><a href="<?php echo site_url('backend/settings'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
-                                <p>Settings</p><span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                                <li><a href="<?php echo site_url('backend/settings'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Basic</a></li>
-                                <li><a href="<?php echo site_url('backend/home_setting'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Home</a></li>
-                                <li><a href="<?php echo site_url('backend/about_setting'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">About</a></li>
-                                <li><a href="<?php echo site_url('backend/experience/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add Experience</a></li>
-                                <li><a href="<?php echo site_url('backend/experience'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Experience List</a></li>
-                            </ul>
-                        </li>
-                    <?php else : ?>
-                    <?php endif; ?>
-                    <li><a href="<?php echo site_url('logout'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
+
+                    <li><a href="<?php echo site_url('superadmin/users'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
+                            <p>Users</p>
+                        </a></li>
+                    <li class="droplink"><a href="<?php echo site_url('superadmin/settings'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
+                            <p>Settings</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('superadmin/settings'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Basic</a></li>
+                            <li><a href="<?php echo site_url('superadmin/home_setting'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Home</a></li>
+                            <li><a href="<?php echo site_url('superadmin/about_setting'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">About</a></li>
+                            <li><a href="<?php echo site_url('superadmin/experience/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add Experience</a></li>
+                            <li><a href="<?php echo site_url('superadmin/experience'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Experience List</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="<?php echo site_url('superadmin/login/logout'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
                             <p>Log Out</p>
                         </a>
                     </li>
@@ -303,28 +302,28 @@
                                             <tr>
                                                 <td style="vertical-align: middle;"><?php echo $no; ?></td>
                                                 <td style="vertical-align: middle;">
-                                                    <?php if (empty($row->user_photo)) : ?>
-                                                        <img class="img-circle" width="50" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>">
+                                                    <?php if (empty($row->photo_user)) : ?>
+                                                        <img class="img-circle" width="50" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>">
                                                     <?php else : ?>
-                                                        <img class="img-circle" width="50" src="<?php echo base_url() . 'assets/images/' . $row->user_photo; ?>">
+                                                        <img class="img-circle" width="50" src="<?php echo base_url() . 'assets/img/' . $row->photo_user; ?>">
                                                     <?php endif; ?>
                                                 </td>
-                                                <td style="vertical-align: middle;"><?php echo $row->user_name; ?></td>
-                                                <td style="vertical-align: middle;"><?php echo $row->user_email; ?></td>
-                                                <td style="vertical-align: middle;"><?php echo $row->user_password; ?></td>
+                                                <td style="vertical-align: middle;"><?php echo $row->name_user; ?></td>
+                                                <td style="vertical-align: middle;"><?php echo $row->email_user; ?></td>
+                                                <td style="vertical-align: middle;"><?php echo $row->password_user; ?></td>
                                                 <td style="vertical-align: middle;">
                                                     <?php
-                                                    if ($row->user_level == '1') {
+                                                    if ($row->level_user == '1') {
                                                         echo "Administrator";
                                                     } else {
                                                         echo "Author";
                                                     }
                                                     ?>
                                                 </td>
-                                                <?php if ($row->user_status == '1') : ?>
-                                                    <td style="vertical-align: middle;"><a href="<?php echo base_url() . 'backend/users/lock/' . $row->user_id; ?>" class="btn"><span class="icon-lock-open" title="Unlock"></span></a></td>
+                                                <?php if ($row->status_user == '1') : ?>
+                                                    <td style="vertical-align: middle;"><a href="<?php echo base_url() . 'superadmin/users/lock/' . $row->id_user; ?>" class="btn"><span class="icon-lock-open" title="Unlock"></span></a></td>
                                                 <?php else : ?>
-                                                    <td style="vertical-align: middle;"><a href="<?php echo base_url() . 'backend/users/unlock/' . $row->user_id; ?>" class="btn"><span class="icon-lock" title="Locked"></span></a></td>
+                                                    <td style="vertical-align: middle;"><a href="<?php echo base_url() . 'superadmin/users/unlock/' . $row->id_user; ?>" class="btn"><span class="icon-lock" title="Locked"></span></a></td>
                                                 <?php endif; ?>
                                                 <td style="vertical-align: middle;">
                                                     <div class="btn-group">
@@ -332,8 +331,8 @@
                                                             Action <span class="caret"></span>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#ModalEdit<?php echo $row->user_id; ?>"><span class="icon-pencil"></span> Edit</a></li>
-                                                            <li><a href="javascript:void(0);" class="delete" data-userid="<?php echo $row->user_id; ?>"><span class="icon-trash"></span> Delete</a></li>
+                                                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#ModalEdit<?php echo $row->id_user; ?>"><span class="icon-pencil"></span> Edit</a></li>
+                                                            <li><a href="javascript:void(0);" class="delete" data-userid="<?php echo $row->id_user; ?>"><span class="icon-trash"></span> Delete</a></li>
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -349,7 +348,7 @@
                 </div><!-- Row -->
             </div><!-- Main Wrapper -->
             <div class="page-footer">
-                <p class="no-s"><?php echo date('Y'); ?> &copy; IF ITENAS</p>
+                <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYEK 2021 </p>
             </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
@@ -357,7 +356,7 @@
     <div class="cd-overlay"></div>
 
     <!-- Modal -->
-    <form id="add-row-form" action="<?php echo base_url() . 'backend/users/insert' ?>" method="post" enctype="multipart/form-data">
+    <form id="add-row-form" action="<?php echo base_url() . 'superadmin/users/insert' ?>" method="post" enctype="multipart/form-data">
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -375,19 +374,19 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <input type="text" name="nama" class="form-control" placeholder="Name" required>
+                                    <input type="text" name="name_user" class="form-control" placeholder="Name" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                    <input type="email" name="email_user" class="form-control" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                                    <input type="password" name="password_user" class="form-control" placeholder="Password" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
+                                    <input type="password" name="password2_user" class="form-control" placeholder="Confirm Password" required>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" name="level" required>
+                                    <select class="form-control" name="level_user" required>
                                         <option value="">No Selected</option>
                                         <option value="1">Administrator</option>
                                         <option value="2">Author</option>
@@ -410,7 +409,7 @@
     foreach ($data->result() as $row) :
     ?>
         <!-- Modal -->
-        <form id="add-row-form" action="<?php echo base_url() . 'backend/users/update' ?>" method="post" enctype="multipart/form-data">
+        <form id="add-row-form" action="<?php echo base_url() . 'superadmin/users/update' ?>" method="post" enctype="multipart/form-data">
             <div class="modal fade" id="ModalEdit<?php echo $row->user_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -423,15 +422,15 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="file" name="filefoto" class="dropify" data-height="220" data-default-file="<?php echo base_url() . 'assets/images/' . $row->user_photo; ?>">
+                                        <input type="file" name="filefoto" class="dropify" data-height="220" data-default-file="<?php echo base_url() . 'assets/img/' . $row->photo_user; ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <input type="text" name="nama" value="<?php echo $row->user_name; ?>" class="form-control" placeholder="Name" required>
+                                        <input type="text" name="nama" value="<?php echo $row->name_user; ?>" class="form-control" placeholder="Name" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" value="<?php echo $row->user_email; ?>" class="form-control" placeholder="Email" required>
+                                        <input type="email" name="email" value="<?php echo $row->email_user; ?>" class="form-control" placeholder="Email" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password" class="form-control" placeholder="Password">
@@ -441,7 +440,7 @@
                                     </div>
                                     <div class="form-group">
                                         <select class="form-control" name="level" required>
-                                            <?php if ($row->user_level == '1') : ?>
+                                            <?php if ($row->level_user == '1') : ?>
                                                 <option value="1" selected>Administrator</option>
                                                 <option value="2">Author</option>
                                             <?php else : ?>
@@ -455,7 +454,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" name="user_id" value="<?php echo $row->user_id; ?>" required>
+                            <input type="hidden" name="user_id" value="<?php echo $row->id_user; ?>" required>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                             <button type="submit" style="background-color: #697194" class="btn btn-success">Update</button>
                         </div>
@@ -466,7 +465,7 @@
     <?php endforeach; ?>
 
     <!-- Modal hapus-->
-    <form id="add-row-form" action="<?php echo base_url() . 'backend/users/delete' ?>" method="post" enctype="multipart/form-data">
+    <form id="add-row-form" action="<?php echo base_url() . 'superadmin/users/delete' ?>" method="post" enctype="multipart/form-data">
         <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
