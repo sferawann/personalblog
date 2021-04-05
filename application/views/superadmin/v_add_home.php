@@ -3,14 +3,13 @@
 
 <head>
     <!-- Title -->
-    <title>Course List</title>
+    <title>Home Settings</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta name="author" content="ITENAS" />
-    <link rel="shortcut icon" href="<?php echo base_url() . 'assets/img/favicon.png' ?>">
+    <meta name="author" content="MANAJEMEN PROYEK" />
 
     <!-- Styles -->
     <link href="<?php echo base_url() . 'assets/plugins/pace-master/themes/blue/pace-theme-flash.css' ?>" rel="stylesheet" />
@@ -37,7 +36,7 @@
 
 </head>
 
-<body class="page-header-fixed compact-menu pace-done page-sidebar-fixed">
+<body class="page-header-fixed  compact-menu  pace-done page-sidebar-fixed">
     <div class="overlay"></div>
     <main class="page-content content-wrap">
         <div class="navbar">
@@ -50,6 +49,9 @@
                 <div class="logo-box" style="background: linear-gradient(to right,#e8b38c, #697194)">
                     <a href="<?php echo site_url('superadmin/dashboard'); ?>" style="color: white;" class="logo-text"><span>Blog</span></a>
                 </div><!-- Logo Box -->
+                <div class="search-button">
+                    <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+                </div>
                 <div class="topmenu-outer">
                     <div class="top-menu">
                         <ul class="nav navbar-nav navbar-left">
@@ -271,89 +273,75 @@
         </div><!-- Page Sidebar -->
         <div class="page-inner">
             <div class="page-title">
-                <h3>Course List</h3>
+                <h3>Home Information</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo site_url('superadmin/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="#">Course</a></li>
-                        <li class="active">List</li>
+                        <li><a href="<?php echo site_url('superadmin/home'); ?>">Home</a></li>
+                        <li class="active">Settings</li>
                     </ol>
                 </div>
             </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <div class="col-md-12">
+                    <form class="form-horizontal" action="<?php echo base_url() . 'superadmin/home/publish' ?>" method="post" enctype="multipart/form-data">
+                        <div class="col-md-12">
+                            <div class="panel panel-white">
 
-                        <div class="panel panel-white">
-                            <div class="panel-body">
-                                <a href="<?php echo site_url('superadmin/post/add_new'); ?>" style="background-color: #697194" class="btn btn-success m-b-sm">Add New Course</a>
-                                <div class="table-responsive">
-                                    <table id="data-table" class="display table" style="width: 100%; cellspacing: 0;">
-                                        <thead>
-                                            <tr>
-                                                <th style="width: 100px;">No</th>
-                                                <th>Title</th>
-                                                <th>Publish Date</th>
-                                                <th>Category</th>
-                                                <th>Views</th>
-                                                <th style="text-align: center;width: 120px;">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $no = 0;
-                                            foreach ($data->result() as $row) :
-                                                $no++;
-                                            ?>
-                                                <tr>
-                                                    <td><?php echo $no; ?></td>
-                                                    <td><?php echo $row->tittle_post; ?></td>
-                                                    <td><?php echo $row->date_post; ?></td>
-                                                    <td><?php echo $row->name_category; ?></td>
-                                                    <td><?php echo $row->views_post; ?></td>
-                                                    <td style="text-align: center;">
-                                                        <a href="<?php echo site_url('superadmin/post/get_edit/' . $row->id_post); ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
-                                                        <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?php echo $row->id_post; ?>"><span class="fa fa-trash"></span></a>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
+                                <div class="panel-body">
+
+                                    <div class="form-group">
+                                        <label for="input1" class="col-sm-2 control-label">Caption 1</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="caption1" class="form-control" id="input1" placeholder="Site Name">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="input1" class="col-sm-2 control-label">Caption 2</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="caption2" class="form-control" id="input1" placeholder="Site Title">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="input1" class="col-sm-2 control-label">Image Heading</label>
+                                        <div class="col-sm-10">
+                                            <input type="file" name="img_heading" class="form-control" id="input1">
+                                            <!-- <p class="help-block">Image Heading harus beresolusi 1800 x 1110 Pixels.</p> -->
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="input1" class="col-sm-2 control-label">Background Testimonial</label>
+                                        <div class="col-sm-10">
+                                            <input type="file" name="img_testimonial" class="form-control" id="input1">
+                                            <!-- <p class="help-block">Background Testimonial harus beresolusi 925 x 617 Pixels.</p> -->
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" style="background-color: #697194" class="btn btn-success btn-lg">PUBLISH</button>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+
+                    </form>
                 </div><!-- Row -->
             </div><!-- Main Wrapper -->
             <div class="page-footer">
-                <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYK 2021</p>
+                <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYEK 2021</p>
             </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
-
-    <!--DELETE RECORD MODAL-->
-    <form action="<?php echo site_url('superadmin/post/delete'); ?>" method="post">
-        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Delete Post</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info">
-                            Anda yakin mau menghapus post ini?
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="id" required>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
 
     <!-- Javascripts -->
     <script src="<?php echo base_url() . 'assets/plugins/jquery/jquery-2.1.4.min.js' ?>"></script>
@@ -373,50 +361,12 @@
     <script src="<?php echo base_url() . 'assets/plugins/datatables/js/jquery.datatables.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/js/modern.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.js' ?>"></script>
-    <script>
-        $(document).ready(function() {
-            $('#data-table').dataTable();
-
-            //Delete Record
-            $('.btn-delete').on('click', function() {
-                var id = $(this).data('id');
-                $('[name="id"]').val(id);
-                $('#DeleteModal').modal('show');
-            });
-
-        });
-    </script>
-
     <!--Toast Message-->
     <?php if ($this->session->flashdata('msg') == 'success') : ?>
         <script type="text/javascript">
             $.toast({
                 heading: 'Success',
-                text: "Post Saved!",
-                showHideTransition: 'slide',
-                icon: 'success',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#7EC857'
-            });
-        </script>
-    <?php elseif ($this->session->flashdata('msg') == 'info') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Info',
-                text: "Post Updated!",
-                showHideTransition: 'slide',
-                icon: 'info',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#00C9E6'
-            });
-        </script>
-    <?php elseif ($this->session->flashdata('msg') == 'success-delete') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Success',
-                text: "Post Deleted!.",
+                text: "Home Information Saved!",
                 showHideTransition: 'slide',
                 icon: 'success',
                 hideAfter: false,

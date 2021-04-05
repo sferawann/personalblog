@@ -232,10 +232,29 @@ $b = $data->row_array();
                             <p>PKM</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('superadmin/PKM/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('superadmin/PKM'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">PKM List</a></li>
+                            <li><a href="<?php echo site_url('superadmin/Pkm/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/Pkm'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">PKM List</a></li>
                         </ul>
                     </li>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Home</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('superadmin/Home/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/Home'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Home List</a></li>
+                        </ul>
+                    </li>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Experience</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('superadmin/Experience/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/Experience'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Experience List</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="<?php echo site_url('superadmin/About'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-info"></span>
+                            <p>About</p>
+                        </a></li>
                     <li><a href="<?php echo site_url('superadmin/inbox'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
                             <p>Inbox</p>
                         </a></li>
@@ -244,22 +263,9 @@ $b = $data->row_array();
                         </a></li>
 
                     </a></li>
-
                     <li><a href="<?php echo site_url('superadmin/users'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
                             <p>Users</p>
                         </a></li>
-                    <li class="droplink"><a href="<?php echo site_url('backend/settings'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
-                            <p>Settings</p><span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('superadmin/settings'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Basic</a></li>
-                            <li><a href="<?php echo site_url('superadmin/home_setting'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Home</a></li>
-                            <li><a href="<?php echo site_url('superadmin/about_setting'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">About</a></li>
-                            <li><a href="<?php echo site_url('superadmin/experience/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add Experience</a></li>
-                            <li><a href="<?php echo site_url('superadmin/experience'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Experience List</a></li>
-                        </ul>
-                    </li>
-
                     <li><a href="<?php echo site_url('superadmin/login/logout'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
                             <p>Log Out</p>
                         </a>
@@ -286,6 +292,7 @@ $b = $data->row_array();
                             <div class="panel panel-white">
 
                                 <div class="panel-body">
+                                    <!-- <input type="hidden" name="id" value="<?= $b['id_post'] ?>" class="form-control title"> -->
 
                                     <div class="form-group">
                                         <label>Title</label>
@@ -296,7 +303,7 @@ $b = $data->row_array();
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Contents</label>
-                                        <textarea name="contents" id="summernote"><?php echo $b['contens_post']; ?></textarea>
+                                        <textarea name="contents" id="summernote" value="<?php echo $b['contens_post']; ?>"><?php echo $b['contens_post']; ?></textarea>
                                     </div>
 
 
@@ -341,7 +348,7 @@ $b = $data->row_array();
                                         <?php endforeach; ?>
                                     </div>
                                     <div class="form-group">
-                                        <input type="hidden" name="post_id" value="<?php echo $b['id_post']; ?>" required>
+                                        <input type="hidden" name="id_post" value="<?php echo $b['id_post']; ?>" required>
                                         <button type="submit" class="btn btn-primary btn-lg" style="width:100%"><span class="icon-cursor"></span> UPDATE</button>
                                     </div>
                                 </div>

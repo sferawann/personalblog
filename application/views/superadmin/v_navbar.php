@@ -206,45 +206,77 @@
 
                 <!-- Side Bar Menus -->
                 <ul class="menu accordion-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <li><a href="<?php echo site_url('backend/dashboard'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-home"></span>
+                    <li class="active"><a href="<?php echo site_url('superadmin/dashboard'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194)" class="waves-effect waves-button" class="waves-effect waves-button"><span style="color: white;" class="menu-icon icon-home"></span>
                             <p>Dashboard</p>
                         </a></li>
-                    <li class="droplink"><a href="#" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-pin"></span>
-                            <p>Post</p><span class="arrow"></span>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Course</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/post/add_new'); ?>" style="color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/post'); ?>" style="color: white;">Post List</a></li>
-                            <li><a href="<?php echo site_url('backend/category'); ?>" style="color: white;">Category</a></li>
-                            <li><a href="<?php echo site_url('backend/tag'); ?>" style="color: white;">Tag</a></li>
+                            <li><a href="<?php echo site_url('superadmin/post/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/post'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Course List</a></li>
+                            <li><a href="<?php echo site_url('superadmin/category'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Category</a></li>
+                            <li><a href="<?php echo site_url('superadmin/tag'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tag</a></li>
                         </ul>
                     </li>
-                    <li><a href="<?php echo site_url('backend/inbox'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Tamyiz</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('superadmin/tamyiz/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/tamyiz'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tamyiz List</a></li>
+                        </ul>
+                    </li>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Research</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('superadmin/research/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/research'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
+                        </ul>
+                    </li>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>PKM</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('superadmin/Pkm/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/Pkm'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">PKM List</a></li>
+                        </ul>
+                    </li>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Home</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('superadmin/Home/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/Home'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Home List</a></li>
+                        </ul>
+                    </li>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Experience</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('superadmin/Experience/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/Experience'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Experience List</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="<?php echo site_url('superadmin/About'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-info"></span>
+                            <p>About</p>
+                        </a></li>
+                    <li><a href="<?php echo site_url('superadmin/inbox'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
                             <p>Inbox</p>
                         </a></li>
-                    <li><a href="<?php echo site_url('backend/comment'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
+                    <li><a href="<?php echo site_url('superadmin/comment'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
                             <p>Comments</p>
                         </a></li>
-                    <!-- subscribers -->
-                    <!-- testimonials -->
 
-                    <li><a href="<?php echo site_url('backend/users'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
+                    </a></li>
+                    <li><a href="<?php echo site_url('superadmin/users'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
                             <p>Users</p>
                         </a></li>
-                    <li class="droplink active open"><a href="<?php echo site_url('backend/settings'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
-                            <p>Settings</p><span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/settings'); ?>" style="color: white;">Basic</a></li>
-                            <li><a href="<?php echo site_url('backend/home_setting'); ?>" style="color: white;">Home</a></li>
-                            <li><a href="<?php echo site_url('backend/about_setting'); ?>" style="color: white;">About</a></li>
-                            <li class="active"><a href="<?php echo site_url('backend/navbar'); ?>" style="color: white;">Navbar</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="<?php echo site_url('logout'); ?>" style="color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
+                    <li><a href="<?php echo site_url('superadmin/login/logout'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
                             <p>Log Out</p>
-                        </a></li>
+                        </a>
+                    </li>
 
                 </ul>
             </div><!-- Page Sidebar Inner -->

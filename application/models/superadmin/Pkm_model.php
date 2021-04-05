@@ -12,7 +12,7 @@ class Pkm_model extends CI_Model
 
     function get_pkm_by_id($id_pkm)
     {
-        $result = $this->db->query("SELECT * FROM research WHERE id_pkm='$id_pkm'");
+        $result = $this->db->query("SELECT * FROM pkm WHERE id_pkm='$id_pkm'");
         return $result;
     }
 
@@ -47,12 +47,34 @@ class Pkm_model extends CI_Model
         }
     }
 
-    function edit_pkm($id, $namakegiatan, $ketuajurusan, $anggotajurusan, $mitra, $lingkup, $mulai, $selesai, $sumberdana, $jumlahdana)
+    function edit_pkm()
     {
-        $result = $this->db->query("UPDATE post SET namakegiatan_pkm='$namakegiatan',ketuanjurusan_pkm='$ketuajurusan',
-        'anggotajurusan_pkm'='$anggotajurusan',mitra_pkm='$mitra',lingkup_pkm='$lingkup',mulai_pkm='$mulai',
-        selesai_pkm='$selesai',sumberdana_pkm='$sumberdana',jumlahdana_pkm='$jumlahdana' WHERE id_pkm='$id'");
-        return $result;
+        $id_pkm                 = $this->input->post('id_pkm');
+        $namakegiatan_pkm       = $this->input->post('namakegiatan_pkm');
+        $ketuanjurusan_pkm      = $this->input->post('ketuanjurusan_pkm');
+        $anggotajurusan_pkm     = $this->input->post('anggotajurusan_pkm');
+        $mitra_pkm              = $this->input->post('mitra_pkm');
+        $lingkup_pkm            = $this->input->post('lingkup_pkm');
+        $mulai_pkm              = $this->input->post('mulai_pkm');
+        $selesai_pkm            = $this->input->post('selesai_pkm');
+        $sumberdana_pkm         = $this->input->post('sumberdana_pkm');
+        $jumlahdana_pkm         = $this->input->post('jumlahdana_pkm');
+
+        $data = array(
+            'id_pkm'                => $id_pkm,
+            'namakegiatan_pkm'      => $namakegiatan_pkm,
+            'ketuanjurusan_pkm'     => $ketuanjurusan_pkm,
+            'anggotajurusan_pkm'    => $anggotajurusan_pkm,
+            'mitra_pkm'             => $mitra_pkm,
+            'lingkup_pkm'           => $lingkup_pkm,
+            'mulai_pkm'             => $mulai_pkm,
+            'selesai_pkm'           => $selesai_pkm,
+            'sumberdana_pkm'        => $sumberdana_pkm,
+            'jumlahdana_pkm'        => $jumlahdana_pkm
+        );
+
+        $this->db->where('id_pkm', $id_pkm);
+        $this->db->update('pkm', $data);
     }
 
     function delete_pkm($id_pkm)

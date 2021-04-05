@@ -1,6 +1,6 @@
 <?php
 
-class Course_post extends CI_Controller
+class Course_Post extends CI_Controller
 
 {
     function __construct()
@@ -9,9 +9,11 @@ class Course_post extends CI_Controller
         $this->load->model('Course_model');
     }
 
-    function index()
+    function index($id)
     {
-        $data['Post'] = $this->Course_model->tampil_data()->result();
+        $data['Post'] = $this->Course_model->tampil_data_id($id)->result();
+        // var_dump($data['Post']);
+        // die;
         $this->load->view('course_post', $data);
     }
 }

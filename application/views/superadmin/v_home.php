@@ -3,14 +3,14 @@
 
 <head>
     <!-- Title -->
-    <title>Course List</title>
+    <title>Home List</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta name="author" content="ITENAS" />
-    <link rel="shortcut icon" href="<?php echo base_url() . 'assets/img/favicon.png' ?>">
+    <meta name="author" content="MANAJEMEN PROYEK" />
+
 
     <!-- Styles -->
     <link href="<?php echo base_url() . 'assets/plugins/pace-master/themes/blue/pace-theme-flash.css' ?>" rel="stylesheet" />
@@ -145,6 +145,7 @@
                                     <li role="presentation"><a href="<?php echo site_url('superadmin/login/logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                                 </ul>
                             </li>
+
                         </ul><!-- Nav -->
                     </div><!-- Top Menu -->
                 </div>
@@ -271,11 +272,11 @@
         </div><!-- Page Sidebar -->
         <div class="page-inner">
             <div class="page-title">
-                <h3>Course List</h3>
+                <h3>PKM List</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo site_url('superadmin/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="#">Course</a></li>
+                        <li><a href="#">Home</a></li>
                         <li class="active">List</li>
                     </ol>
                 </div>
@@ -286,16 +287,16 @@
 
                         <div class="panel panel-white">
                             <div class="panel-body">
-                                <a href="<?php echo site_url('superadmin/post/add_new'); ?>" style="background-color: #697194" class="btn btn-success m-b-sm">Add New Course</a>
+                                <a href="<?php echo site_url('superadmin/home/add_new'); ?>" style="background-color: #697194" class="btn btn-success m-b-sm">Add New Home</a>
                                 <div class="table-responsive">
                                     <table id="data-table" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
                                                 <th style="width: 100px;">No</th>
-                                                <th>Title</th>
-                                                <th>Publish Date</th>
-                                                <th>Category</th>
-                                                <th>Views</th>
+                                                <th>Caption 1 </th>
+                                                <th>Caption 2 </th>
+                                                <th>BG Heading</th>
+                                                <th>BG Testimonial</th>
                                                 <th style="text-align: center;width: 120px;">Action</th>
                                             </tr>
                                         </thead>
@@ -307,17 +308,18 @@
                                             ?>
                                                 <tr>
                                                     <td><?php echo $no; ?></td>
-                                                    <td><?php echo $row->tittle_post; ?></td>
-                                                    <td><?php echo $row->date_post; ?></td>
-                                                    <td><?php echo $row->name_category; ?></td>
-                                                    <td><?php echo $row->views_post; ?></td>
+                                                    <td><?php echo $row->caption_1_home; ?></td>
+                                                    <td><?php echo $row->caption_2_home; ?></td>
+                                                    <td><?php echo $row->bgheading_home; ?></td>
+                                                    <td><?php echo $row->bgtestimonial_home; ?></td>
                                                     <td style="text-align: center;">
-                                                        <a href="<?php echo site_url('superadmin/post/get_edit/' . $row->id_post); ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
-                                                        <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?php echo $row->id_post; ?>"><span class="fa fa-trash"></span></a>
+                                                        <a href="<?php echo site_url('superadmin/home/get_edit/' . $row->id_home); ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
+                                                        <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?php echo $row->id_home; ?>"><span class="fa fa-trash"></span></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
+
                                     </table>
                                 </div>
                             </div>
@@ -326,13 +328,13 @@
                 </div><!-- Row -->
             </div><!-- Main Wrapper -->
             <div class="page-footer">
-                <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYK 2021</p>
+                <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYEK 2021</p>
             </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
 
     <!--DELETE RECORD MODAL-->
-    <form action="<?php echo site_url('superadmin/post/delete'); ?>" method="post">
+    <form action="<?php echo site_url('superadmin/home/delete'); ?>" method="post">
         <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -392,7 +394,7 @@
         <script type="text/javascript">
             $.toast({
                 heading: 'Success',
-                text: "Post Saved!",
+                text: "Home Saved!",
                 showHideTransition: 'slide',
                 icon: 'success',
                 hideAfter: false,
@@ -404,7 +406,7 @@
         <script type="text/javascript">
             $.toast({
                 heading: 'Info',
-                text: "Post Updated!",
+                text: "Home Updated!",
                 showHideTransition: 'slide',
                 icon: 'info',
                 hideAfter: false,
@@ -416,7 +418,7 @@
         <script type="text/javascript">
             $.toast({
                 heading: 'Success',
-                text: "Post Deleted!.",
+                text: "Home Deleted!.",
                 showHideTransition: 'slide',
                 icon: 'success',
                 hideAfter: false,

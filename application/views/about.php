@@ -93,7 +93,6 @@
                             <h6 class="font-13 text-uppercase">About Me :</h6>
                             <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">Dewi Rosmala</span></p>
 
-                            <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ml-2">+62-888-8888-8888</span></p>
 
                             <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">rosmalanoy@gmail.com</span></p>
 
@@ -153,12 +152,6 @@
                                 Universitas Padjadjaran,
                                 Bandung, Indonesia
                                 Degree in Statistics, 1992</p>
-                        </div>
-                    </div>
-                    <div class="card-box text-center">
-                        <div class="pt-1">
-                            <h4 class="header-title">Place & date of birth</h4>
-                            <p class="mb-3">Bandung, October 22, 1968</p>
                         </div>
                     </div>
                 </div> <!-- end col-->

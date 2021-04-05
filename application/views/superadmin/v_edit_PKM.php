@@ -1,16 +1,20 @@
+<?php
+error_reporting(0);
+$b = $data->row_array();
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <!-- Title -->
-    <title>Course List</title>
+    <title>Add New PKM</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta name="author" content="ITENAS" />
-    <link rel="shortcut icon" href="<?php echo base_url() . 'assets/img/favicon.png' ?>">
+    <meta name="author" content="MANAJEMEN PROYEK" />
+
 
     <!-- Styles -->
     <link href="<?php echo base_url() . 'assets/plugins/pace-master/themes/blue/pace-theme-flash.css' ?>" rel="stylesheet" />
@@ -25,7 +29,9 @@
     <link href="<?php echo base_url() . 'assets/plugins/slidepushmenus/css/component.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables_themeroller.css' ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.css' ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.css' ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url() . 'assets/css/dropify.min.css' ?>" rel="stylesheet" type="text/css">
+
     <!-- Theme Styles -->
     <link href="<?php echo base_url() . 'assets/css/modern.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/css/themes/green.css' ?>" class="theme-color" rel="stylesheet" type="text/css" />
@@ -37,7 +43,7 @@
 
 </head>
 
-<body class="page-header-fixed compact-menu pace-done page-sidebar-fixed">
+<body class="page-header-fixed  compact-menu  pace-done page-sidebar-fixed">
     <div class="overlay"></div>
     <main class="page-content content-wrap">
         <div class="navbar">
@@ -50,6 +56,9 @@
                 <div class="logo-box" style="background: linear-gradient(to right,#e8b38c, #697194)">
                     <a href="<?php echo site_url('superadmin/dashboard'); ?>" style="color: white;" class="logo-text"><span>Blog</span></a>
                 </div><!-- Logo Box -->
+                <div class="search-button">
+                    <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+                </div>
                 <div class="topmenu-outer">
                     <div class="top-menu">
                         <ul class="nav navbar-nav navbar-left">
@@ -271,89 +280,76 @@
         </div><!-- Page Sidebar -->
         <div class="page-inner">
             <div class="page-title">
-                <h3>Course List</h3>
+                <h3>Add New PKM</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo site_url('superadmin/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="#">Course</a></li>
-                        <li class="active">List</li>
+                        <li><a href="#">PKM</a></li>
+                        <li class="active">Add New</li>
                     </ol>
                 </div>
             </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <div class="col-md-12">
-
-                        <div class="panel panel-white">
-                            <div class="panel-body">
-                                <a href="<?php echo site_url('superadmin/post/add_new'); ?>" style="background-color: #697194" class="btn btn-success m-b-sm">Add New Course</a>
-                                <div class="table-responsive">
-                                    <table id="data-table" class="display table" style="width: 100%; cellspacing: 0;">
-                                        <thead>
-                                            <tr>
-                                                <th style="width: 100px;">No</th>
-                                                <th>Title</th>
-                                                <th>Publish Date</th>
-                                                <th>Category</th>
-                                                <th>Views</th>
-                                                <th style="text-align: center;width: 120px;">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $no = 0;
-                                            foreach ($data->result() as $row) :
-                                                $no++;
-                                            ?>
-                                                <tr>
-                                                    <td><?php echo $no; ?></td>
-                                                    <td><?php echo $row->tittle_post; ?></td>
-                                                    <td><?php echo $row->date_post; ?></td>
-                                                    <td><?php echo $row->name_category; ?></td>
-                                                    <td><?php echo $row->views_post; ?></td>
-                                                    <td style="text-align: center;">
-                                                        <a href="<?php echo site_url('superadmin/post/get_edit/' . $row->id_post); ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
-                                                        <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?php echo $row->id_post; ?>"><span class="fa fa-trash"></span></a>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
+                    <form action="<?php echo base_url() . 'superadmin/pkm/edit' ?>" method="post" enctype="multipart/form-data">
+                        <div class="col-md-8">
+                            <div class="panel panel-white">
+                                <div class="panel-body">
+                                    <input type="hidden" name="id_pkm" value="<?= $b['id_pkm'] ?>" class="form-control title">
+                                    <div class="form-group">
+                                        <label>Nama Kegiatan</label>
+                                        <input type="text" name="namakegiatan_pkm" value="<?= $b['namakegiatan_pkm'] ?>" class="form-control title" placeholder="Author" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ketua/Jurusan</label>
+                                        <input type="text" name="ketuanjurusan_pkm" value="<?= $b['ketuanjurusan_pkm'] ?>" class="form-control title" placeholder="Title" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Anggota Jurusan</label>
+                                        <input type="text" name="anggotajurusan_pkm" value="<?= $b['anggotajurusan_pkm'] ?>" class="form-control title" placeholder="Jurnal Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mitra</label>
+                                        <input type="text" name="mitra_pkm" value="<?= $b['mitra_pkm'] ?>" class="form-control title" placeholder="Publisher" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Lingkup</label>
+                                        <input type="text" name="lingkup_pkm" value="<?= $b['lingkup_pkm'] ?>" class="form-control title" placeholder="Volume" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mulai</label>
+                                        <input type="text" name="mulai_pkm" value="<?= $b['mulai_pkm'] ?>" class="form-control title" placeholder="Volume" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Selesai</label>
+                                        <input type="text" name="selesai_pkm" value="<?= $b['selesai_pkm'] ?>" class="form-control title" placeholder="Page" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sumber Dana</label>
+                                        <input type="text" name="sumberdana_pkm" value="<?= $b['sumberdana_pkm'] ?>" class="form-control title" placeholder="Page" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Jumlah Dana</label>
+                                        <input type="text" name="jumlahdana_pkm" value="<?= $b['jumlahdana_pkm'] ?>" class="form-control title" placeholder="Page" required>
+                                    </div>
+                                    <div class="btn-group btn-group-justified" role="group" style="background-color: #697194">
+                                        <button type="submit" class="btn btn-primary btn-lg" style="width:100%"><span class="icon-cursor"></span> UPDATE</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- Row -->
-            </div><!-- Main Wrapper -->
-            <div class="page-footer">
-                <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYK 2021</p>
+                </div>
+
             </div>
+
+            </form>
+        </div><!-- Row -->
+        </div><!-- Main Wrapper -->
+        <div class="page-footer">
+            <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYEK 2021</p>
+        </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
-
-    <!--DELETE RECORD MODAL-->
-    <form action="<?php echo site_url('superadmin/post/delete'); ?>" method="post">
-        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Delete Post</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info">
-                            Anda yakin mau menghapus post ini?
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="id" required>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
 
     <!-- Javascripts -->
     <script src="<?php echo base_url() . 'assets/plugins/jquery/jquery-2.1.4.min.js' ?>"></script>
@@ -372,61 +368,64 @@
     <script src="<?php echo base_url() . 'assets/plugins/moment/moment.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/datatables/js/jquery.datatables.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/js/modern.min.js' ?>"></script>
-    <script src="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/js/dropify.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.min.js' ?>"></script>
     <script>
         $(document).ready(function() {
-            $('#data-table').dataTable();
 
-            //Delete Record
-            $('.btn-delete').on('click', function() {
-                var id = $(this).data('id');
-                $('[name="id"]').val(id);
-                $('#DeleteModal').modal('show');
+            $('#summernote').summernote({
+                height: 590,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'hr']],
+                    ['view', ["fullscreen", "codeview", "help"]],
+                ],
+
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
+
             });
+
+            function sendFile(file, editor, welEditable) {
+                data = new FormData();
+                data.append("file", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "<?php echo site_url() ?>backend/post/upload_image",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(url) {
+                        editor.insertImage(welEditable, url);
+                    }
+                });
+            }
+
+
+
+            $('.dropify').dropify({
+                messages: {
+                    default: 'Drag atau drop untuk memilih gambar',
+                    replace: 'Ganti',
+                    remove: 'Hapus',
+                    error: 'error'
+                }
+            });
+
+            $('.title').keyup(function() {
+                var title = $(this).val().toLowerCase().replace(/[&\/\\#^, +()$~%.'":*?<>{}]/g, '-');
+                $('.slug').val(title);
+            });
+
 
         });
     </script>
-
-    <!--Toast Message-->
-    <?php if ($this->session->flashdata('msg') == 'success') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Success',
-                text: "Post Saved!",
-                showHideTransition: 'slide',
-                icon: 'success',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#7EC857'
-            });
-        </script>
-    <?php elseif ($this->session->flashdata('msg') == 'info') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Info',
-                text: "Post Updated!",
-                showHideTransition: 'slide',
-                icon: 'info',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#00C9E6'
-            });
-        </script>
-    <?php elseif ($this->session->flashdata('msg') == 'success-delete') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Success',
-                text: "Post Deleted!.",
-                showHideTransition: 'slide',
-                icon: 'success',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#7EC857'
-            });
-        </script>
-    <?php else : ?>
-
-    <?php endif; ?>
 
 </body>
 

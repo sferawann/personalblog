@@ -41,7 +41,7 @@ class Settings extends CI_Controller
 		$instagram = htmlspecialchars($this->input->post('instagram', TRUE), ENT_QUOTES);
 		$pinterest = htmlspecialchars($this->input->post('pinterest', TRUE), ENT_QUOTES);
 
-		$config['upload_path'] = './theme/images/';
+		$config['upload_path'] = './theme/img/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
 		$config['encrypt_name'] = FALSE;
 

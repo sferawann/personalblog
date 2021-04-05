@@ -1,16 +1,19 @@
+<?php
+error_reporting(0);
+$b = $data->row_array();
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <!-- Title -->
-    <title>Home Settings</title>
+    <title>Add New Research</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta name="author" content="ITENAS" />
-    <link rel="shortcut icon" href="<?php echo base_url() . 'assets/images/favicon.png' ?>">
+    <meta name="author" content="MANAJEMEN PROYEK" />
 
     <!-- Styles -->
     <link href="<?php echo base_url() . 'assets/plugins/pace-master/themes/blue/pace-theme-flash.css' ?>" rel="stylesheet" />
@@ -25,7 +28,9 @@
     <link href="<?php echo base_url() . 'assets/plugins/slidepushmenus/css/component.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables_themeroller.css' ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.css' ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.css' ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url() . 'assets/css/dropify.min.css' ?>" rel="stylesheet" type="text/css">
+
     <!-- Theme Styles -->
     <link href="<?php echo base_url() . 'assets/css/modern.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/css/themes/green.css' ?>" class="theme-color" rel="stylesheet" type="text/css" />
@@ -48,7 +53,7 @@
                     </a>
                 </div>
                 <div class="logo-box" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <a href="<?php echo site_url('backend/dashboard'); ?>" style="color: white;" class="logo-text"><span>Blog</span></a>
+                    <a href="<?php echo site_url('superadmin/dashboard'); ?>" style="color: white;" class="logo-text"><span>Blog</span></a>
                 </div><!-- Logo Box -->
                 <div class="search-button">
                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
@@ -62,7 +67,7 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <?php
-                            $count_inbox = $this->db->get_where('tbl_inbox', array('inbox_status' => '0'));
+                            $count_inbox = $this->db->get_where('inbox', array('status_inbox' => '0'));
                             ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a>
@@ -74,28 +79,28 @@
                                     <li class="dropdown-menu-list slimscroll messages">
                                         <ul class="list-unstyled">
                                             <?php
-                                            $query_msg = $this->db->get_where('tbl_inbox', array('inbox_status' => '0'), 6);
+                                            $query_msg = $this->db->get_where('inbox', array('status_inbox' => '0'), 6);
                                             foreach ($query_msg->result() as $row) :
                                             ?>
                                                 <li>
-                                                    <a href="<?php echo site_url('backend/inbox'); ?>">
+                                                    <a href="<?php echo site_url('superadmin/inbox'); ?>">
                                                         <div class="msg-img">
                                                             <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" alt="">
                                                         </div>
-                                                        <p class="msg-name"><?php echo $row->inbox_name; ?></p>
-                                                        <p class="msg-text"><?php echo word_limiter($row->inbox_message, 5); ?></p>
-                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->inbox_created_at)); ?></p>
+                                                        <p class="msg-name"><?php echo $row->name_inbox; ?></p>
+                                                        <p class="msg-text"><?php echo word_limiter($row->message_inbox, 5); ?></p>
+                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->createdat_inbox)); ?></p>
                                                     </a>
                                                 </li>
                                             <?php endforeach; ?>
 
                                         </ul>
                                     </li>
-                                    <li class="drop-all"><a href="<?php echo site_url('backend/inbox'); ?>" class="text-center">All Messages</a></li>
+                                    <li class="drop-all"><a href="<?php echo site_url('superadmin/inbox'); ?>" class="text-center">All Messages</a></li>
                                 </ul>
                             </li>
                             <?php
-                            $count_comment = $this->db->get_where('tbl_comment', array('comment_status' => '0'));
+                            $count_comment = $this->db->get_where('comment', array('status_comment' => '0'));
                             ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-comment"></i><span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a>
@@ -106,46 +111,46 @@
                                     <li class="dropdown-menu-list slimscroll messages">
                                         <ul class="list-unstyled">
                                             <?php
-                                            $query_cmt = $this->db->get_where('tbl_comment', array('comment_status' => '0'), 6);
+                                            $query_cmt = $this->db->get_where('comment', array('status_comment' => '0'), 6);
                                             foreach ($query_cmt->result() as $row) :
                                             ?>
                                                 <li>
-                                                    <a href="<?php echo site_url('backend/comment/unpublish'); ?>">
+                                                    <a href="<?php echo site_url('superamdin/comment/unpublish'); ?>">
                                                         <div class="msg-img">
                                                             <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" alt="">
                                                         </div>
-                                                        <p class="msg-name"><?php echo $row->comment_name; ?></p>
-                                                        <p class="msg-text"><?php echo word_limiter($row->comment_message, 5); ?></p>
-                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->comment_date)); ?></p>
+                                                        <p class="msg-name"><?php echo $row->name_comment; ?></p>
+                                                        <p class="msg-text"><?php echo word_limiter($row->message_comment, 5); ?></p>
+                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->date_comment)); ?></p>
                                                     </a>
                                                 </li>
                                             <?php endforeach; ?>
 
                                         </ul>
                                     </li>
-                                    <li class="drop-all"><a href="<?php echo site_url('backend/comment/unpublish'); ?>" class="text-center">All Comments</a></li>
+                                    <li class="drop-all"><a href="<?php echo site_url('superamdin/comment/unpublish'); ?>" class="text-center">All Comments</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
                                     <span class="user-name"><?php echo $this->session->userdata('name'); ?><i class="fa fa-angle-down"></i></span>
                                     <?php
-                                    $user_id = $this->session->userdata('id');
-                                    $query = $this->db->get_where('tbl_user', array('user_id' => $user_id));
+                                    $id_user = $this->session->userdata('id');
+                                    $query = $this->db->get_where('user', array('id_user' => $id_user));
                                     if ($query->num_rows() > 0) :
                                         $row = $query->row_array();
                                     ?>
-                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/images/' . $row['user_photo']; ?>" width="40" height="40" alt="">
+                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/img/' . $row['photo_user']; ?>" width="40" height="40" alt="">
                                     <?php else : ?>
-                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" width="40" height="40" alt="">
+                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" width="40" height="40" alt="">
                                     <?php endif; ?>
                                 </a>
                                 <ul class="dropdown-menu dropdown-list" role="menu">
-                                    <li role="presentation"><a href="<?php echo site_url('backend/change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
-                                    <li role="presentation"><a href="<?php echo site_url('backend/comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a></li>
-                                    <li role="presentation"><a href="<?php echo site_url('backend/inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a></li>
                                     <li role="presentation" class="divider"></li>
-                                    <li role="presentation"><a href="<?php echo site_url('logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/login/logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                                 </ul>
                             </li>
                         </ul><!-- Nav -->
@@ -159,18 +164,18 @@
                 <div class="sidebar-header" style="background: linear-gradient(to right,#e8b38c, #697194)">
                     <div class="sidebar-profile">
                         <?php
-                        $user_id = $this->session->userdata('id');
-                        $query = $this->db->get_where('tbl_user', array('user_id' => $user_id));
+                        $id_user = $this->session->userdata('id');
+                        $query = $this->db->get_where('user', array('id_user' => $id_user));
                         if ($query->num_rows() > 0) :
                             $row = $query->row_array();
                         ?>
                             <a href="javascript:void(0);">
                                 <div class="sidebar-profile-image">
-                                    <img src="<?php echo base_url() . 'assets/images/' . $row['user_photo']; ?>" class="img-circle img-responsive" alt="">
+                                    <img src="<?php echo base_url() . 'assets/img/' . $row['photo_user']; ?>" class="img-circle img-responsive" alt="">
                                 </div>
                                 <div class="sidebar-profile-details">
                                     <span><?php echo $this->session->userdata('name'); ?><br>
-                                        <?php if ($row['user_level'] == '1') : ?>
+                                        <?php if ($row['level_user'] == '1') : ?>
                                             <small style="color: white;">Administrator</small>
                                         <?php else : ?>
                                             <small>Author</small>
@@ -181,11 +186,11 @@
                         <?php else : ?>
                             <a href="javascript:void(0);">
                                 <div class="sidebar-profile-image">
-                                    <img src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" class="img-circle img-responsive" alt="">
+                                    <img src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" class="img-circle img-responsive" alt="">
                                 </div>
                                 <div class="sidebar-profile-details">
                                     <span><?php echo $this->session->userdata('name'); ?><br>
-                                        <?php if ($row['user_level'] == '1') : ?>
+                                        <?php if ($row['level_user'] == '1') : ?>
                                             <small>Administrator</small>
                                         <?php else : ?>
                                             <small>Author</small>
@@ -197,68 +202,74 @@
                     </div>
                 </div>
                 <ul class="menu accordion-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <li class="active"><a href="<?php echo site_url('backend/dashboard'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194)" class="waves-effect waves-button" class="waves-effect waves-button"><span style="color: white;" class="menu-icon icon-home"></span>
+                    <li class="active"><a href="<?php echo site_url('superadmin/dashboard'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194)" class="waves-effect waves-button" class="waves-effect waves-button"><span style="color: white;" class="menu-icon icon-home"></span>
                             <p>Dashboard</p>
                         </a></li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>Course</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/post/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/post'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Course List</a></li>
-                            <li><a href="<?php echo site_url('backend/category'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Category</a></li>
-                            <li><a href="<?php echo site_url('backend/tag'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tag</a></li>
+                            <li><a href="<?php echo site_url('superadmin/post/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/post'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Course List</a></li>
+                            <li><a href="<?php echo site_url('superadmin/category'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Category</a></li>
+                            <li><a href="<?php echo site_url('superadmin/tag'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tag</a></li>
                         </ul>
                     </li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>Tamyiz</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/tamyiz/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/tamyiz'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tamyiz List</a></li>
+                            <li><a href="<?php echo site_url('superadmin/tamyiz/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/tamyiz'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Tamyiz List</a></li>
                         </ul>
                     </li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>Research</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/research/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/research'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
+                            <li><a href="<?php echo site_url('superadmin/research/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/research'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Research List</a></li>
                         </ul>
                     </li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
                             <p>PKM</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/PKM/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('backend/PKM'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">PKM List</a></li>
+                            <li><a href="<?php echo site_url('superadmin/Pkm/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/Pkm'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">PKM List</a></li>
                         </ul>
                     </li>
-                    <li><a href="<?php echo site_url('backend/inbox'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Home</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('superadmin/Home/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/Home'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Home List</a></li>
+                        </ul>
+                    </li>
+                    <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
+                            <p>Experience</p><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
+                            <li><a href="<?php echo site_url('superadmin/Experience/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/Experience'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Experience List</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="<?php echo site_url('superadmin/About'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-info"></span>
+                            <p>About</p>
+                        </a></li>
+                    <li><a href="<?php echo site_url('superadmin/inbox'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
                             <p>Inbox</p>
                         </a></li>
-                    <li><a href="<?php echo site_url('backend/comment'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
+                    <li><a href="<?php echo site_url('superadmin/comment'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
                             <p>Comments</p>
                         </a></li>
 
                     </a></li>
-
-                    <li><a href="<?php echo site_url('backend/users'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
+                    <li><a href="<?php echo site_url('superadmin/users'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
                             <p>Users</p>
                         </a></li>
-                    <li class="droplink"><a href="<?php echo site_url('backend/settings'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
-                            <p>Settings</p><span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('backend/settings'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Basic</a></li>
-                            <li><a href="<?php echo site_url('backend/home_setting'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Home</a></li>
-                            <li><a href="<?php echo site_url('backend/about_setting'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">About</a></li>
-                            <li><a href="<?php echo site_url('backend/experience/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add Experience</a></li>
-                            <li><a href="<?php echo site_url('backend/experience'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Experience List</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="<?php echo site_url('logout'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
+                    <li><a href="<?php echo site_url('superadmin/login/logout'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
                             <p>Log Out</p>
                         </a>
                     </li>
@@ -268,73 +279,76 @@
         </div><!-- Page Sidebar -->
         <div class="page-inner">
             <div class="page-title">
-                <h3>Home Information</h3>
+                <h3>Edit Research</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
-                        <li><a href="<?php echo site_url('backend/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="#">Site</a></li>
-                        <li class="active">Settings</li>
+                        <li><a href="<?php echo site_url('superadmin/dashboard'); ?>">Dashboard</a></li>
+                        <li><a href="<?php echo site_url('superadmin/research'); ?>">Research</a></li>
+                        <li class="active">Edit</li>
                     </ol>
                 </div>
             </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <form class="form-horizontal" action="<?php echo base_url() . 'backend/home_setting/update' ?>" method="post" enctype="multipart/form-data">
-                        <div class="col-md-12">
+                    <form method="post" action="<?php echo site_url('superadmin/research/edit') ?>">
+                        <div class="col-md-8">
                             <div class="panel panel-white">
 
                                 <div class="panel-body">
-
+                                    <input type="hidden" name="id_research" value="<?= $b['id_research'] ?>" class="form-control title">
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Caption 1</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="caption1" class="form-control" id="input1" value="<?php echo $caption_1; ?>" placeholder="Site Name">
-                                        </div>
+                                        <label>Author</label>
+                                        <input type="text" name="author_research" value="<?php echo $b['author_research']; ?>" class="form-control title" placeholder="Author" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Caption 2</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="caption2" class="form-control" id="input1" value="<?php echo $caption_2; ?>" placeholder="Site Title">
-                                        </div>
+                                        <label>Title</label>
+                                        <input type="text" name="tittle_research" value="<?php echo $b['tittle_research']; ?>" class=" form-control title" placeholder="Title" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Image Heading</label>
-                                        <div class="col-sm-10">
-                                            <input type="file" name="img_heading" class="form-control" id="input1">
-                                            <!-- <p class="help-block">Image Heading harus beresolusi 1800 x 1110 Pixels.</p> -->
-                                            <img src="<?php echo base_url() . 'theme/images/' . $image_heading; ?>" width="560" class="thumbnail">
-                                        </div>
+                                        <label>Jurnal Name</label>
+                                        <input type="text" name="jurnalname_research" value="<?php echo $b['jurnalname_research']; ?>" class=" form-control title" placeholder="Jurnal Name" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Background Testimonial</label>
-                                        <div class="col-sm-10">
-                                            <input type="file" name="img_testimonial" class="form-control" id="input1">
-                                            <!-- <p class="help-block">Background Testimonial harus beresolusi 925 x 617 Pixels.</p> -->
-                                            <img src="<?php echo base_url() . 'theme/images/' . $image_testimonial; ?>" width="560" class="thumbnail">
-                                        </div>
+                                        <label>Publisher</label>
+                                        <input type="text" name="publisher_research" value="<?php echo $b['publisher_research']; ?>" class=" form-control title" placeholder="Publisher" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <input type="hidden" name="home_id" value="<?php echo $home_id ?>" required>
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" style="background-color: #697194" class="btn btn-success btn-lg">UPDATE</button>
-                                        </div>
+                                        <label>Volume</label>
+                                        <input type="text" name="volume_research" value="<?php echo $b['volume_research']; ?>" class=" form-control title" placeholder="Volume" required>
                                     </div>
-
+                                    <div class="form-group">
+                                        <label>Tanggal</label>
+                                        <input type="text" name="date_research" value="<?php echo $b['date_research']; ?>" class=" form-control title" placeholder="Volume" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Page</label>
+                                        <input type="text" name="pages_research" value="<?php echo $b['pages_research']; ?>" class=" form-control title" placeholder="Page" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Link</label>
+                                        <input type="text" name="link_research" value="<?php echo $b['link_research']; ?>" class="form-control title" placeholder="link" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Abstract</label>
+                                        <textarea name="abstract_research" id="summernote"><?php echo $b['abstract_research']; ?></textarea>
+                                    </div>
+                                    <div class="btn-group btn-group-justified" role="group" style="background-color: #697194">
+                                        <button type="submit" class="btn btn-primary btn-lg" style="width:100%"><span class="icon-cursor"></span> UPDATE</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </form>
-                </div><!-- Row -->
-            </div><!-- Main Wrapper -->
-            <div class="page-footer">
-                <p class="no-s"><?php echo date('Y'); ?> &copy; IF ITENAS</p>
+                </div>
+
             </div>
+
+
+        </div><!-- Row -->
+        </div><!-- Main Wrapper -->
+        <div class="page-footer">
+            <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYEK 2021</p>
+        </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
 
@@ -355,23 +369,64 @@
     <script src="<?php echo base_url() . 'assets/plugins/moment/moment.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/datatables/js/jquery.datatables.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/js/modern.min.js' ?>"></script>
-    <script src="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.js' ?>"></script>
-    <!--Toast Message-->
-    <?php if ($this->session->flashdata('msg') == 'success') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Success',
-                text: "Home Information Saved!",
-                showHideTransition: 'slide',
-                icon: 'success',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#7EC857'
-            });
-        </script>
-    <?php else : ?>
+    <script src="<?php echo base_url() . 'assets/js/dropify.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.min.js' ?>"></script>
+    <script>
+        $(document).ready(function() {
 
-    <?php endif; ?>
+            $('#summernote').summernote({
+                height: 590,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'hr']],
+                    ['view', ["fullscreen", "codeview", "help"]],
+                ],
+
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
+
+            });
+
+            function sendFile(file, editor, welEditable) {
+                data = new FormData();
+                data.append("file", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "<?php echo site_url() ?>superadmin/post/upload_image",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(url) {
+                        editor.insertImage(welEditable, url);
+                    }
+                });
+            }
+
+
+
+            $('.dropify').dropify({
+                messages: {
+                    default: 'Drag atau drop untuk memilih gambar',
+                    replace: 'Ganti',
+                    remove: 'Hapus',
+                    error: 'error'
+                }
+            });
+
+            $('.title').keyup(function() {
+                var title = $(this).val().toLowerCase().replace(/[&\/\\#^, +()$~%.'":*?<>{}]/g, '-');
+                $('.slug').val(title);
+            });
+
+
+        });
+    </script>
 
 </body>
 

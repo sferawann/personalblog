@@ -5,10 +5,6 @@ class Dashboard extends CI_Controller
 	{
 		parent::__construct();
 		error_reporting(0);
-		if ($this->session->userdata('logged') != TRUE) {
-			$url = base_url('administrator');
-			redirect($url);
-		};
 		$this->load->model('superadmin/Visitor_model', 'visitor_model');
 		$this->load->helper('text');
 	}

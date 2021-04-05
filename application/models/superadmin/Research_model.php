@@ -47,12 +47,33 @@ class Research_model extends CI_Model
         }
     }
 
-    function edit_research($id, $title, $link, $abstract, $publisher, $jurnalname, $author, $volume, $date, $pages)
+    function edit_research()
     {
-        $result = $this->db->query("UPDATE post SET tittle_research='$title',link_research='$link','abstract_research'='$abstract',
-		publisher_research='$publisher',jurnalname_research='$jurnalname',author_research='$author',volume_research='$volume',
-		date_research='$date',pages_research='$pages' WHERE id_research='$id'");
-        return $result;
+        $id_research      = $this->input->post('id_research');
+        $tittle_research      = $this->input->post('tittle_research');
+        $link_research        = $this->input->post('link_research');
+        $abstract_research    = $this->input->post('abstract_research');
+        $publisher_research   = $this->input->post('publisher_research');
+        $jurnalname_research  = $this->input->post('jurnalname_research');
+        $author_research      = $this->input->post('author_research');
+        $volume_research      = $this->input->post('volume_research');
+        $date_research        = $this->input->post('date_research');
+        $pages_research       = $this->input->post('pages_research');
+
+        $data = array(
+            'tittle_research'       => $tittle_research,
+            'link_research'         => $link_research,
+            'abstract_research'     => $abstract_research,
+            'publisher_research'    => $publisher_research,
+            'jurnalname_research'   => $jurnalname_research,
+            'author_research'       => $author_research,
+            'volume_research'       => $volume_research,
+            'date_research'         => $date_research,
+            'pages_research'        => $pages_research,
+        );
+
+        $this->db->where('id_research', $id_research);
+        $this->db->update('research', $data);
     }
 
     // function edit_post_no_img($id, $title, $link, $abstract, $publisher, $jurnalname, $author, $volume,$date,$pages)
