@@ -7,10 +7,6 @@ class Inbox extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		if ($this->session->userdata('logged') != TRUE) {
-			$url = base_url('administrator');
-			redirect($url);
-		};
 		$this->load->model('superadmin/Inbox_model', 'inbox_model');
 		error_reporting(0);
 		$this->load->helper('text');
@@ -59,16 +55,16 @@ class Inbox extends CI_Controller
 
 	function read()
 	{
-		$inbox_id = htmlspecialchars($this->uri->segment(4), ENT_QUOTES);
-		$result = $this->inbox_model->get_inbox_by_id($inbox_id);
+		$id_inbox = htmlspecialchars($this->uri->segment(4), ENT_QUOTES);
+		$result = $this->inbox_model->get_inbox_by_id($id_inbox);
 		if ($result->num_rows() > 0) {
 			$row = $result->row_array();
-			$x['name'] = $row['inbox_name'];
-			$x['email'] = $row['inbox_email'];
-			$x['subject'] = $row['inbox_subject'];
-			$x['message'] = $row['inbox_message'];
-			$x['date'] = $row['inbox_created_at'];
-			$this->inbox_model->update_status_by_id($inbox_id);
+			$x['name'] = $row['name_inbox'];
+			$x['email'] = $row['email_inbox'];
+			$x['subject'] = $row['subject_inbox'];
+			$x['message'] = $row['message_inbox'];
+			$x['date'] = $row['createdat_inbox'];
+			$this->inbox_model->update_status_by_id($id_inbox);
 			$this->load->view('superadmin/v_inbox_detail', $x);
 		} else {
 			redirect('superadmin/inbox');

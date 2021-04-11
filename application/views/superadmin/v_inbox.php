@@ -132,7 +132,7 @@
                                     if ($query->num_rows() > 0) :
                                         $row = $query->row_array();
                                     ?>
-                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/img/' . $row['user_photo']; ?>" width="40" height="40" alt="">
+                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/img/' . $row['photo_user']; ?>" width="40" height="40" alt="">
                                     <?php else : ?>
                                         <img class="img-circle avatar" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" width="40" height="40" alt="">
                                     <?php endif; ?>

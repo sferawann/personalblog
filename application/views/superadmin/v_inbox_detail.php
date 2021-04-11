@@ -59,7 +59,7 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <?php
-                            $count_inbox = $this->db->get_where('tbl_inbox', array('inbox_status' => '0'));
+                            $count_inbox = $this->db->get_where('inbox', array('status_inbox' => '0'));
                             ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a>
@@ -71,28 +71,28 @@
                                     <li class="dropdown-menu-list slimscroll messages">
                                         <ul class="list-unstyled">
                                             <?php
-                                            $query_msg = $this->db->get_where('tbl_inbox', array('inbox_status' => '0'), 6);
+                                            $query_msg = $this->db->get_where('inbox', array('status_inbox' => '0'), 6);
                                             foreach ($query_msg->result() as $row) :
                                             ?>
                                                 <li>
-                                                    <a href="<?php echo site_url('backend/inbox'); ?>">
+                                                    <a href="<?php echo site_url('superadmin/inbox'); ?>">
                                                         <div class="msg-img">
                                                             <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" alt="">
                                                         </div>
-                                                        <p class="msg-name"><?php echo $row->inbox_name; ?></p>
-                                                        <p class="msg-text"><?php echo word_limiter($row->inbox_message, 5); ?></p>
-                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->inbox_created_at)); ?></p>
+                                                        <p class="msg-name"><?php echo $row->name_inbox; ?></p>
+                                                        <p class="msg-text"><?php echo word_limiter($row->message_inbox, 5); ?></p>
+                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->createdat_inbox)); ?></p>
                                                     </a>
                                                 </li>
                                             <?php endforeach; ?>
 
                                         </ul>
                                     </li>
-                                    <li class="drop-all"><a href="<?php echo site_url('backend/inbox'); ?>" class="text-center">All Messages</a></li>
+                                    <li class="drop-all"><a href="<?php echo site_url('superadmin/inbox'); ?>" class="text-center">All Messages</a></li>
                                 </ul>
                             </li>
                             <?php
-                            $count_comment = $this->db->get_where('tbl_comment', array('comment_status' => '0'));
+                            $count_comment = $this->db->get_where('comment', array('status_comment' => '0'));
                             ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-comment"></i><span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a>
@@ -103,46 +103,46 @@
                                     <li class="dropdown-menu-list slimscroll messages">
                                         <ul class="list-unstyled">
                                             <?php
-                                            $query_cmt = $this->db->get_where('tbl_comment', array('comment_status' => '0'), 6);
+                                            $query_cmt = $this->db->get_where('comment', array('status_comment' => '0'), 6);
                                             foreach ($query_cmt->result() as $row) :
                                             ?>
                                                 <li>
-                                                    <a href="<?php echo site_url('backend/comment/unpublish'); ?>">
+                                                    <a href="<?php echo site_url('superadmin/comment/unpublish'); ?>">
                                                         <div class="msg-img">
                                                             <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" alt="">
                                                         </div>
-                                                        <p class="msg-name"><?php echo $row->comment_name; ?></p>
-                                                        <p class="msg-text"><?php echo word_limiter($row->comment_message, 5); ?></p>
-                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->comment_date)); ?></p>
+                                                        <p class="msg-name"><?php echo $row->name_comment; ?></p>
+                                                        <p class="msg-text"><?php echo word_limiter($row->message_comment, 5); ?></p>
+                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->date_comment)); ?></p>
                                                     </a>
                                                 </li>
                                             <?php endforeach; ?>
 
                                         </ul>
                                     </li>
-                                    <li class="drop-all"><a href="<?php echo site_url('backend/comment/unpublish'); ?>" class="text-center">All Comments</a></li>
+                                    <li class="drop-all"><a href="<?php echo site_url('superadmin/comment/unpublish'); ?>" class="text-center">All Comments</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
                                     <span class="user-name"><?php echo $this->session->userdata('name'); ?><i class="fa fa-angle-down"></i></span>
                                     <?php
-                                    $user_id = $this->session->userdata('id');
-                                    $query = $this->db->get_where('tbl_user', array('user_id' => $user_id));
+                                    $id_user = $this->session->userdata('id');
+                                    $query = $this->db->get_where('user', array('id_user' => $id_user));
                                     if ($query->num_rows() > 0) :
                                         $row = $query->row_array();
                                     ?>
-                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/images/' . $row['user_photo']; ?>" width="40" height="40" alt="">
+                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/img/' . $row['photo_user']; ?>" width="40" height="40" alt="">
                                     <?php else : ?>
-                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" width="40" height="40" alt="">
+                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" width="40" height="40" alt="">
                                     <?php endif; ?>
                                 </a>
                                 <ul class="dropdown-menu dropdown-list" role="menu">
-                                    <li role="presentation"><a href="<?php echo site_url('backend/change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
-                                    <li role="presentation"><a href="<?php echo site_url('backend/comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a></li>
-                                    <li role="presentation"><a href="<?php echo site_url('backend/inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a></li>
                                     <li role="presentation" class="divider"></li>
-                                    <li role="presentation"><a href="<?php echo site_url('logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/login/logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                                 </ul>
                             </li>
                         </ul><!-- Nav -->
@@ -156,18 +156,18 @@
                 <div class="sidebar-header" style="background: linear-gradient(to right,#e8b38c, #697194)">
                     <div class="sidebar-profile">
                         <?php
-                        $user_id = $this->session->userdata('id');
-                        $query = $this->db->get_where('tbl_user', array('user_id' => $user_id));
+                        $id_user = $this->session->userdata('id');
+                        $query = $this->db->get_where('user', array('id_user' => $id_user));
                         if ($query->num_rows() > 0) :
                             $row = $query->row_array();
                         ?>
                             <a href="javascript:void(0);">
                                 <div class="sidebar-profile-image">
-                                    <img src="<?php echo base_url() . 'assets/images/' . $row['user_photo']; ?>" class="img-circle img-responsive" alt="">
+                                    <img src="<?php echo base_url() . 'assets/img/' . $row['photo_user']; ?>" class="img-circle img-responsive" alt="">
                                 </div>
                                 <div class="sidebar-profile-details">
                                     <span><?php echo $this->session->userdata('name'); ?><br>
-                                        <?php if ($row['user_level'] == '1') : ?>
+                                        <?php if ($row['level_user'] == '1') : ?>
                                             <small style="color: white;">Administrator</small>
                                         <?php else : ?>
                                             <small>Author</small>
@@ -178,11 +178,11 @@
                         <?php else : ?>
                             <a href="javascript:void(0);">
                                 <div class="sidebar-profile-image">
-                                    <img src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" class="img-circle img-responsive" alt="">
+                                    <img src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" class="img-circle img-responsive" alt="">
                                 </div>
                                 <div class="sidebar-profile-details">
                                     <span><?php echo $this->session->userdata('name'); ?><br>
-                                        <?php if ($row['user_level'] == '1') : ?>
+                                        <?php if ($row['level_user'] == '1') : ?>
                                             <small>Administrator</small>
                                         <?php else : ?>
                                             <small>Author</small>
@@ -278,7 +278,7 @@
                                 <h2>View Message</h2>
                             </div>
                             <div class="col-md-4">
-                                <form action="<?php echo site_url('backend/inbox/result'); ?>" method="GET">
+                                <form action="<?php echo site_url('superadmin/inbox/result'); ?>" method="GET">
                                     <div class="input-group">
                                         <input type="text" name="search_query" class="form-control input-search" placeholder="Search..." required>
                                         <span class="input-group-btn">
@@ -296,7 +296,7 @@
                                 <p class="message-date"><?php echo date('d M Y H:i:s', strtotime($date)); ?></p>
                             </div>
                             <div class="message-sender">
-                                <img src="<?php echo base_url() . 'assets/images/user_blank.png' ?>" alt="">
+                                <img src="<?php echo base_url() . 'assets/img/user_blank.png' ?>" alt="">
                                 <p><?php echo $name; ?> <span>&lt;<?php echo $email; ?>&gt;</span></p>
                             </div>
                             <div class="message-content">
@@ -308,7 +308,7 @@
                 </div><!-- Row -->
             </div><!-- Main Wrapper -->
             <div class="page-footer">
-                <p class="no-s"><?php echo date('Y'); ?> &copy; IF ITENAS</p>
+                <p class="no-s"><?php echo date('Y'); ?> &copy; Manajemen Proyek 2021</p>
             </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->

@@ -1,3 +1,8 @@
+<?php
+error_reporting(0);
+$b1 = $about->row_array();
+$b2 = $aboutmeandsites->row_array();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -279,133 +284,99 @@
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo site_url('superadmin/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="#">Site</a></li>
-                        <li class="active">Settings</li>
+                        <li><a href="#">About</a></li>
+                        <li class="active">Update</li>
                     </ol>
                 </div>
             </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <form class="form-horizontal" action="<?php echo base_url() . 'superadmin/about_setting/update' ?>" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="<?php echo base_url() . 'superadmin/about/update' ?>" method="post" enctype="multipart/form-data">
                         <div class="col-md-12">
                             <div class="panel panel-white">
-
                                 <div class="panel-body">
-
                                     <div class="form-group">
                                         <label for="input1" class="col-sm-2 control-label">Image</label>
                                         <div class="col-sm-10">
-                                            <input type="file" name="img_about" class="form-control" id="input1">
-                                            <!-- <p class="help-block">Image Heading harus beresolusi 456 x 470 Pixels.</p> -->
-                                            <img src="<?php echo base_url() . 'theme/images/' . $about_img; ?>" width="300" class="thumbnail">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="name" class="form-control" value="" id="input1" placeholder="Name">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Profesi</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="profesi" class="form-control" value="" id="input1" placeholder="Profesi">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">About Me</label>
-                                        <div class="col-sm-10">
-                                            <textarea name="description" class="form-control" id="summernote" placeholder="Description"><?php echo $about_desc; ?></textarea>
+                                            <input type="file" name="image_aboutme" class="form-control" id="input1">
+                                            <!-- <img src="<?= base_url(); ?>assets/img/dewi.jpg" class="rounded-circle avatar-xs img-thumbnail" alt="profile-image"> -->
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="input1" class="col-sm-2 control-label">Full Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="fullname" class="form-control" value="" id="input1" placeholder="Full Name">
+                                            <input type="text" name="fullname_aboutme" class="form-control" value="<?= $b2['fullname_aboutme'] ?>" id="input1">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="input1" class="col-sm-2 control-label">Email</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="email" class="form-control" value="" id="input1" placeholder="Email">
+                                            <input type="text" name="email_aboutme" class="form-control" value="<?= $b2['email_aboutme'] ?>" id="input1" placeholder="Email">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="input1" class="col-sm-2 control-label">Location</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="location" class="form-control" value="" id="input1" placeholder="Location">
+                                            <input type="text" name="location_aboutme" class="form-control" value="<?= $b2['location_aboutme'] ?>" id="input1" placeholder="Location">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Facebook URL</label>
+                                        <label for="input1" class="col-sm-2 control-label">Summary</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="facebook" class="form-control" value="" id="input1" placeholder="Facebook URL">
+                                            <input type="text" name="summary_aboutme" class="form-control" value="<?= $b2['summary_aboutme'] ?>" id="input1" placeholder="Summary">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input1" class="col-sm-2 control-label">Skills</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="skills_aboutme" class="form-control" value="<?= $b2['skills_aboutme'] ?>" id="input1" placeholder="Skills">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Twitter URL</label>
+                                        <label for="input1" class="col-sm-2 control-label">Education</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="twitter" class="form-control" value="" id="input1" placeholder="Twitter URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Linkedin URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="linkedin" class="form-control" value="" id="input1" placeholder="Linkedin URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Instagram URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="instagram" class="form-control" value="" id="input1" placeholder="Instagran URL">
+                                            <input type="text" name="education_aboutme" class="form-control" value="<?= $b2['education_aboutme'] ?>" id="input1" placeholder="Full Name">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="input1" class="col-sm-2 control-label">Google Scholar URL</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="googlescholar" class="form-control" value="" id="input1" placeholder="Google Scholar URL">
+                                            <input type="text" name="googlescholar_sites" class="form-control" value="<?= $b2['googlescholar_sites'] ?>" id="input1" placeholder="Google Scholar URL">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="input1" class="col-sm-2 control-label">Sinta URL</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="sinta" class="form-control" value="" id="input1" placeholder="Sinta URL">
+                                            <input type="text" name="sinta_sites" class="form-control" value="<?= $b2['sinta_sites'] ?>" id="input1" placeholder="Sinta URL">
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Youtube URL</label>
+                                        <label for="input1" class="col-sm-2 control-label">Scopus URL</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="youtube" class="form-control" value="" id="input1" placeholder="Youtube URL">
+                                            <input type="text" name="scopus_sites" class="form-control" value="<?= $b2['scopus_sites'] ?>" id="input1" placeholder="Sinta URL">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Github URL</label>
+                                        <label for="input1" class="col-sm-2 control-label">LinkedIn</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="github" class="form-control" value="" id="input1" placeholder="Github URL">
+                                            <input type="text" name="linkedin_sites" class="form-control" value="<?= $b2['linkedin_sites'] ?>" id="input1" placeholder="Youtube URL">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="hidden" name="id_about" value="<?php echo $id_about ?>" required>
+                                        <input type="hidden" name="id_aboutme" value="<?php echo $id_aboutme ?>" required>
                                         <div class="col-sm-offset-2 col-sm-10">
                                             <button type="submit" style="background-color: #697194" class="btn btn-success btn-lg">UPDATE</button>
                                         </div>
                                     </div>
-
 
                                 </div>
                             </div>

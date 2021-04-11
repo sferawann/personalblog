@@ -50,7 +50,7 @@
                             Course</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php foreach ($Post as $p) : ?>
-                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $p->tittle_post; ?></a>
+                                <a class="dropdown-item" href="<?= site_url('Course_Post/index/' . $p->id_post); ?>"><?php echo $p->tittle_post; ?></a>
                             <?php endforeach; ?>
                         </div>
                     </li>
@@ -86,75 +86,48 @@
                 <span class="contact100-form-title">
                     About
                 </span>
-                <div class="col-lg-4 col-xl-4">
-                    <div class="card-box text-center">
-                        <img src="<?= base_url(); ?>assets/img/dewi.jpg" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
-                        <div class="text-left mt-3">
-                            <h6 class="font-13 text-uppercase">About Me :</h6>
-                            <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">Dewi Rosmala</span></p>
+                <?php foreach ($Aboutme as $am) : ?>
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="card-box text-center">
+                            <img src="<?= base_url(); ?>assets/img/dewi.jpg" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
+                            <div class="text-left mt-3">
+                                <h6 class="font-13 text-uppercase">About Me :</h6>
+                                <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2"><?= $am->fullname_aboutme; ?></span></p>
 
 
-                            <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">rosmalanoy@gmail.com</span></p>
+                                <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 "><?= $am->email_aboutme; ?></span></p>
 
-                            <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2">Bandung, Indonesia</span></p>
+                                <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2"><?= $am->location_aboutme; ?></span></p>
+                            </div>
+
+                        </div> <!-- end card-box -->
+                        <div class="card-box text-center">
+                            <div class="pt-1">
+                                <h4 class="header-title">Summary</h4>
+                                <p class="mb-3"><?= $am->summary_aboutme; ?></p>
+                            </div>
                         </div>
-
-                        <ul class="social-list list-inline mt-3 mb-0">
-                            <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="social-list-item border-purple text-purple"><i class="fab fa-facebook"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="fab fa-google"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="fab fa-twitter"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="fab fa-github"></i></a>
-                            </li>
-                        </ul>
-                    </div> <!-- end card-box -->
-                    <div class="card-box text-center">
-                        <div class="pt-1">
-                            <h4 class="header-title">Summary</h4>
-                            <p class="mb-3">An independent, well-rounded
-                                professional with 20+ years of
-                                experience in the educational, research
-                                & consulting industry, with strong
-                                analytical skills and a broad range of
-                                industry sector expertise.</p>
-                        </div>
-                    </div>
-                    <div class="card-box text-center">
-                        <div class="pt-1">
-                            <h4 class="header-title">Skills</h4>
-                            <p class="mb-3">Analytics,
-                                BI & Data Visualization,
-                                System Information,
-                                Development,
-                                Deep Learning,
-                                Data Scientist.</p>
-                            <!-- <p class="mb-3">Analytics</p>
+                        <div class="card-box text-center">
+                            <div class="pt-1">
+                                <h4 class="header-title">Skills</h4>
+                                <p class="mb-3"><?= $am->skills_aboutme; ?></p>
+                                <!-- <p class="mb-3">Analytics</p>
                             <p class="mb-3">BI & Data Visualization</p>
                             <p class="mb-3"></p>
                             <p class="mb-3"></p>
                             <p class="mb-3"></p> -->
+                            </div>
+                        </div>
+                        <div class="card-box text-center">
+                            <div class="pt-1">
+                                <h4 class="header-title">Education</h4>
+                                <p class="mb-3"><?= $am->education_aboutme; ?></p>
+
+                            </div>
                         </div>
                     </div>
-                    <div class="card-box text-center">
-                        <div class="pt-1">
-                            <h4 class="header-title">Education</h4>
-                            <p class="mb-3">University Of Newcastle
-                                Australia, Degree in
-                                Information Technology,
-                                2004</p>
-                            <p class="mb-3">
-                                Universitas Padjadjaran,
-                                Bandung, Indonesia
-                                Degree in Statistics, 1992</p>
-                        </div>
-                    </div>
-                </div> <!-- end col-->
+                <?php endforeach; ?>
+                <!-- end col-->
 
 
                 <div class="col-lg-8 col-xl-8">
@@ -206,6 +179,7 @@
                         <li><a class="text-muted" href="https://scholar.google.com/citations?user=zJuf-CAAAAAJ&hl=en&oi=sra">Google Scholar</a></li>
                         <li><a class="text-muted" href="https://id.linkedin.com/in/dewi-rosmala-43171528">LinkedIn</a></li>
                         <li><a class="text-muted" href="https://sinta.ristekbrin.go.id/authors/detail?id=6650264&view=overview">Sinta</a></li>
+                        <li><a class="text-muted" href="https://www.scopus.com/authid/detail.uri?authorId=57205508755">Scopus</a></li>
                     </ul>
                 </div>
             </div>

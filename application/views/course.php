@@ -49,7 +49,7 @@
                             Course</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php foreach ($Post as $p) : ?>
-                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $p->tittle_post; ?></a>
+                                <a class="dropdown-item" href="<?= site_url('Course_Post/index/' . $p->id_post); ?>"><?php echo $p->tittle_post; ?></a>
                             <?php endforeach; ?>
                         </div>
                     </li>

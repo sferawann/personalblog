@@ -50,7 +50,7 @@
                             Course</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php foreach ($Post as $p) : ?>
-                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $p->tittle_post; ?></a>
+                                <a class="dropdown-item" href="<?= site_url('Course_Post/index/' . $p->id_post); ?>"><?php echo $p->tittle_post; ?></a>
                             <?php endforeach; ?>
                         </div>
                     </li>
@@ -117,6 +117,10 @@
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
 
+                            <p>https://www.youtube.com/watch?v=IqbUxr5vJdo</p>
+                            <audio controls>
+                                <source src="http://www.jplayer.org/audio/mp3/Miaow-snip-Stirring-of-a-fool.mp3" type="audio/mpeg">
+                            </audio>
                         </div>
                     </div>
                     <!-- /.row -->

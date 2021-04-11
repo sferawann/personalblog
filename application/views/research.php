@@ -50,7 +50,7 @@
                             Course</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php foreach ($Post as $p) : ?>
-                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $p->tittle_post; ?></a>
+                                <a class="dropdown-item" href="<?= site_url('Course_Post/index/' . $p->id_post); ?>"><?php echo $p->tittle_post; ?></a>
                             <?php endforeach; ?>
                         </div>
                     </li>
@@ -126,6 +126,10 @@
                                                 <td><?= $r->pages_research; ?></td>
                                             </tr>
                                             <tr>
+                                                <th>PDF File</th>
+                                                <td><?= $r->pages_research; ?></td>
+                                            </tr>
+                                            <tr>
                                                 <th></th>
                                                 <td></td>
                                             </tr>
@@ -134,6 +138,10 @@
                                     <h6>Abstract</h6>
                                     <p class="text-justify"><?= $r->abstract_research; ?></p>
                                     <a class="btn" target="_blank" href="<?= $r->link_research; ?>" style="background: #697194; border: none; color:white;">View Journal</a>
+                                </div>
+                                <div class="col-sm-12">
+                                    <iframe src="<?= base_url('assets/pdf/' . $r->pdf_research); ?>" height="650px" width="100%" title="Iframe Example"></iframe>
+
                                 </div>
                             </div>
                         </div>

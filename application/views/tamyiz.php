@@ -49,7 +49,7 @@
                             Course</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php foreach ($Post as $p) : ?>
-                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $p->tittle_post; ?></a>
+                                <a class="dropdown-item" href="<?= site_url('Course_Post/index/' . $p->id_post); ?>"><?php echo $p->tittle_post; ?></a>
                             <?php endforeach; ?>
                         </div>
                     </li>
@@ -114,14 +114,14 @@
                             <?php endforeach; ?>
 
                             <!-- Pagination -->
-                            <ul class="pagination justify-content-center mb-4">
+                            <!-- <ul class="pagination justify-content-center mb-4">
                                 <li class="page-item">
                                     <a class="page-link btn-custom" href="#">&larr; Older</a>
                                 </li>
                                 <li class="page-item disabled">
                                     <a class="page-link btn-custom" href="#">Newer &rarr;</a>
                                 </li>
-                            </ul>
+                            </ul> -->
 
                         </div>
 

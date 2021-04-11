@@ -25,14 +25,14 @@ class Experience extends CI_Controller
 	{
 		$id_about = $this->uri->segment(4);
 		$x['data'] = $this->setting_model->get_about_by_id($id_about);
-		$this->load->view('superadmin/v_edit_about', $x);
+		$this->load->view('superadmin/v_edit_experience', $x);
 	}
 
 	function publish()
 	{
 		$data['publish'] = $this->setting_model->save_experience();
 		echo $this->session->set_flashdata('msg', 'success');
-		redirect('superadmin/about_setting');
+		redirect('superadmin/Experience');
 	}
 
 	function edit()
@@ -44,7 +44,7 @@ class Experience extends CI_Controller
 
 		$this->setting_model->edit_experience($id, $name, $tahun, $description);
 		echo $this->session->set_flashdata('msg', 'info');
-		redirect('superadmin/about_setting');
+		redirect('superadmin/experience');
 	}
 
 	function delete()

@@ -32,6 +32,7 @@ class Home extends CI_Controller
 		$data['publish'] = $this->setting_model->save_home();
 		echo $this->session->set_flashdata('msg', 'success');
 		redirect('superadmin/Home');
+		
 	}
 
 	function get_edit()

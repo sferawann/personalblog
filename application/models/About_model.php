@@ -14,4 +14,9 @@ class About_Model extends CI_Model
         $course = $this->db->get('post');
         return $course;
     }
+    function tampil_data_aboutme()
+    {
+        $aboutme = $this->db->get('aboutme');
+        return $aboutme;
+    }
 }

@@ -50,7 +50,7 @@
                             Course</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php foreach ($Post as $p) : ?>
-                                <a class="dropdown-item" href="<?= site_url('Course_post'); ?>"><?php echo $p->tittle_post; ?></a>
+                                <a class="dropdown-item" href="<?= site_url('Course_Post/index/' . $p->id_post); ?>"><?php echo $p->tittle_post; ?></a>
                             <?php endforeach; ?>
                         </div>
                     </li>
@@ -94,34 +94,29 @@
                         <img class="img-fluid" src="<?= base_url(); ?>assets/img/homepage/contact.png">
                     </form>
                 </div>
-                <div class="col-md-1">
-                    <form class="contact100-form validate-form">
-
-                    </form>
-                </div>
                 <div class="col-md-6">
-                    <form class="contact100-form validate-form">
+                    <form class="contact100-form validate-form" action="<?php echo base_url() . 'Contact/addinbox' ?>" method="post" enctype="multipart/form-data">
                         <div class="wrap-input100 validate-input" data-validate="Name is required">
                             <span class="label-input100">Your Name</span>
-                            <input class="input100" type="text" name="name" placeholder="Enter your name">
+                            <input class="input100" type="text" name="name_inbox" placeholder="Enter your name">
                             <span class="focus-input100"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                             <span class="label-input100">Email</span>
-                            <input class="input100" type="text" name="email" placeholder="Enter your email addess">
+                            <input class="input100" type="text" name="email_inbox" placeholder="Enter your email addess">
                             <span class="focus-input100"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate="Subject is required">
                             <span class="label-input100">Subject</span>
-                            <input class="input100" type="text" name="subject" placeholder="Your subject here...">
+                            <input class="input100" type="text" name="subject_inbox" placeholder="Your subject here...">
                             <span class="focus-input100"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate="Message is required">
                             <span class="label-input100">Message</span>
-                            <textarea class="input100" name="message" placeholder="Your message here..."></textarea>
+                            <textarea class="input100" name="message_inbox" placeholder="Your message here..."></textarea>
                             <span class="focus-input100"></span>
                         </div>
 
@@ -137,7 +132,11 @@
                             </div>
                         </div>
                     </form>
+                    <!-- <form class="contact100-form validate-form">
+
+                    </form> -->
                 </div>
+
             </div>
         </div>
     </div>
@@ -191,6 +190,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <?php if ($this->session->flashdata('msg') == 'success') : ?>
+        <script type="text/javascript">
+            $.toast({
+                heading: 'Success',
+                text: "successful!",
+                showHideTransition: 'slide',
+                icon: 'success',
+                hideAfter: false,
+                position: 'bottom-right',
+                bgColor: '#7EC857'
+            });
+        </script>
+    <?php else : ?>
+
+    <?php endif; ?>
 </body>
 
 </html>
