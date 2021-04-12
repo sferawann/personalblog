@@ -1,21 +1,20 @@
 <?php
 error_reporting(0);
-// $b1 = $about->row_array();
-$b2 = $aboutmeandsites->row_array();
+$b = $data->row_array();
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <!-- Title -->
-    <title>About Settings</title>
+    <title>Add New PKM</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta name="author" content="MANAJEMEN PROYEK 2021" />
-    <link rel="shortcut icon" href="<?php echo base_url() . 'assets/img/favicon.png' ?>">
+    <meta name="author" content="MANAJEMEN PROYEK" />
+
 
     <!-- Styles -->
     <link href="<?php echo base_url() . 'assets/plugins/pace-master/themes/blue/pace-theme-flash.css' ?>" rel="stylesheet" />
@@ -30,8 +29,9 @@ $b2 = $aboutmeandsites->row_array();
     <link href="<?php echo base_url() . 'assets/plugins/slidepushmenus/css/component.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables_themeroller.css' ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.css' ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url() . 'assets/css/dropify.min.css' ?>" rel="stylesheet" type="text/css">
+
     <!-- Theme Styles -->
     <link href="<?php echo base_url() . 'assets/css/modern.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/css/themes/green.css' ?>" class="theme-color" rel="stylesheet" type="text/css" />
@@ -54,7 +54,7 @@ $b2 = $aboutmeandsites->row_array();
                     </a>
                 </div>
                 <div class="logo-box" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <a href="<?php echo site_url('superadmin/dashboard'); ?>" class="logo-text" style="color: white;"><span>Blog</span></a>
+                    <a href="<?php echo site_url('superadmin/dashboard'); ?>" style="color: white;" class="logo-text"><span>Blog</span></a>
                 </div><!-- Logo Box -->
                 <div class="search-button">
                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
@@ -280,116 +280,82 @@ $b2 = $aboutmeandsites->row_array();
         </div><!-- Page Sidebar -->
         <div class="page-inner">
             <div class="page-title">
-                <h3>About Information</h3>
+                <h3>Edit Experience</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo site_url('superadmin/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="#">About</a></li>
-                        <li class="active">Update</li>
+                        <li><a href="<?php echo site_url('superadmin/about'); ?>">About</a></li>
+                        <li class="active">Edit</li>
                     </ol>
                 </div>
             </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <form class="form-horizontal" action="<?php echo base_url() . 'superadmin/about/edit' ?>" method="post" enctype="multipart/form-data">
-                        <div class="col-md-12">
+                    <form action="<?php echo base_url() . 'superadmin/about/edit' ?>" method="post" enctype="multipart/form-data">
+                        <div class="col-md-8">
                             <div class="panel panel-white">
                                 <div class="panel-body">
+                                    <input type="hidden" name="id_aboutme" value="<?= $b['id_aboutme'] ?>" class="form-control title">
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Image</label>
-                                        <div class="col-sm-10">
-                                            <input type="file" name="image_aboutme" class="form-control" id="input1">
-                                            <!-- <img src="<?= base_url(); ?>assets/img/dewi.jpg" class="rounded-circle avatar-xs img-thumbnail" alt="profile-image"> -->
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Full Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="fullname_aboutme" class="form-control" value="<?= $b2['fullname_aboutme'] ?>" id="input1">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Email</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="email_aboutme" class="form-control" value="<?= $b2['email_aboutme'] ?>" id="input1" placeholder="Email">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Location</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="location_aboutme" class="form-control" value="<?= $b2['location_aboutme'] ?>" id="input1" placeholder="Location">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Summary</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="summary_aboutme" class="form-control" value="<?= $b2['summary_aboutme'] ?>" id="input1" placeholder="Summary">
-                                        </div>
+                                        <label>Image</label>
+                                        <input type="file" name="image_aboutme" class="dropify" data-height="190" data-default-file="<?php echo base_url() . 'assets/img/' . $b['image_aboutme']; ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Skills</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="skills_aboutme" class="form-control" value="<?= $b2['skills_aboutme'] ?>" id="input1" placeholder="Skills">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Education</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="education_aboutme" class="form-control" value="<?= $b2['education_aboutme'] ?>" id="input1" placeholder="Full Name">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Google Scholar URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="googlescholar_sites" class="form-control" value="<?= $b2['googlescholar_sites'] ?>" id="input1" placeholder="Google Scholar URL">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Sinta URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="sinta_sites" class="form-control" value="<?= $b2['sinta_sites'] ?>" id="input1" placeholder="Sinta URL">
-                                        </div>
+                                        <label>Full Name</label>
+                                        <input type="text" name="fullname_aboutme" value="<?= $b['fullname_aboutme'] ?>" class="form-control title" placeholder="Nama Experience" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Scopus URL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="scopus_sites" class="form-control" value="<?= $b2['scopus_sites'] ?>" id="input1" placeholder="Sinta URL">
-                                        </div>
+                                        <label>Email</label>
+                                        <input type="text" name="email_aboutme" value="<?= $b['email_aboutme'] ?>" class="form-control title" placeholder="Tahun Experience" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">LinkedIn</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="linkedin_sites" class="form-control" value="<?= $b2['linkedin_sites'] ?>" id="input1" placeholder="Youtube URL">
-                                        </div>
+                                        <label>Location</label>
+                                        <input type="text" name="location_aboutme" value="<?= $b['location_aboutme'] ?>" class="form-control title" placeholder="Description Experience" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <input type="hidden" name="id_aboutme" value="<?php echo $id_aboutme ?>" required>
-                                        <input type="hidden" name="id_sites" value="<?php echo $id_sites ?>" required>
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" style="background-color: #697194" class="btn btn-success btn-lg">UPDATE</button>
-                                        </div>
+                                        <label>Summary</label>
+                                        <input type="text" name="summary_aboutme" value="<?= $b['summary_aboutme'] ?>" class="form-control title" placeholder="Description Experience" required>
                                     </div>
-
+                                    <div class="form-group">
+                                        <label>Skills</label>
+                                        <input type="text" name="skills_aboutme" value="<?= $b['skills_aboutme'] ?>" class="form-control title" placeholder="Description Experience" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Education</label>
+                                        <input type="text" name="education_aboutme" value="<?= $b['education_aboutme'] ?>" class="form-control title" placeholder="Description Experience" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Google Scholar</label>
+                                        <input type="text" name="googlescholar_aboutme" value="<?= $b['googlescholar_aboutme'] ?>" class="form-control title" placeholder="Description Experience" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sinta</label>
+                                        <input type="text" name="sinta_aboutme" value="<?= $b['sinta_aboutme'] ?>" class="form-control title" placeholder="Description Experience" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>LinkedIn</label>
+                                        <input type="text" name="linkedin_aboutme" value="<?= $b['linkedin_aboutme'] ?>" class="form-control title" placeholder="Description Experience" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Scopus</label>
+                                        <input type="text" name="scopus_aboutme" value="<?= $b['scopus_aboutme'] ?>" class="form-control title" placeholder="Description Experience" required>
+                                    </div>
+                                    <div class="btn-group btn-group-justified" role="group" style="background-color: #697194">
+                                        <button type="submit" class="btn btn-primary btn-lg" style="width:100%"><span class="icon-cursor"></span> UPDATE</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                </div>
 
-
-                    </form>
-                </div><!-- Row -->
-            </div><!-- Main Wrapper -->
-            <div class="page-footer">
-                <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYEK 2021</p>
             </div>
+
+            </form>
+        </div><!-- Row -->
+        </div><!-- Main Wrapper -->
+        <div class="page-footer">
+            <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYEK 2021</p>
+        </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
 
@@ -410,41 +376,64 @@ $b2 = $aboutmeandsites->row_array();
     <script src="<?php echo base_url() . 'assets/plugins/moment/moment.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/datatables/js/jquery.datatables.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/js/modern.min.js' ?>"></script>
-    <script src="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/js/dropify.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.min.js' ?>"></script>
-
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
+
             $('#summernote').summernote({
-                height: 300,
+                height: 590,
                 toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'italic', 'underline', 'clear']],
                     ['fontsize', ['fontsize']],
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'hr']],
                     ['view', ["fullscreen", "codeview", "help"]],
-                ]
+                ],
+
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
 
             });
+
+            function sendFile(file, editor, welEditable) {
+                data = new FormData();
+                data.append("file", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "<?php echo site_url() ?>backend/post/upload_image",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(url) {
+                        editor.insertImage(welEditable, url);
+                    }
+                });
+            }
+
+
+
+            $('.dropify').dropify({
+                messages: {
+                    default: 'Drag atau drop untuk memilih gambar',
+                    replace: 'Ganti',
+                    remove: 'Hapus',
+                    error: 'error'
+                }
+            });
+
+            $('.title').keyup(function() {
+                var title = $(this).val().toLowerCase().replace(/[&\/\\#^, +()$~%.'":*?<>{}]/g, '-');
+                $('.slug').val(title);
+            });
+
+
         });
     </script>
-    <!--Toast Message-->
-    <?php if ($this->session->flashdata('msg') == 'success') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Success',
-                text: "About Information Saved!",
-                showHideTransition: 'slide',
-                icon: 'success',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#7EC857'
-            });
-        </script>
-    <?php else : ?>
-
-    <?php endif; ?>
 
 </body>
 

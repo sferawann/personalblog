@@ -1,15 +1,20 @@
+<?php
+error_reporting(0);
+$b = $data->row_array();
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <!-- Title -->
-    <title>Add New Tamyiz</title>
+    <title>Edit Tamyiz</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="MANAJEMEN PROYEK" />
+
 
     <!-- Styles -->
     <link href="<?php echo base_url() . 'assets/plugins/pace-master/themes/blue/pace-theme-flash.css' ?>" rel="stylesheet" />
@@ -49,8 +54,11 @@
                     </a>
                 </div>
                 <div class="logo-box" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <a href="<?php echo site_url('superadmin/dashboard'); ?>" class="logo-text" style="background: linear-gradient(to right,#e8b38c, #697194);color: white"><span>Blog</span></a>
+                    <a href="<?php echo site_url('superadmin/dashboard'); ?>" style="color: white;" class="logo-text"><span>Blog</span></a>
                 </div><!-- Logo Box -->
+                <div class="search-button">
+                    <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+                </div>
                 <div class="topmenu-outer">
                     <div class="top-menu">
                         <ul class="nav navbar-nav navbar-left">
@@ -78,7 +86,7 @@
                                                 <li>
                                                     <a href="<?php echo site_url('superadmin/inbox'); ?>">
                                                         <div class="msg-img">
-                                                            <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" alt="">
+                                                            <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" alt="">
                                                         </div>
                                                         <p class="msg-name"><?php echo $row->name_inbox; ?></p>
                                                         <p class="msg-text"><?php echo word_limiter($row->message_inbox, 5); ?></p>
@@ -272,55 +280,54 @@
         </div><!-- Page Sidebar -->
         <div class="page-inner">
             <div class="page-title">
-                <h3>Add New Tamyiz</h3>
+                <h3>Edit Tamyiz</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
-                        <li><a href="<?php echo site_url('backend/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="<?php echo site_url('backend/tamyiz'); ?>">Tamyiz</a></li>
-                        <li class="active">Add New</li>
+                        <li><a href="<?php echo site_url('superadmin/dashboard'); ?>">Dashboard</a></li>
+                        <li><a href="<?php echo site_url('superadmin/tamyiz'); ?>">Tamyiz</a></li>
+                        <li class="active">Edit</li>
                     </ol>
                 </div>
             </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <form action="<?php echo base_url() . 'superadmin/tamyiz/publish' ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url() . 'superadmin/tamyiz/edit' ?>" method="post" enctype="multipart/form-data">
                         <div class="col-md-8">
                             <div class="panel panel-white">
-
                                 <div class="panel-body">
-
-                                    <div class="form-group">
-                                        <label>Tittle</label>
-                                        <input type="text" name="tittle_tamyiz" class="form-control title" placeholder="Title" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">Contents</label>
-                                        <textarea name="contents_tamyiz" id="summernote"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Meta Description</label>
-                                        <textarea name="metadescription_tamyiz" cols="6" rows="6" class="form-control" placeholder="Meta Description"></textarea>
-                                    </div>
+                                    <input type="hidden" name="id_tamyiz" value="<?= $b['id_tamyiz'] ?>" class="form-control title">
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input type="file" name="image_tamyiz" class="dropify" data-height="190" required>
+                                        <input type="file" name="image_tamyiz" class="dropify" data-height="190" data-default-file="<?php echo base_url() . 'assets/img/' . $b['image_tamyiz']; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Audio</label>
-                                        <input type="file" name="audio_tamyiz" class="dropify" data-height="190" required>
+                                        <input type="file" name="audio_tamyiz" class="dropify" data-height="190" data-default-file="<?php echo base_url() . 'assets/audio/' . $b['audio_tamyiz']; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tittle</label>
+                                        <input type="text" name="tittle_tamyiz" value="<?= $b['tittle_tamyiz'] ?>" class="form-control title" placeholder="Tittle Tamyiz" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Meta Description</label>
+                                        <input type="text" name="metadescription_tamyiz" value="<?= $b['metadescription_tamyiz'] ?>" class="form-control title" placeholder="Meta Description" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Contents</label>
+                                        <textarea name="contents_tamyiz" id="summernote" value="<?php echo $b['contents_tamyiz']; ?>"><?php echo $b['contents_tamyiz']; ?></textarea>
                                     </div>
                                     <div class="btn-group btn-group-justified" role="group" style="background-color: #697194">
-                                        <button type="submit" class="btn btn-primary btn-lg" style="width:100%"><span class="icon-cursor"></span> PUBLISH</button>
+                                        <button type="submit" class="btn btn-primary btn-lg" style="width:100%"><span class="icon-cursor"></span> UPDATE</button>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-
                 </div>
 
-                </form>
-            </div><!-- Row -->
+            </div>
+
+            </form>
+        </div><!-- Row -->
         </div><!-- Main Wrapper -->
         <div class="page-footer">
             <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYEK 2021</p>

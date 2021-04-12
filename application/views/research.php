@@ -175,6 +175,7 @@
                         <li><a class="text-muted" href="https://scholar.google.com/citations?user=zJuf-CAAAAAJ&hl=en&oi=sra">Google Scholar</a></li>
                         <li><a class="text-muted" href="https://id.linkedin.com/in/dewi-rosmala-43171528">LinkedIn</a></li>
                         <li><a class="text-muted" href="https://sinta.ristekbrin.go.id/authors/detail?id=6650264&view=overview">Sinta</a></li>
+                        <li><a class="text-muted" href="https://www.scopus.com/authid/detail.uri?authorId=57205508755">Scopus</a></li>
                     </ul>
                 </div>
                 <!-- <div class="col-6 col-md">

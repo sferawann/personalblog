@@ -309,7 +309,7 @@
                                         <tbody>
                                             <?php
                                             $no = 0;
-                                            foreach ($aboutmeandsites->result() as $row) :
+                                            foreach ($data->result() as $row) :
                                                 $no++;
                                             ?>
                                                 <tr>
@@ -321,12 +321,12 @@
                                                     <td><?php echo $row->summary_aboutme; ?></td>
                                                     <td><?php echo $row->skills_aboutme; ?></td>
                                                     <td><?php echo $row->education_aboutme; ?></td>
-                                                    <td><?php echo $row->googlescholar_sites; ?></td>
-                                                    <td><?php echo $row->sinta_sites; ?></td>
-                                                    <td><?php echo $row->linkedin_sites; ?></td>
-                                                    <td><?php echo $row->scopus_sites; ?></td>
+                                                    <td><?php echo $row->googlescholar_aboutme; ?></td>
+                                                    <td><?php echo $row->sinta_aboutme; ?></td>
+                                                    <td><?php echo $row->linkedin_aboutme; ?></td>
+                                                    <td><?php echo $row->scopus_aboutme; ?></td>
                                                     <td style="text-align: center;">
-                                                        <a href="<?php echo site_url('superadmin/About/get_edit/' . $row->id_aboutme); ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
+                                                        <a href="<?php echo site_url('superadmin/about/get_edit/' . $row->id_aboutme); ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
                                                         <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?php echo $row->id_aboutme; ?>"><span class="fa fa-trash"></span></a>
                                                     </td>
                                                 </tr>

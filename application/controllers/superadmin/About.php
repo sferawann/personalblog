@@ -13,63 +13,168 @@ class About extends CI_Controller
 
 	function index()
 	{
-		$x['about'] = $this->setting_model->get_about_data();
-		$x['aboutmeandsites'] = $this->setting_model->get_aboutmeandsites_data();
+		// $x['about'] = $this->setting_model->get_about_data();
+		$x['data'] = $this->setting_model->get_aboutme_data();
 		$this->load->view('superadmin/v_about', $x);
 	}
 
 	function get_edit()
 	{
 		$id_aboutme = $this->uri->segment(4);
-		$x['aboutmeandsites'] = $this->setting_model->get_aboutme_by_id($id_aboutme);
+		$x['data'] = $this->setting_model->get_aboutme_by_id($id_aboutme);
 		$this->load->view('superadmin/v_edit_about', $x);
 	}
+
 	function edit()
 	{
-		$id_aboutme 	  = $this->input->post('id_aboutme', TRUE);
-		$fullname_aboutme = $this->input->post('fullname_aboutme', TRUE);
-		$email_aboutme = $this->input->post('email_aboutme', TRUE);
-		$location_aboutme = $this->input->post('location_aboutme', TRUE);
-		$summary_aboutme = $this->input->post('summary_aboutme', TRUE);
-		$skills_aboutme = $this->input->post('skills_aboutme', TRUE);
-		$education_aboutme = $this->input->post('education_aboutme', TRUE);
-		$id_sites = $this->input->post('id_sites', TRUE);
-		$googlescholar_sites = $this->input->post('googlescholar_sites', TRUE);
-		$sinta_sites = $this->input->post('sinta_sites', TRUE);
-		$scopus_sites = $this->input->post('scopus_sites', TRUE);
-		$linkedin_sites = $this->input->post('linkedin_sites', TRUE);
+		$id = htmlspecialchars($this->input->post('id_aboutme', TRUE), ENT_QUOTES);
+		$fullname = $this->input->post('fullname_aboutme');
+		$email = $this->input->post('email_aboutme');
+		$location = $this->input->post('location_aboutme');
+		$summary = $this->input->post('summary_aboutme');
+		$skills = $this->input->post('skills_aboutme');
+		$education = $this->input->post('education_aboutme');
+		$googlescholar = $this->input->post('googlescholar_aboutme');
+		$sinta = $this->input->post('sinta_aboutme');
+		$linkedin = $this->input->post('linkedin_aboutme');
+		$scopus = $this->input->post('scopus_aboutme');
 
 		$config['upload_path'] = './assets/img/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
 		$config['encrypt_name'] = FALSE;
 
 		$this->upload->initialize($config);
-		if (!empty($_FILES['image_aboutme']['name'])) {
+		if (!empty($_FILES['image_aboutme']['file_name'])) {
 			if ($this->upload->do_upload('image_aboutme')) {
 				$image_aboutme = $this->upload->data();
-				$image_aboutme = $image_aboutme['file_name'];
+				$image = $image_aboutme['file_name'];
 			}
-			$this->setting_model->edit_aboutme($id_aboutme, $fullname_aboutme, $email_aboutme, $location_aboutme, $summary_aboutme, $skills_aboutme, $education_aboutme, $id_sites, $googlescholar_sites, $sinta_sites, $scopus_sites, $linkedin_sites);
+			$this->setting_model->edit_aboutme_with_img($id, $image, $fullname, $email, $location, $summary, $skills, $education,  $googlescholar, $sinta, $scopus, $linkedin);
 			$this->session->set_flashdata('msg', 'success');
 			redirect('superadmin/about');
 		} else {
-			$this->setting_model->edit_aboutme($id_aboutme, $fullname_aboutme, $email_aboutme, $location_aboutme, $summary_aboutme, $skills_aboutme, $education_aboutme, $id_sites, $googlescholar_sites, $sinta_sites, $scopus_sites, $linkedin_sites);
+			$this->setting_model->edit_aboutme_no_img($id, $fullname, $email, $location, $summary, $skills, $education, $googlescholar, $sinta, $scopus, $linkedin);
 			$this->session->set_flashdata('msg', 'success');
 			redirect('superadmin/about');
 		}
+		// $id 	  = $this->input->post('id_aboutme');
+		// $fullname	  = $this->input->post('fullname_aboutme');
+		// $email = $this->input->post('email_aboutme');
+		// $location = $this->input->post('location_aboutme');
+		// $summary = $this->input->post('summary_aboutme');
+		// $skills = $this->input->post('skills_aboutme');
+		// $education = $this->input->post('education_aboutme');
+		// $googlescholar = $this->input->post('googlescholar_aboutme');
+		// $sinta = $this->input->post('sinta_aboutme');
+		// $linkedin = $this->input->post('linkedin_aboutme');
+		// $scopus = $this->input->post('scopus_aboutme');
 
-		$this->setting_model->edit_aboutme($id_aboutme, $fullname_aboutme, $email_aboutme, $location_aboutme, $summary_aboutme, $skills_aboutme, $education_aboutme, $id_sites, $googlescholar_sites, $sinta_sites, $scopus_sites, $linkedin_sites);
-		echo $this->session->set_flashdata('msg', 'info');
+
+		// $this->setting_model->edit_aboutme($id, $fullname, $email, $location, $summary, $skills, $education, $googlescholar, $sinta, $linkedin, $scopus);
+		// echo $this->session->set_flashdata('msg', 'info');
+		// redirect('superadmin/about');
+	}
+	function delete()
+	{
+		$id_aboutme = $this->input->post('id_aboutme', TRUE);
+		$this->setting_model->delete_aboutme($id_aboutme);
+		echo $this->session->set_flashdata('msg', 'success-delete');
 		redirect('superadmin/about');
 	}
 
-	function delete()
-	{
-		$id_about = $this->input->post('id_about', TRUE);
-		$this->post_model->delete_experience($id_about);
-		echo $this->session->set_flashdata('msg', 'success-delete');
-		redirect('superadmin/about_setting');
-	}
+	// function edit()
+	// {
+	// 	$config['upload_path'] = './assets/img/';
+	// 	$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+	// 	$config['encrypt_name'] = TRUE;
+
+	// 	$this->upload->initialize($config);
+
+	// 	if (!empty($_FILES['image_aboutme']['name'])) {
+	// 		if ($this->upload->do_upload('image_aboutme')) {
+	// 			$img = $this->upload->data();
+	// 			//Compress Image
+	// 			$config['image_library'] = 'gd2';
+	// 			$config['source_image'] = './assets/img/' . $img['file_name'];
+	// 			$config['create_thumb'] = FALSE;
+	// 			$config['maintain_ratio'] = FALSE;
+	// 			$config['quality'] = '60%';
+	// 			$config['width'] = 500;
+	// 			$config['height'] = 320;
+	// 			$config['new_image'] = './assets/img/' . $img['file_name'];
+	// 			$this->load->library('image_lib', $config);
+	// 			$this->image_lib->resize();
+
+	// 			$this->_create_thumbs($img['file_name']);
+
+	// 			$image = $img['file_name'];
+	// 			$id 	  = $this->input->post('id_aboutme');
+	// 			$fullname	  = $this->input->post('fullname_aboutme');
+	// 			$email = $this->input->post('email_aboutme');
+	// 			$location = $this->input->post('location_aboutme');
+	// 			$summary = $this->input->post('summary_aboutme');
+	// 			$skills = $this->input->post('skills_aboutme');
+	// 			$education = $this->input->post('education_aboutme');
+	// 			$googlescholar = $this->input->post('googlescholar_aboutme');
+	// 			$sinta = $this->input->post('sinta_aboutme');
+	// 			$linkedin = $this->input->post('linkedin_aboutme');
+	// 			$scopus = $this->input->post('scopus_aboutme');
+
+	// 			$this->setting_model->edit_aboutme_with_img($id, $fullname, $email, $location, $summary, $image, $skills, $education, $googlescholar, $sinta, $linkedin, $scopus);
+	// 			// var_dump($c);
+	// 			// print_r($c);
+	// 			echo $this->session->set_flashdata('msg', 'info');
+	// 			redirect('superadmin/about');
+	// 		} else {
+	// 			echo $this->session->set_flashdata('msg', 'warning');
+	// 			redirect('superadmin/about');
+	// 		}
+	// 	} else {
+	// 		$id 	  = $this->input->post('id_aboutme');
+	// 		$fullname	  = $this->input->post('fullname_aboutme');
+	// 		$email = $this->input->post('email_aboutme');
+	// 		$location = $this->input->post('location_aboutme');
+	// 		$summary = $this->input->post('summary_aboutme');
+	// 		$skills = $this->input->post('skills_aboutme');
+	// 		$education = $this->input->post('education_aboutme');
+	// 		$googlescholar = $this->input->post('googlescholar_aboutme');
+	// 		$sinta = $this->input->post('sinta_aboutme');
+	// 		$linkedin = $this->input->post('linkedin_aboutme');
+	// 		$scopus = $this->input->post('scopus_aboutme');
+
+	// 		$this->setting_model->edit_aboutme_with_img($id, $fullname, $email, $location, $summary, $skills, $education, $googlescholar, $sinta, $linkedin, $scopus);
+	// 		// var_dump($c);
+	// 		// print_r($c);
+	// 		echo $this->session->set_flashdata('msg', 'info');
+	// 		redirect('superadmin/about');
+	// 	}
+	// }
+
+	// function _create_thumbs($file_name)
+	// {
+	// 	// Image resizing config
+	// 	$config = array(
+	// 		array(
+	// 			'image_library' => 'GD2',
+	// 			'source_image'  => './assets/img/' . $file_name,
+	// 			'maintain_ratio' => FALSE,
+	// 			'width'         => 370,
+	// 			'height'        => 237,
+	// 			'new_image'     => './assets/img/thumb/' . $file_name
+	// 		)
+	// 	);
+
+	// 	$this->load->library('image_lib', $config[0]);
+	// 	foreach ($config as $item) {
+	// 		$this->image_lib->initialize($item);
+	// 		if (!$this->image_lib->resize()) {
+	// 			return false;
+	// 		}
+	// 		$this->image_lib->clear();
+	// 	}
+	// }
+
+
 
 	// function update()
 	// {

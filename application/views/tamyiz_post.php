@@ -91,80 +91,35 @@
             <div class="row">
                 <!-- Page Content -->
                 <div class="container">
-                    <h1 class="my-1">Judul Post Tamyiz</h1>
-                    <div class="row">
-                        <!-- Post Content Column -->
-                        <div class="col-lg-12">
-                            <!-- Author -->
-                            <p class="lead">
-                                by
-                                <!-- ganti jd nama bu dewi dari user -->
-                                <a href="#" class="mt-0">Start Bootstrap</a>
-                            </p>
+                    <?php foreach ($Tamyiz as $t) : ?>
+                        <h1 class="my-1">Judul Post Tamyiz</h1>
+                        <div class="row">
+                            <!-- Post Content Column -->
+                            <div class="col-lg-12">
+                                <!-- Author -->
+                                <p class="lead">
+                                    by
+                                    <!-- ganti jd nama bu dewi dari user -->
+                                    <?php foreach ($User as $u) : ?>
+                                        <a href="#" class="mt-0"><?= $u->name_user; ?></a>
+                                    <?php endforeach; ?>
+                                </p>
 
-                            <hr>
+                                <hr>
+                                <p>Posted on, <?php echo date('d F Y H:i:s ', strtotime(str_replace('/', '-', $t->postdate_tamyiz))) ?></p>
+                                <hr>
 
-                            <!-- Date/Time -->
-                            <p>Posted on January 1, 2019 at 12:00 PM</p>
-                            <hr>
+                                <p><?= $t->contents_tamyiz; ?></p>
 
-                            <!-- Post Content -->
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p> -->
-
-                            <p>🔰 PRAKTEK MENERJEMAH AYAT AL QURAN
-
-                                Tamyiz punya kamus yang namanya KAMUS KAWKABAN.
-
-                                Bagi yang tidak memiliki kamus Kawkaban, silahkan menggunakan kamus lain.
-
-                                ====================
-                                📗 KAMUS KAWKABAN
-                                ====================
-
-                                Ini adalah kamus yang berbeda dengan kamus yang sudah ada.
-
-                                Kamus ini didesain khusus untuk memudahkan menerjemah Al Quran dengan metode Tamyiz.
-
-                                DAFTAR ISI
-
-                                Kamus Kawkaban adalah Gabungan dari beberapa Buku.
-
-                                ▪ Dibuka dari kiri :
-                                Materi Tamyiz 1, 2, 3
-                                (hal 1-70)
-
-                                ▪ Dibuka dari kanan :
-                                1. Kamus kosakata yang sering muncul di Al Quran (Huruf - Isim - Fiil)
-                                Halaman 1-17
-
-                                2. Surat Al Baqarah
-                                Halaman 19-62
-
-                                3. Kamus Kawkaban
-                                Halaman 69 -107
-
-                                4. Kitab Fathul Qorib
-                                Halaman 109-123
-
-                                5. Kamus Masihu (kamus kitab kuning)
-                                Halaman 125-144
-
-                                Note:
-                                ⚠ Nomor kolom huruf di halaman 1 berbeda dengan yang kita gunakan di MTO dan di Buku Hitam. Silakan diedit</p>
-
-                            <p><img class="img-fluid rounded" src="<?php echo base_url(); ?>/assets/img/Dewi.jpg" width="50%" height="50%" style="display: block; margin: auto;"></p>
-                            <!-- <p>https://www.youtube.com/watch?v=IqbUxr5vJdo</p> -->
-                            <p><audio controls>
-                                    <source src="http://www.jplayer.org/audio/mp3/Miaow-snip-Stirring-of-a-fool.mp3" type="audio/mpeg">
-                                </audio></p>
+                                <p><img class="img-fluid rounded" src="<?php echo base_url() . 'assets/img/' . $t->image_tamyiz; ?>" width="50%" height="50%" style="display: block; margin: auto;"></p>
+                                <!-- <p>https://www.youtube.com/watch?v=IqbUxr5vJdo</p> -->
+                                <p><audio controls>
+                                        <source src="<?php echo base_url() . 'assets/audio/' . $t->audio_tamyiz; ?>" type="audio/mpeg">
+                                    </audio></p>
+                            </div>
                         </div>
-                    </div>
-                    <!-- /.row -->
-
+                        <!-- /.row -->
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -193,6 +148,7 @@
                         <li><a class="text-muted" href="https://scholar.google.com/citations?user=zJuf-CAAAAAJ&hl=en&oi=sra">Google Scholar</a></li>
                         <li><a class="text-muted" href="https://id.linkedin.com/in/dewi-rosmala-43171528">LinkedIn</a></li>
                         <li><a class="text-muted" href="https://sinta.ristekbrin.go.id/authors/detail?id=6650264&view=overview">Sinta</a></li>
+                        <li><a class="text-muted" href="https://www.scopus.com/authid/detail.uri?authorId=57205508755">Scopus</a></li>
                     </ul>
                 </div>
                 <!-- <div class="col-6 col-md">

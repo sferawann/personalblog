@@ -9,8 +9,8 @@
     <meta charset="UTF-8">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta name="author" content="ITENAS" />
-    <link rel="shortcut icon" href="<?php echo base_url() . 'assets/images/favicon.png' ?>">
+    <meta name="author" content="MANAJEMEN PROYEK" />
+
 
     <!-- Styles -->
     <link href="<?php echo base_url() . 'assets/plugins/pace-master/themes/blue/pace-theme-flash.css' ?>" rel="stylesheet" />
@@ -48,7 +48,7 @@
                     </a>
                 </div>
                 <div class="logo-box" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                    <a href="<?php echo site_url('backend/dashboard'); ?>" style="color: white;" class="logo-text"><span>Blog</span></a>
+                    <a href="<?php echo site_url('superadmin/dashboard'); ?>" class="logo-text" style="background: linear-gradient(to right,#e8b38c, #697194);color: white"><span>Blog</span></a>
                 </div><!-- Logo Box -->
                 <div class="topmenu-outer">
                     <div class="top-menu">
@@ -59,7 +59,7 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <?php
-                            $count_inbox = $this->db->get_where('tbl_inbox', array('inbox_status' => '0'));
+                            $count_inbox = $this->db->get_where('inbox', array('status_inbox' => '0'));
                             ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a>
@@ -71,28 +71,28 @@
                                     <li class="dropdown-menu-list slimscroll messages">
                                         <ul class="list-unstyled">
                                             <?php
-                                            $query_msg = $this->db->get_where('tbl_inbox', array('inbox_status' => '0'), 6);
+                                            $query_msg = $this->db->get_where('inbox', array('status_inbox' => '0'), 6);
                                             foreach ($query_msg->result() as $row) :
                                             ?>
                                                 <li>
-                                                    <a href="<?php echo site_url('backend/inbox'); ?>">
+                                                    <a href="<?php echo site_url('superadmin/inbox'); ?>">
                                                         <div class="msg-img">
                                                             <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" alt="">
                                                         </div>
-                                                        <p class="msg-name"><?php echo $row->inbox_name; ?></p>
-                                                        <p class="msg-text"><?php echo word_limiter($row->inbox_message, 5); ?></p>
-                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->inbox_created_at)); ?></p>
+                                                        <p class="msg-name"><?php echo $row->name_inbox; ?></p>
+                                                        <p class="msg-text"><?php echo word_limiter($row->message_inbox, 5); ?></p>
+                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->createdat_inbox)); ?></p>
                                                     </a>
                                                 </li>
                                             <?php endforeach; ?>
 
                                         </ul>
                                     </li>
-                                    <li class="drop-all"><a href="<?php echo site_url('backend/inbox'); ?>" class="text-center">All Messages</a></li>
+                                    <li class="drop-all"><a href="<?php echo site_url('superadmin/inbox'); ?>" class="text-center">All Messages</a></li>
                                 </ul>
                             </li>
                             <?php
-                            $count_comment = $this->db->get_where('tbl_comment', array('comment_status' => '0'));
+                            $count_comment = $this->db->get_where('comment', array('status_comment' => '0'));
                             ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-comment"></i><span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a>
@@ -103,46 +103,46 @@
                                     <li class="dropdown-menu-list slimscroll messages">
                                         <ul class="list-unstyled">
                                             <?php
-                                            $query_cmt = $this->db->get_where('tbl_comment', array('comment_status' => '0'), 6);
+                                            $query_cmt = $this->db->get_where('comment', array('status_comment' => '0'), 6);
                                             foreach ($query_cmt->result() as $row) :
                                             ?>
                                                 <li>
-                                                    <a href="<?php echo site_url('backend/comment/unpublish'); ?>">
+                                                    <a href="<?php echo site_url('superadmin/comment/unpublish'); ?>">
                                                         <div class="msg-img">
-                                                            <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" alt="">
+                                                            <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" alt="">
                                                         </div>
-                                                        <p class="msg-name"><?php echo $row->comment_name; ?></p>
-                                                        <p class="msg-text"><?php echo word_limiter($row->comment_message, 5); ?></p>
-                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->comment_date)); ?></p>
+                                                        <p class="msg-name"><?php echo $row->name_comment; ?></p>
+                                                        <p class="msg-text"><?php echo word_limiter($row->message_comment, 5); ?></p>
+                                                        <p class="msg-time"><?php echo date('d-m-Y H:i:s', strtotime($row->date_comment)); ?></p>
                                                     </a>
                                                 </li>
                                             <?php endforeach; ?>
 
                                         </ul>
                                     </li>
-                                    <li class="drop-all"><a href="<?php echo site_url('backend/comment/unpublish'); ?>" class="text-center">All Comments</a></li>
+                                    <li class="drop-all"><a href="<?php echo site_url('superadmin/comment/unpublish'); ?>" class="text-center">All Comments</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
                                     <span class="user-name"><?php echo $this->session->userdata('name'); ?><i class="fa fa-angle-down"></i></span>
                                     <?php
-                                    $user_id = $this->session->userdata('id');
-                                    $query = $this->db->get_where('tbl_user', array('user_id' => $user_id));
+                                    $id_user = $this->session->userdata('id');
+                                    $query = $this->db->get_where('user', array('id_user' => $id_user));
                                     if ($query->num_rows() > 0) :
                                         $row = $query->row_array();
                                     ?>
-                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/images/' . $row['user_photo']; ?>" width="40" height="40" alt="">
+                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/img/' . $row['photo_user']; ?>" width="40" height="40" alt="">
                                     <?php else : ?>
-                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" width="40" height="40" alt="">
+                                        <img class="img-circle avatar" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" width="40" height="40" alt="">
                                     <?php endif; ?>
                                 </a>
                                 <ul class="dropdown-menu dropdown-list" role="menu">
-                                    <li role="presentation"><a href="<?php echo site_url('backend/change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
-                                    <li role="presentation"><a href="<?php echo site_url('backend/comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a></li>
-                                    <li role="presentation"><a href="<?php echo site_url('backend/inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a></li>
                                     <li role="presentation" class="divider"></li>
-                                    <li role="presentation"><a href="<?php echo site_url('logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/login/logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                                 </ul>
                             </li>
                         </ul><!-- Nav -->
@@ -156,18 +156,18 @@
                 <div class="sidebar-header" style="background: linear-gradient(to right,#e8b38c, #697194)">
                     <div class="sidebar-profile">
                         <?php
-                        $user_id = $this->session->userdata('id');
-                        $query = $this->db->get_where('tbl_user', array('user_id' => $user_id));
+                        $id_user = $this->session->userdata('id');
+                        $query = $this->db->get_where('user', array('id_user' => $id_user));
                         if ($query->num_rows() > 0) :
                             $row = $query->row_array();
                         ?>
                             <a href="javascript:void(0);">
                                 <div class="sidebar-profile-image">
-                                    <img src="<?php echo base_url() . 'assets/images/' . $row['user_photo']; ?>" class="img-circle img-responsive" alt="">
+                                    <img src="<?php echo base_url() . 'assets/img/' . $row['photo_user']; ?>" class="img-circle img-responsive" alt="">
                                 </div>
                                 <div class="sidebar-profile-details">
                                     <span><?php echo $this->session->userdata('name'); ?><br>
-                                        <?php if ($row['user_level'] == '1') : ?>
+                                        <?php if ($row['level_user'] == '1') : ?>
                                             <small style="color: white;">Administrator</small>
                                         <?php else : ?>
                                             <small>Author</small>
@@ -178,11 +178,11 @@
                         <?php else : ?>
                             <a href="javascript:void(0);">
                                 <div class="sidebar-profile-image">
-                                    <img src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" class="img-circle img-responsive" alt="">
+                                    <img src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" class="img-circle img-responsive" alt="">
                                 </div>
                                 <div class="sidebar-profile-details">
                                     <span><?php echo $this->session->userdata('name'); ?><br>
-                                        <?php if ($row['user_level'] == '1') : ?>
+                                        <?php if ($row['level_user'] == '1') : ?>
                                             <small>Administrator</small>
                                         <?php else : ?>
                                             <small>Author</small>
@@ -274,8 +274,8 @@
                 <h3>Tamyiz List</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
-                        <li><a href="<?php echo site_url('backend/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="#">Tamyiz</a></li>
+                        <li><a href="<?php echo site_url('superadmin/dashboard'); ?>">Dashboard</a></li>
+                        <li><a href="<?php echo site_url('superadmin/tamyiz'); ?>">Tamyiz</a></li>
                         <li class="active">List</li>
                     </ol>
                 </div>
@@ -286,15 +286,17 @@
 
                         <div class="panel panel-white">
                             <div class="panel-body">
-                                <a href="<?php echo site_url('backend/tamyiz/add_new'); ?>" style="background-color: #697194" class="btn btn-success m-b-sm">Add New Tamyiz</a>
+                                <a href="<?php echo site_url('superadmin/tamyiz/add_new'); ?>" style="background-color: #697194" class="btn btn-success m-b-sm">Add New Tamyiz</a>
                                 <div class="table-responsive">
                                     <table id="data-table" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
                                                 <th style="width: 100px;">No</th>
                                                 <th>Title</th>
-                                                <th>Publish Date</th>
-                                                <th>Views</th>
+                                                <th>Contents</th>
+                                                <th>Meta Description</th>
+                                                <th>Audio</th>
+                                                <th>Image</th>
                                                 <th style="text-align: center;width: 120px;">Action</th>
                                             </tr>
                                         </thead>
@@ -306,12 +308,14 @@
                                             ?>
                                                 <tr>
                                                     <td><?php echo $no; ?></td>
-                                                    <td><?php echo $row->post_title; ?></td>
-                                                    <td><?php echo $row->post_date; ?></td>
-                                                    <td><?php echo $row->post_views; ?></td>
+                                                    <td><?php echo $row->tittle_tamyiz; ?></td>
+                                                    <td><?php echo $row->contents_tamyiz; ?></td>
+                                                    <td><?php echo $row->metadescription_tamyiz; ?></td>
+                                                    <td><?php echo $row->audio_tamyiz; ?></td>
+                                                    <td><?php echo $row->image_tamyiz; ?></td>
                                                     <td style="text-align: center;">
-                                                        <a href="<?php echo site_url('backend/post/get_edit/' . $row->post_id); ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
-                                                        <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?php echo $row->post_id; ?>"><span class="fa fa-trash"></span></a>
+                                                        <a href="<?php echo site_url('superadmin/tamyiz/get_edit/' . $row->id_tamyiz); ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
+                                                        <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?php echo $row->id_tamyiz; ?>"><span class="fa fa-trash"></span></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -325,7 +329,7 @@
                 </div><!-- Row -->
             </div><!-- Main Wrapper -->
             <div class="page-footer">
-                <p class="no-s"><?php echo date('Y'); ?> &copy; IF ITENAS</p>
+                <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYEK 2021</p>
             </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
@@ -391,7 +395,7 @@
         <script type="text/javascript">
             $.toast({
                 heading: 'Success',
-                text: "Post Saved!",
+                text: "Tamyiz Saved!",
                 showHideTransition: 'slide',
                 icon: 'success',
                 hideAfter: false,
@@ -403,7 +407,7 @@
         <script type="text/javascript">
             $.toast({
                 heading: 'Info',
-                text: "Post Updated!",
+                text: "Tamyiz Updated!",
                 showHideTransition: 'slide',
                 icon: 'info',
                 hideAfter: false,
@@ -415,7 +419,7 @@
         <script type="text/javascript">
             $.toast({
                 heading: 'Success',
-                text: "Post Deleted!.",
+                text: "Tamyiz Deleted!.",
                 showHideTransition: 'slide',
                 icon: 'success',
                 hideAfter: false,
