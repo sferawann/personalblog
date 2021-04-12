@@ -8,16 +8,6 @@ class Setting_model extends CI_Model
 		$query = $this->db->get('home');
 		return $query;
 	}
-	function get_aboutmeandsites_data()
-	{
-		$this->db->select('am.id_aboutme, am.image_aboutme, am.fullname_aboutme, am.email_aboutme, 
-		am.location_aboutme, am.summary_aboutme, am.skills_aboutme, am.education_aboutme, s.googlescholar_sites, 
-		s.sinta_sites, s.scopus_sites, s.linkedin_sites')->from('aboutme as am');
-		$this->db->join('sites as s', 'am.id_aboutme = s.id_sites', 'left');
-		$query = $this->db->get();
-		return $query;
-	}
-
 
 	function get_home_by_id($id_home)
 	{
@@ -69,9 +59,25 @@ class Setting_model extends CI_Model
 		return $query;
 	}
 
+	function get_aboutmeandsites_data()
+	{
+		$this->db->select('am.id_aboutme, am.image_aboutme, am.fullname_aboutme, am.email_aboutme, 
+		am.location_aboutme, am.summary_aboutme, am.skills_aboutme, am.education_aboutme, s.googlescholar_sites, 
+		s.sinta_sites, s.scopus_sites, s.linkedin_sites')->from('aboutme as am');
+		$this->db->join('sites as s', 'am.id_aboutme = s.id_sites', 'left');
+		$query = $this->db->get();
+		return $query;
+	}
+
+
 	function get_about_by_id($id_about)
 	{
 		$result = $this->db->query("SELECT * FROM about WHERE id_about='$id_about'");
+		return $result;
+	}
+	function get_aboutme_by_id($id_aboutme)
+	{
+		$result = $this->db->query("SELECT * FROM aboutme JOIN sites on aboutme.id_aboutme = sites.id_sites WHERE id_aboutme='$id_aboutme'");
 		return $result;
 	}
 
@@ -155,42 +161,81 @@ class Setting_model extends CI_Model
 		}
 	}
 
-	function update_information_about($id_aboutme, $email, $location, $summary, $skills, $education, $image, $id_sites, $googlescholar, $sinta, $linkedin, $scopus)
+	function edit_aboutme()
 	{
-		$this->db->set('image_aboutme', $image);
-		$this->db->set('email_aboutme', $email);
-		$this->db->set('location_aboutme', $location);
-		$this->db->set('summary_aboutme', $summary);
-		$this->db->set('skills_aboutme', $skills);
-		$this->db->set('education_aboutme', $education);
+		$id_aboutme      = $this->input->post('id_aboutme');
+		$image_aboutme      = $this->input->post('image_aboutme');
+		$fullname_aboutme      = $this->input->post('fullname_aboutme');
+		$email_aboutme      = $this->input->post('email_aboutme');
+		$location_aboutme      = $this->input->post('location_aboutme');
+		$summary_aboutme        = $this->input->post('summary_aboutme');
+		$skills_aboutme    = $this->input->post('skills_aboutme');
+		$education_aboutme    = $this->input->post('education_aboutme');
+
+		$id_sites    = $this->input->post('id_sites');
+		$googlescholar_sites    = $this->input->post('googlescholar_sites');
+		$sinta_sites    = $this->input->post('sinta_sites');
+		$linkedin_sites    = $this->input->post('linkedin_sites');
+		$scopus_sites    = $this->input->post('scopus_sites');
+
+		$data = array(
+			'id_aboutme'       => $id_aboutme,
+			'image_aboutme'       => $image_aboutme,
+			'fullname_aboutme'         => $fullname_aboutme,
+			'email_aboutme'     => $email_aboutme,
+			'location_aboutme'    => $location_aboutme,
+			'summary_aboutme'    => $summary_aboutme,
+			'skills_aboutme'    => $skills_aboutme,
+			'education_aboutme'    => $education_aboutme
+		);
 		$this->db->where('id_aboutme', $id_aboutme);
-		$this->db->update('about');
+		$this->db->update('aboutme', $data);
 
-		$this->db->set('googlescholar_sites', $googlescholar);
-		$this->db->set('sinta_sites', $sinta);
-		$this->db->set('linkedin_sites', $linkedin);
-		$this->db->set('scopus_sites', $scopus);
+		$data2 = array(
+			'googlescholar_sites'	=> $googlescholar_sites,
+			'sinta_sites'	=> $sinta_sites,
+			'linkedin_sites'	=> $linkedin_sites,
+			'scopus_sites'	=> $scopus_sites
+		);
 		$this->db->where('id_sites', $id_sites);
-		$this->db->update('sites');
+		$this->db->update('sites', $data2);
 	}
+	// function update_information_about($id_aboutme, $email, $location, $summary, $skills, $education, $image, $id_sites, $googlescholar, $sinta, $linkedin, $scopus)
+	// {
+	// 	$this->db->set('image_aboutme', $image);
+	// 	$this->db->set('email_aboutme', $email);
+	// 	$this->db->set('location_aboutme', $location);
+	// 	$this->db->set('summary_aboutme', $summary);
+	// 	$this->db->set('skills_aboutme', $skills);
+	// 	$this->db->set('education_aboutme', $education);
+	// 	$this->db->where('id_aboutme', $id_aboutme);
+	// 	$this->db->update('about');
 
-	function update_information_about_noimg($id_aboutme, $email, $location, $summary, $skills, $education, $id_sites, $googlescholar, $sinta, $linkedin, $scopus)
-	{
-		$this->db->set('email_aboutme', $email);
-		$this->db->set('location_aboutme', $location);
-		$this->db->set('summary_aboutme', $summary);
-		$this->db->set('skills_aboutme', $skills);
-		$this->db->set('education_aboutme', $education);
-		$this->db->where('id_aboutme', $id_aboutme);
-		$this->db->update('about');
+	// 	$this->db->set('googlescholar_sites', $googlescholar);
+	// 	$this->db->set('sinta_sites', $sinta);
+	// 	$this->db->set('linkedin_sites', $linkedin);
+	// 	$this->db->set('scopus_sites', $scopus);
+	// 	$this->db->where('id_sites', $id_sites);
+	// 	$this->db->update('sites');
+	// }
 
-		$this->db->set('googlescholar_sites', $googlescholar);
-		$this->db->set('sinta_sites', $sinta);
-		$this->db->set('linkedin_sites', $linkedin);
-		$this->db->set('scopus_sites', $scopus);
-		$this->db->where('id_sites', $id_sites);
-		$this->db->update('sites');
-	}
+	// function update_information_about_noimg($id_aboutme, $email, $location, $summary, $skills, $education, $id_sites, $googlescholar, $sinta, $linkedin, $scopus)
+	// {
+	// 	$this->db->set('email_aboutme', $email);
+	// 	$this->db->set('location_aboutme', $location);
+	// 	$this->db->set('summary_aboutme', $summary);
+	// 	$this->db->set('skills_aboutme', $skills);
+	// 	$this->db->set('education_aboutme', $education);
+	// 	$this->db->where('id_aboutme', $id_aboutme);
+	// 	$this->db->update('about');
+
+	// 	$this->db->set('googlescholar_sites', $googlescholar);
+	// 	$this->db->set('sinta_sites', $sinta);
+	// 	$this->db->set('linkedin_sites', $linkedin);
+	// 	$this->db->set('scopus_sites', $scopus);
+	// 	$this->db->where('id_sites', $id_sites);
+	// 	$this->db->update('sites');
+	// }
 
 	//experience
 

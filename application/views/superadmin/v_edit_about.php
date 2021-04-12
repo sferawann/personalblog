@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-$b1 = $about->row_array();
+// $b1 = $about->row_array();
 $b2 = $aboutmeandsites->row_array();
 ?>
 <!DOCTYPE html>
@@ -291,7 +291,7 @@ $b2 = $aboutmeandsites->row_array();
             </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <form class="form-horizontal" action="<?php echo base_url() . 'superadmin/about/update' ?>" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="<?php echo base_url() . 'superadmin/about/edit' ?>" method="post" enctype="multipart/form-data">
                         <div class="col-md-12">
                             <div class="panel panel-white">
                                 <div class="panel-body">
@@ -373,6 +373,7 @@ $b2 = $aboutmeandsites->row_array();
 
                                     <div class="form-group">
                                         <input type="hidden" name="id_aboutme" value="<?php echo $id_aboutme ?>" required>
+                                        <input type="hidden" name="id_sites" value="<?php echo $id_sites ?>" required>
                                         <div class="col-sm-offset-2 col-sm-10">
                                             <button type="submit" style="background-color: #697194" class="btn btn-success btn-lg">UPDATE</button>
                                         </div>

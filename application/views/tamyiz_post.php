@@ -109,18 +109,58 @@
                             <hr>
 
                             <!-- Post Content -->
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p> -->
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+                            <p>🔰 PRAKTEK MENERJEMAH AYAT AL QURAN
 
-                            <p>https://www.youtube.com/watch?v=IqbUxr5vJdo</p>
-                            <audio controls>
-                                <source src="http://www.jplayer.org/audio/mp3/Miaow-snip-Stirring-of-a-fool.mp3" type="audio/mpeg">
-                            </audio>
+                                Tamyiz punya kamus yang namanya KAMUS KAWKABAN.
+
+                                Bagi yang tidak memiliki kamus Kawkaban, silahkan menggunakan kamus lain.
+
+                                ====================
+                                📗 KAMUS KAWKABAN
+                                ====================
+
+                                Ini adalah kamus yang berbeda dengan kamus yang sudah ada.
+
+                                Kamus ini didesain khusus untuk memudahkan menerjemah Al Quran dengan metode Tamyiz.
+
+                                DAFTAR ISI
+
+                                Kamus Kawkaban adalah Gabungan dari beberapa Buku.
+
+                                ▪ Dibuka dari kiri :
+                                Materi Tamyiz 1, 2, 3
+                                (hal 1-70)
+
+                                ▪ Dibuka dari kanan :
+                                1. Kamus kosakata yang sering muncul di Al Quran (Huruf - Isim - Fiil)
+                                Halaman 1-17
+
+                                2. Surat Al Baqarah
+                                Halaman 19-62
+
+                                3. Kamus Kawkaban
+                                Halaman 69 -107
+
+                                4. Kitab Fathul Qorib
+                                Halaman 109-123
+
+                                5. Kamus Masihu (kamus kitab kuning)
+                                Halaman 125-144
+
+                                Note:
+                                ⚠ Nomor kolom huruf di halaman 1 berbeda dengan yang kita gunakan di MTO dan di Buku Hitam. Silakan diedit</p>
+
+                            <p><img class="img-fluid rounded" src="<?php echo base_url(); ?>/assets/img/Dewi.jpg" width="50%" height="50%" style="display: block; margin: auto;"></p>
+                            <!-- <p>https://www.youtube.com/watch?v=IqbUxr5vJdo</p> -->
+                            <p><audio controls>
+                                    <source src="http://www.jplayer.org/audio/mp3/Miaow-snip-Stirring-of-a-fool.mp3" type="audio/mpeg">
+                                </audio></p>
                         </div>
                     </div>
                     <!-- /.row -->
