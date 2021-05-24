@@ -298,7 +298,7 @@ $b = $data->row_array();
                                     <input type="hidden" name="id_tamyiz" value="<?= $b['id_tamyiz'] ?>" class="form-control title">
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input type="file" name="image_tamyiz" class="dropify" data-height="190" data-default-file="<?php echo base_url() . 'assets/img/' . $b['image_tamyiz']; ?>">
+                                        <input type="file" name="image_tamyiz" class="dropify" data-height="190" data-default-file="<?= base_url('assets/img/') . $b['image_tamyiz']; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Audio</label>

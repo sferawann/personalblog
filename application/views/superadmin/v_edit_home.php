@@ -7,13 +7,14 @@ $b = $data->row_array();
 
 <head>
     <!-- Title -->
-    <title>Home Settings</title>
+    <title>Edit About</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="MANAJEMEN PROYEK" />
+
 
     <!-- Styles -->
     <link href="<?php echo base_url() . 'assets/plugins/pace-master/themes/blue/pace-theme-flash.css' ?>" rel="stylesheet" />
@@ -28,7 +29,9 @@ $b = $data->row_array();
     <link href="<?php echo base_url() . 'assets/plugins/slidepushmenus/css/component.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/plugins/datatables/css/jquery.datatables_themeroller.css' ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.css' ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.css' ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url() . 'assets/css/dropify.min.css' ?>" rel="stylesheet" type="text/css">
+
     <!-- Theme Styles -->
     <link href="<?php echo base_url() . 'assets/css/modern.min.css' ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() . 'assets/css/themes/green.css' ?>" class="theme-color" rel="stylesheet" type="text/css" />
@@ -277,73 +280,56 @@ $b = $data->row_array();
         </div><!-- Page Sidebar -->
         <div class="page-inner">
             <div class="page-title">
-                <h3>Home Information</h3>
+                <h3>Edit About</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo site_url('superadmin/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="#">Home</a></li>
-                        <li class="active">Settings</li>
+                        <li><a href="<?php echo site_url('superadmin/about'); ?>">About</a></li>
+                        <li class="active">Edit</li>
                     </ol>
                 </div>
             </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <form class="form-horizontal" action="<?php echo base_url() . 'superadmin/home/update' ?>" method="post" enctype="multipart/form-data">
-                        <div class="col-md-12">
+                    <form action="<?php echo base_url() . 'superadmin/home/edit' ?>" method="post" enctype="multipart/form-data">
+                        <div class="col-md-8">
                             <div class="panel panel-white">
-
                                 <div class="panel-body">
-
+                                    <input type="hidden" name="id_home" value="<?= $b['id_home'] ?>" class="form-control title">
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Caption 1</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="caption_1_home" value="<?= $b['caption_1_home'] ?>" class="form-control" id="input1" placeholder="Site Name">
-                                        </div>
+                                        <label>BG Heading</label>
+                                        <input type="file" name="bgheading_home" class="dropify" data-height="190" data-default-file="<?php echo base_url() . 'assets/img/homepage/' . $b['bgheading_home']; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>BG Testimonial</label>
+                                        <input type="file" name="bgtestimonial_home" class="dropify" data-height="190" data-default-file="<?php echo base_url() . 'assets/img/homepage/' . $b['bgtestimonial_home']; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Caption 1</label>
+                                        <input type="text" name="caption_1_home" value="<?= $b['caption_1_home'] ?>" class="form-control title" placeholder="Nama Experience" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Caption 2</label>
+                                        <input type="text" name="caption_2_home" value="<?= $b['caption_2_home'] ?>" class="form-control title" placeholder="Nama Experience" required>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Caption 2</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="caption_2_home" value="<?= $b['caption_2_home'] ?>" class="form-control" id="input1" placeholder="Site Title">
-                                        </div>
+
+                                    <div class="btn-group btn-group-justified" role="group" style="background-color: #697194">
+                                        <button type="submit" class="btn btn-primary btn-lg" style="width:100%"><span class="icon-cursor"></span> UPDATE</button>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Image Heading</label>
-                                        <div class="col-sm-10">
-                                            <input type="file" name="bgheading_home" value="<?= $b['bgheading_home'] ?>" class="form-control" id="input1">
-                                            <!-- <p class="help-block">Image Heading harus beresolusi 1800 x 1110 Pixels.</p> -->
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Background Testimonial</label>
-                                        <div class="col-sm-10">
-                                            <input type="file" name="bgtestiomonial_home" value="<?= $b['bgtestiomonial_home'] ?>" class="form-control" id="input1">
-                                            <!-- <p class="help-block">Background Testimonial harus beresolusi 925 x 617 Pixels.</p> -->
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="hidden" name="id_home" value="<?= $b['id_home'] ?>" class="form-control title">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" style="background-color: #697194" class="btn btn-success btn-lg">UPDATE</button>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
+                </div>
 
-
-                    </form>
-                </div><!-- Row -->
-            </div><!-- Main Wrapper -->
-            <div class="page-footer">
-                <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYEK 2021</p>
             </div>
+
+            </form>
+        </div><!-- Row -->
+        </div><!-- Main Wrapper -->
+        <div class="page-footer">
+            <p class="no-s"><?php echo date('Y'); ?> &copy; MANAJEMEN PROYEK 2021</p>
+        </div>
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
 
@@ -364,23 +350,64 @@ $b = $data->row_array();
     <script src="<?php echo base_url() . 'assets/plugins/moment/moment.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/datatables/js/jquery.datatables.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/js/modern.min.js' ?>"></script>
-    <script src="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.js' ?>"></script>
-    <!--Toast Message-->
-    <?php if ($this->session->flashdata('msg') == 'success') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Success',
-                text: "Home Information Saved!",
-                showHideTransition: 'slide',
-                icon: 'success',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#7EC857'
-            });
-        </script>
-    <?php else : ?>
+    <script src="<?php echo base_url() . 'assets/js/dropify.min.js' ?>"></script>
+    <script src="<?php echo base_url() . 'assets/plugins/summernote-master/summernote.min.js' ?>"></script>
+    <script>
+        $(document).ready(function() {
 
-    <?php endif; ?>
+            $('#summernote').summernote({
+                height: 590,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'hr']],
+                    ['view', ["fullscreen", "codeview", "help"]],
+                ],
+
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
+
+            });
+
+            function sendFile(file, editor, welEditable) {
+                data = new FormData();
+                data.append("file", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "<?php echo site_url() ?>backend/post/upload_image",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(url) {
+                        editor.insertImage(welEditable, url);
+                    }
+                });
+            }
+
+
+
+            $('.dropify').dropify({
+                messages: {
+                    default: 'Drag atau drop untuk memilih gambar',
+                    replace: 'Ganti',
+                    remove: 'Hapus',
+                    error: 'error'
+                }
+            });
+
+            $('.title').keyup(function() {
+                var title = $(this).val().toLowerCase().replace(/[&\/\\#^, +()$~%.'":*?<>{}]/g, '-');
+                $('.slug').val(title);
+            });
+
+
+        });
+    </script>
 
 </body>
 

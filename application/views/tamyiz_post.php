@@ -92,18 +92,11 @@
                 <!-- Page Content -->
                 <div class="container">
                     <?php foreach ($Tamyiz as $t) : ?>
-                        <h1 class="my-1">Judul Post Tamyiz</h1>
+                        <h1 class="my-1"><?= $t->tittle_tamyiz ?></h1>
                         <div class="row">
                             <!-- Post Content Column -->
                             <div class="col-lg-12">
                                 <!-- Author -->
-                                <p class="lead">
-                                    by
-                                    <!-- ganti jd nama bu dewi dari user -->
-                                    <?php foreach ($User as $u) : ?>
-                                        <a href="#" class="mt-0"><?= $u->name_user; ?></a>
-                                    <?php endforeach; ?>
-                                </p>
 
                                 <hr>
                                 <p>Posted on, <?php echo date('d F Y H:i:s ', strtotime(str_replace('/', '-', $t->postdate_tamyiz))) ?></p>

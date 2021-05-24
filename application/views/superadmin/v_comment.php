@@ -296,7 +296,7 @@
                                 <div role="tabpanel">
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#all" aria-controls="all" role="tab" data-toggle="tab" aria-expanded="false">All<span class="badge badge-success pull-right m-l-xs"><?php echo $total_rows; ?></span></a></li>
-                                        <li role="presentation"><a href="<?php echo site_url('superadmin/comment/unpublish'); ?>">Unpublish<span class="badge badge-danger pull-right m-l-xs"><?php echo $total_unpublish; ?></span></a></li>
+                                        <!-- <li role="presentation"><a href="<?php echo site_url('superadmin/comment/unpublish'); ?>">Unpublish<span class="badge badge-danger pull-right m-l-xs"><?php echo $total_unpublish; ?></span></a></li> -->
                                     </ul>
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane fade active in p-v-lg" id="all">

@@ -79,7 +79,7 @@
                                                 <li>
                                                     <a href="<?php echo site_url('superadmin/inbox'); ?>">
                                                         <div class="msg-img">
-                                                            <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/images/user_blank.png'; ?>" alt="">
+                                                            <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" alt="">
                                                         </div>
                                                         <p class="msg-name"><?php echo $row->name_inbox; ?></p>
                                                         <p class="msg-text"><?php echo word_limiter($row->message_inbox, 5); ?></p>

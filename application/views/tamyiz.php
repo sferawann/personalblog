@@ -101,8 +101,8 @@
                                         <!-- judul course -->
                                         <h2 class="card-title" style="color: #697194;"><?= $t->tittle_tamyiz ?></h2>
                                         <!-- paragraf pertama isi preview course -->
-                                        <p class="card-text"><?= $t->contents_tamyiz ?></p>
-                                        <a href="<?php echo site_url('Tamyiz_post'); ?>" type="button" class="btn btn-custom mt-2">Read More<i class="fas fa-long-arrow-alt-right m-l-7" aria-hidden="true"></i></a>
+                                        <p class="card-text"><?= $t->metadescription_tamyiz ?></p>
+                                        <a href="<?php echo site_url('Tamyiz_post/tampil_by_id/' . $t->id_tamyiz); ?>" type="button" class="btn btn-custom mt-2">Read More<i class="fas fa-long-arrow-alt-right m-l-7" aria-hidden="true"></i></a>
                                     </div>
                                     <div class="card-footer text-muted">
                                         <!-- ini tanggal course di post -->

@@ -18,6 +18,8 @@ class Tamyiz extends CI_Controller
 	function add_new()
 	{
 		$x['data']	   = $this->tamyiz_model->get_tamyiz_data();
+		// var_dump($x);
+		// die;
 		$this->load->view('superadmin/v_add_tamyiz', $x);
 	}
 
@@ -30,174 +32,125 @@ class Tamyiz extends CI_Controller
 
 	function publish()
 	{
-		$config['upload_path'] = './assets/img/';
-		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
-		$config['encrypt_name'] = TRUE;
-		$audioconfig['upload_path'] = './assets/audio';
-		$audioconfig['allowed_types'] = 'mp3|mp4';
-		$audioconfig['encrypt_name'] = TRUE;
-
-		$this->upload->initialize($config);
-		$this->upload->initialize($audioconfig);
-
-		if ((!empty($_FILES['image_tamyiz']['name1'])) && (!empty($_FILES['auidio_tamyiz']['name2']))) {
-			if (($this->upload->do_upload('image_tamyiz')) && ($this->upload->do_upload('auidio_tamyiz'))) {
-				// $img = $this->upload->data();
-				$image_tamyiz = $this->upload->data();
-				$image = $image_tamyiz['name1'];
-				$audio_tamyiz = $this->upload->data();
-				$audio = $audio_tamyiz['name2'];
-
-
-				$title	  = $this->input->post('tittle_tamyiz', TRUE);
-				$contents = $this->input->post('contents_tamyiz', TRUE);
-				$metadescription = $this->input->post('metadescription_tamyiz', TRUE);
-
-				$this->tamyiz_model->save_tamyiz($title, $contents, $metadescription, $image, $audio);
-				echo $this->session->set_flashdata('msg', 'success');
-				redirect('superadmin/tamyiz');
-			} else {
-				echo $this->session->set_flashdata('msg', 'warning');
-				redirect('superadmin/tamyiz');
-			}
-		} else {
-			redirect('superadmin/tamyiz');
-		}
-	}
-
-	function edit()
-	{
-		$id = htmlspecialchars($this->input->post('id_tamyiz', TRUE), ENT_QUOTES);
-		$tittle = $this->input->post('tittle_tamyiz');
-		$contents = $this->input->post('contents_tamyiz');
-		$metadescription = $this->input->post('metadescription_tamyiz');
-
-		$config['upload_path'] = './assets/img/';
-		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp|mp3|mp4';
-		$config['encrypt_name'] = FALSE;
-		$audioconfig['upload_path'] = './assets/audio/';
-		$audioconfig['allowed_types'] = 'mp3|mp4';
-		$audioconfig['encrypt_name'] = FALSE;
-
-		$this->upload->initialize($config, $audioconfig);
-
-		if (!empty($_FILES['image_tamyiz']['file_name1'])) {
+		$image_tamyiz = $_FILES['image_tamyiz']['name'];
+		$date = date('Y-m-d_H-i-s');
+		$filename = 'gambar_' . $date;
+		if ($image_tamyiz) {
+			$config['upload_path'] = './assets/img/';
+			$config['allowed_types'] = '*';
+			$config['max_size']     = '2048';
+			$config['file_name'] = $filename;
+			$this->load->library('upload');
+			$this->upload->initialize($config);
 			if ($this->upload->do_upload('image_tamyiz')) {
-				$image_aboutme = $this->upload->data();
-				$image = $image_aboutme['file_name1'];
+				$image_tamyiz = $this->upload->data('file_name');
+				$data['image_tamyiz'] = $image_tamyiz;
+			} else {
+				$this->upload->display_errors();
 			}
-			$this->tamyiz_model->edit_tamyiz_with_img_audio($id, $tittle, $contents, $metadescription, $image);
-			$this->session->set_flashdata('msg', 'success');
-			redirect('superadmin/tamyiz');
-		} elseif (!empty($_FILES['audio_tamyiz']['file_name2'])) {
-			if ($this->upload->do_upload('audio_tamyiz')) {
-				$audio_tamyiz = $this->upload->data();
-				$audio = $audio_tamyiz['file_name2'];
-			}
-			$this->tamyiz_model->edit_tamyiz_with_img_audio($id, $tittle, $contents, $metadescription, $audio);
-			$this->session->set_flashdata('msg', 'success');
-			redirect('superadmin/tamyiz');
-		} else {
-			$this->tamyiz_model->edit_tamyiz_no_img_audio($id, $tittle, $contents, $metadescription);
-			$this->session->set_flashdata('msg', 'success');
-			redirect('superadmin/tamyiz');
 		}
+		$audio_tamyiz = $_FILES['audio_tamyiz']['name'];
+		$date = date('Y-m-d_H-i-s');
+		$filename_ = 'musik_' . $date;
+		if ($audio_tamyiz) {
+			$config['upload_path'] = './assets/audio/';
+			$config['allowed_types'] = '*';
+			$config['max_size']     = '2048';
+			$config['file_name'] = $filename_;
+			$this->load->library('upload');
+			$this->upload->initialize($config);
+			if ($this->upload->do_upload('audio_tamyiz')) {
+				$audio_tamyiz = $this->upload->data('file_name');
+				$data['audio_tamyiz'] = $audio_tamyiz;
+			} else {
+				$this->upload->display_errors();
+			}
+		}
+
+		$title	  = $this->input->post('tittle_tamyiz', TRUE);
+		$contents = $this->input->post('contents_tamyiz', TRUE);
+		$metadescription = $this->input->post('metadescription_tamyiz', TRUE);
+
+		$this->tamyiz_model->save_tamyiz($title, $contents, $metadescription, $data['audio_tamyiz'], $data['image_tamyiz']);
+		echo $this->session->set_flashdata('msg', 'success');
+		redirect('superadmin/tamyiz');
 	}
 
 	// function edit()
 	// {
-	// 	$config['upload_path'] = './assets/images/';
-	// 	$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
-	// 	$config['encrypt_name'] = TRUE;
+	// 	$id = htmlspecialchars($this->input->post('id_tamyiz', TRUE), ENT_QUOTES);
 
-	// 	$this->upload->initialize($config);
-
-	// 	if (!empty($_FILES['filefoto']['name'])) {
-	// 		if ($this->upload->do_upload('filefoto')) {
-	// 			$img = $this->upload->data();
-	// 			//Compress Image
-	// 			$config['image_library'] = 'gd2';
-	// 			$config['source_image'] = './assets/images/' . $img['file_name'];
-	// 			$config['create_thumb'] = FALSE;
-	// 			$config['maintain_ratio'] = FALSE;
-	// 			$config['quality'] = '60%';
-	// 			$config['width'] = 500;
-	// 			$config['height'] = 320;
-	// 			$config['new_image'] = './assets/images/' . $img['file_name'];
-	// 			$this->load->library('image_lib', $config);
-	// 			$this->image_lib->resize();
-
-	// 			$this->_create_thumbs($img['file_name']);
-
-	// 			$image = $img['file_name'];
-	// 			$id 	  = $this->input->post('post_id', TRUE);
-	// 			$title	  = strip_tags(htmlspecialchars($this->input->post('title', TRUE), ENT_QUOTES));
-	// 			$contents = $this->input->post('contents');
-	// 			$category = $this->input->post('category', TRUE);
-
-	// 			$preslug  = strip_tags(htmlspecialchars($this->input->post('slug', TRUE), ENT_QUOTES));
-	// 			$string   = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $preslug);
-	// 			$trim     = trim($string);
-	// 			$praslug  = strtolower(str_replace(" ", "-", $trim));
-
-	// 			$query = $this->db->get_where('tbl_post', array('post_slug' => $praslug));
-	// 			if ($query->num_rows() > 1) {
-	// 				$uniqe_string = rand();
-	// 				$slug = $praslug . '-' . $uniqe_string;
-	// 			} else {
-	// 				$slug = $praslug;
-	// 			}
-
-	// 			$xtags[] = $this->input->post('tag');
-	// 			foreach ($xtags as $tag) {
-	// 				$tags = @implode(",", $tag);
-	// 			}
-
-	// 			$description = htmlspecialchars($this->input->post('description', TRUE), ENT_QUOTES);
-
-	// 			$this->post_model->edit_post_with_img($id, $title, $contents, $category, $slug, $image, $tags, $description);
-	// 			echo $this->session->set_flashdata('msg', 'info');
-	// 			redirect('backend/post');
-	// 		} else {
-	// 			echo $this->session->set_flashdata('msg', 'warning');
-	// 			redirect('backend/post');
-	// 		}
-	// 	} else {
-	// 		$id 	  = $this->input->post('post_id', TRUE);
-	// 		$title	  = strip_tags(htmlspecialchars($this->input->post('title', TRUE), ENT_QUOTES));
-	// 		$contents = $this->input->post('contents');
-	// 		$category = $this->input->post('category', TRUE);
-
-	// 		$preslug  = strip_tags(htmlspecialchars($this->input->post('slug', TRUE), ENT_QUOTES));
-	// 		$string   = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $preslug);
-	// 		$trim     = trim($string);
-	// 		$praslug  = strtolower(str_replace(" ", "-", $trim));
-
-	// 		$query = $this->db->get_where('tbl_post', array('post_slug' => $praslug));
-	// 		if ($query->num_rows() > 1) {
-	// 			$uniqe_string = rand();
-	// 			$slug = $praslug . '-' . $uniqe_string;
-	// 		} else {
-	// 			$slug = $praslug;
-	// 		}
-
-	// 		$xtags[] = $this->input->post('tag');
-	// 		foreach ($xtags as $tag) {
-	// 			$tags = @implode(",", $tag);
-	// 		}
-
-	// 		$description = htmlspecialchars($this->input->post('description', TRUE), ENT_QUOTES);
-
-	// 		$this->post_model->edit_post_no_img($id, $title, $contents, $category, $slug, $tags, $description);
-	// 		echo $this->session->set_flashdata('msg', 'info');
-	// 		redirect('backend/post');
-	// 	}
 	// }
+
+	function edit()
+	{
+		$id = $_POST['id_tamyiz'];
+		$upload1 = $_FILES['image_tamyiz']['name'];
+		$upload2 = $_FILES['audio_tamyiz']['name'];
+
+		$query = $this->db->query("SELECT `image_tamyiz`, `audio_tamyiz` FROM `tamyiz` WHERE `id_tamyiz` = $id ");
+
+		$fileLama = $query->row_array();
+		// var_dump($upload1);
+		// die;
+
+		if (!empty($upload1)) {
+			$config['allowed_types'] = '*';
+			$config['max_size'] = '2048';
+			$config['upload_path'] = './assets/img/';
+
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if ($this->upload->do_upload('image_tamyiz')) {
+				unlink(FCPATH . './assets/img/' . $fileLama['image_tamyiz']);
+				$file = $this->upload->data('file_name');
+				// $this->db->set('file', $file);
+				$data['image_tamyiz'] = $file;
+			} else {
+				echo $this->upload->display_errors();
+			}
+			if (!empty($upload2)) {
+				$config['allowed_types'] = '*';
+				$config['max_size'] = '2048';
+				$config['upload_path'] = './assets/audio/';
+
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+
+				if ($this->upload->do_upload('audio_tamyiz')) {
+					unlink(FCPATH . './assets/img/' . $fileLama['audio_tamyiz']);
+					$file_ = $this->upload->data('file_name');
+					// $this->db->set('file', $file);
+					$data['audio_tamyiz'] = $file_;
+				} else {
+					echo $this->upload->display_errors();
+				}
+			}
+			$title	  = $this->input->post('tittle_tamyiz', TRUE);
+			$contents = $this->input->post('contents_tamyiz', TRUE);
+			$metadescription = $this->input->post('metadescription_tamyiz', TRUE);
+
+			$this->tamyiz_model->edit_tamyiz_with_img_audio($id, $title, $contents, $metadescription, $data['audio_tamyiz'], $data['image_tamyiz']);
+			echo $this->session->set_flashdata('msg', 'success');
+			redirect('superadmin/tamyiz');
+		}
+
+		$title	  = $this->input->post('tittle_tamyiz', TRUE);
+		$contents = $this->input->post('contents_tamyiz', TRUE);
+		$metadescription = $this->input->post('metadescription_tamyiz', TRUE);
+
+		$this->tamyiz_model->edit_tamyiz_no_img_audio($id, $title, $contents, $metadescription);
+		echo $this->session->set_flashdata('msg', 'success');
+		redirect('superadmin/tamyiz');
+		// var_dump($data);
+		// die;
+	}
 
 	function delete()
 	{
-		$id_tamyiz = $this->input->post('id_tamyiz', TRUE);
-		$this->tamyiz_model->delete_post($id_tamyiz);
+		$id_tamyiz = $this->input->post('id', TRUE);
+		$this->tamyiz_model->delete($id_tamyiz);
 		echo $this->session->set_flashdata('msg', 'success-delete');
 		redirect('superadmin/tamyiz');
 	}

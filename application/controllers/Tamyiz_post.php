@@ -15,4 +15,14 @@ class Tamyiz_post extends CI_Controller
         $data['User'] = $this->Tamyiz_model->ambildata_user()->result();
         $this->load->view('tamyiz_post', $data);
     }
+
+    public function tampil_by_id($id)
+    {
+        $data['Tamyiz'] = $this->Tamyiz_model->tampil_by_id($id)->result();
+        // var_dump($data['Tamyiz']);
+        // die;
+
+        $this->load->view('tamyiz_post', $data);
+
+    }
 }

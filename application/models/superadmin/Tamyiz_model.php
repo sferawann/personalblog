@@ -19,7 +19,7 @@ class Tamyiz_model extends CI_Model
     {
         $data = array(
             'tittle_tamyiz'        => $title,
-            'contens_tamyiz' => $contents,
+            'contents_tamyiz' => $contents,
             'metadescription_tamyiz'    => $metadescription,
             'audio_tamyiz'        => $audio,
             'image_tamyiz' => $image,
@@ -27,10 +27,10 @@ class Tamyiz_model extends CI_Model
         $this->db->insert('tamyiz', $data);
     }
 
-    function edit_tamyiz_with_img_audio($id, $tittle, $contents, $metadescription, $image, $audio)
+    function edit_tamyiz_with_img_audio($id, $tittle, $contents, $metadescription, $audio, $image)
     {
         $result = $this->db->query("UPDATE tamyiz SET tittle_tamyiz='$tittle',contents_tamyiz='$contents',
-		metadescription_tamyiz='$metadescription',image_tamyiz='$image',audio_tamyiz='$audio' WHERE id_tamyiz='$id'");
+		metadescription_tamyiz='$metadescription',audio_tamyiz='$audio',image_tamyiz='$image' WHERE id_tamyiz='$id'");
         return $result;
     }
 
@@ -41,7 +41,7 @@ class Tamyiz_model extends CI_Model
         return $result;
     }
 
-    function delete_post($id_tamyiz)
+    function delete($id_tamyiz)
     {
         $this->db->where('id_tamyiz', $id_tamyiz);
         $this->db->delete('tamyiz');

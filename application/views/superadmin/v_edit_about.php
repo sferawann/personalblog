@@ -7,7 +7,7 @@ $b = $data->row_array();
 
 <head>
     <!-- Title -->
-    <title>Add New PKM</title>
+    <title>Edit About</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
@@ -280,7 +280,7 @@ $b = $data->row_array();
         </div><!-- Page Sidebar -->
         <div class="page-inner">
             <div class="page-title">
-                <h3>Edit Experience</h3>
+                <h3>Edit About</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo site_url('superadmin/dashboard'); ?>">Dashboard</a></li>

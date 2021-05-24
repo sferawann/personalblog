@@ -275,8 +275,8 @@
                 <h3>Add New Tamyiz</h3>
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb">
-                        <li><a href="<?php echo site_url('backend/dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="<?php echo site_url('backend/tamyiz'); ?>">Tamyiz</a></li>
+                        <li><a href="<?php echo site_url('superadmin/dashboard'); ?>">Dashboard</a></li>
+                        <li><a href="<?php echo site_url('superadmin/tamyiz'); ?>">Tamyiz</a></li>
                         <li class="active">Add New</li>
                     </ol>
                 </div>
@@ -374,7 +374,7 @@
                 $.ajax({
                     data: data,
                     type: "POST",
-                    url: "<?php echo site_url() ?>backend/post/upload_image",
+                    url: "<?php echo site_url() ?>superadmin/post/upload_image",
                     cache: false,
                     contentType: false,
                     processData: false,
