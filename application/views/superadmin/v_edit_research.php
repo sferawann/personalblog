@@ -235,8 +235,8 @@ $b = $data->row_array();
                             <p>PKM</p><span class="arrow"></span>
                         </a>
                         <ul class="sub-menu" style="background: linear-gradient(to right,#e8b38c, #697194)">
-                            <li><a href="<?php echo site_url('superadmin/Pkm/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
-                            <li><a href="<?php echo site_url('superadmin/Pkm'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">PKM List</a></li>
+                            <li><a href="<?php echo site_url('superadmin/PKM/add_new'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">Add New</a></li>
+                            <li><a href="<?php echo site_url('superadmin/PKM'); ?>" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;">PKM List</a></li>
                         </ul>
                     </li>
                     <li class="droplink"><a href="#" class="waves-effect waves-button" style="background: linear-gradient(to right,#e8b38c, #697194);color: white;"><span class="menu-icon icon-pin"></span>
