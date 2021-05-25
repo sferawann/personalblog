@@ -12,8 +12,8 @@ class Course_Post extends CI_Controller
     function index($id)
     {
         $data['Post'] = $this->Course_model->tampil_data_id($id)->result();
-        // var_dump($data['Post']);
-        // die;
-        $this->load->view('course_post', $data);
+        var_dump($data['Post']);
+        die;
+        // $this->load->view('course_post', $data);
     }
 }
