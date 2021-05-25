@@ -90,7 +90,7 @@
 
                                         </ul>
                                     </li>
-                                    <li class="drop-all"><a href="<?php echo site_url('superadmin/inbox'); ?>" class="text-center">All Messages</a></li>
+                                    <li class="drop-all"><a href="<?php echo site_url('superadmin/Inbox'); ?>" class="text-center">All Messages</a></li>
                                 </ul>
                             </li>
                             <?php
@@ -109,7 +109,7 @@
                                             foreach ($query_cmt->result() as $row) :
                                             ?>
                                                 <li>
-                                                    <a href="<?php echo site_url('superadmin/comment/unpublish'); ?>">
+                                                    <a href="<?php echo site_url('superadmin/Comment/unpublish'); ?>">
                                                         <div class="msg-img">
                                                             <div class="online on"></div><img class="img-circle" src="<?php echo base_url() . 'assets/img/user_blank.png'; ?>" alt="">
                                                         </div>
@@ -122,7 +122,7 @@
 
                                         </ul>
                                     </li>
-                                    <li class="drop-all"><a href="<?php echo site_url('superadmin/comment/unpublish'); ?>" class="text-center">All Comments</a></li>
+                                    <li class="drop-all"><a href="<?php echo site_url('superadmin/Comment/unpublish'); ?>" class="text-center">All Comments</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -140,11 +140,11 @@
                                     <?php endif; ?>
                                 </a>
                                 <ul class="dropdown-menu dropdown-list" role="menu">
-                                    <li role="presentation"><a href="<?php echo site_url('superadmin/change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
-                                    <li role="presentation"><a href="<?php echo site_url('superadmin/comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a></li>
-                                    <li role="presentation"><a href="<?php echo site_url('superadmin/inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/Change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/Comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?php echo $count_comment->num_rows(); ?></span></a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/Inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?php echo $count_inbox->num_rows(); ?></span></a></li>
                                     <li role="presentation" class="divider"></li>
-                                    <li role="presentation"><a href="<?php echo site_url('superadmin/login/logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                                    <li role="presentation"><a href="<?php echo site_url('superadmin/Login/logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                                 </ul>
                             </li>
                         </ul><!-- Nav -->
