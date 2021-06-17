@@ -1,6 +1,6 @@
 <?php
 
-class Course_Model extends CI_Model
+class Course_model extends CI_Model
 {
     public function tampil_data($id)
     {
